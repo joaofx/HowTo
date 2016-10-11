@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidR", "SolidR\SolidR.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowShop.Web", "HowShop.Web\HowShop.Web.csproj", "{0D5F6F78-5811-42BF-B14D-75792B11183C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidR.TestFx", "SolidR.TestFx\SolidR.TestFx.csproj", "{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{445829CA-1E4E-4F68-892F-49C521243917}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{3807B846-B915-4563-9BDA-0911698F73A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +39,18 @@ Global
 		{0D5F6F78-5811-42BF-B14D-75792B11183C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D5F6F78-5811-42BF-B14D-75792B11183C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D5F6F78-5811-42BF-B14D-75792B11183C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0AB4A244-F858-4347-B87C-3EB7B927D656} = {3807B846-B915-4563-9BDA-0911698F73A0}
+		{A47B50A6-2374-4A63-985B-81C1624BF253} = {445829CA-1E4E-4F68-892F-49C521243917}
+		{0D5F6F78-5811-42BF-B14D-75792B11183C} = {3807B846-B915-4563-9BDA-0911698F73A0}
+		{08CE14CC-499B-4BB5-A6F7-DC7C2F112209} = {445829CA-1E4E-4F68-892F-49C521243917}
 	EndGlobalSection
 EndGlobal

@@ -96,12 +96,9 @@
     <Compile Include="HowTo\AuditableTest.cs" />
     <Compile Include="HowTo\CascadeDeleteOrphansTest.cs" />
     <Compile Include="HowTo\EncapsulatedCollectionsTest.cs" />
-    <Compile Include="Infra\IDatabaseCleaner.cs" />
-    <Compile Include="Infra\IntegratedTest.cs" />
     <Compile Include="HowTo\SoftDeleteTest.cs" />
     <Compile Include="HowTo\PrivateSetterTest.cs" />
     <Compile Include="HowTo\RequiredConstructorTest.cs" />
-    <Compile Include="Infra\RespawnDatabaseCleaner.cs" />
     <Compile Include="Infra\TestRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

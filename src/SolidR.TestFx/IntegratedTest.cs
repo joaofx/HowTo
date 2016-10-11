@@ -1,10 +1,9 @@
-using HowShop.Core.Domain;
+using HowToEntityFramework.Infra;
 using NUnit.Framework;
-using SolidR;
 using SolidR.FluentMigrator;
 using StructureMap;
 
-namespace HowToEntityFramework.Infra
+namespace SolidR.TestFx
 {
     public class IntegratedTest
     {
