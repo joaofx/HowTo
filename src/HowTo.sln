@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowShop.Core", "HowShop.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidR", "SolidR\SolidR.csproj", "{A47B50A6-2374-4A63-985B-81C1624BF253}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowShop.Web", "HowShop.Web\HowShop.Web.csproj", "{0D5F6F78-5811-42BF-B14D-75792B11183C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A47B50A6-2374-4A63-985B-81C1624BF253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A47B50A6-2374-4A63-985B-81C1624BF253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A47B50A6-2374-4A63-985B-81C1624BF253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D5F6F78-5811-42BF-B14D-75792B11183C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5F6F78-5811-42BF-B14D-75792B11183C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5F6F78-5811-42BF-B14D-75792B11183C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5F6F78-5811-42BF-B14D-75792B11183C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

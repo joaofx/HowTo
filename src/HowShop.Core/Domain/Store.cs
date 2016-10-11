@@ -23,7 +23,7 @@ namespace HowShop.Core.Domain
         //    private set { CloseAtBuddy = TimeSpan.FromTicks(CloseAt.TickOfDay); }
         //}
 
-        protected TimeSpan OpenAtBuddy { get; private set; }
+        public TimeSpan OpenAtBuddy { get; private set; }
         protected TimeSpan CloseAtBuddy { get; private set; }
 
         private Store()
@@ -37,7 +37,9 @@ namespace HowShop.Core.Domain
 
         public Store(string name, LocalTime openAt, LocalTime closeAt) : this(name)
         {
-            OpenAt = openAt;
+            OpenAtBuddy = TimeSpan.FromTicks(openAt.TickOfDay);
+
+            //OpenAt = openAt;
             //OpenAt = TimeSpan.FromTicks(openAt.TickOfDay);
             //OpenAtNoda = openAt;
             //CloseAt = closeAt;

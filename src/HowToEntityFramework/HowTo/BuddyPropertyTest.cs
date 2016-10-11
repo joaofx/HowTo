@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using HowShop.Core.Domain;
+using HowShop.Core.Infra;
 using HowToEntityFramework.Infra;
 using NodaTime;
 using NUnit.Framework;

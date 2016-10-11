@@ -1,9 +1,11 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using HowShop.Core.Domain;
+using HowShop.Core.Infra;
 using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
+using SolidR.EntityFramework;
 
 namespace HowToEntityFramework.HowTo
 {

@@ -1,0 +1,66 @@
+﻿@using HowShop.Web
+@model List<HowShop.Web.Models.Product>
+
+@{
+    string tag = ViewBag.Tag;
+}
+
+@if (string.IsNullOrEmpty(tag) == false)
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Lista", "Produto")">Todos</a></li>
+        <li><a href="@Url.Action("Lista", "Produto", new { tag = tag })">@tag</a></li>
+    </ol>
+}
+
+@foreach (var slice in Model.EachSlice(3))
+{
+    <div class="row">
+        @foreach (var product in slice)
+        {
+            <div class="col-md-4 @(product.Sold ? "sold" : "")">
+
+                <h2>
+                    <a href="@Url.Action("Mostrar", "Produto", new { id = product.Id })">
+                        @product.Title
+                    </a>
+                </h2>
+
+                <div class="image">
+                    <a href="@Url.Action("Mostrar", "Produto", new { id = product.Id })">
+                        <img src="http://i.imgur.com/@(product.RemoteThumbnail).jpg" alt="@product.Title" class="img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="label label-@(product.Sold ? "sold" : "success") price">
+                    @if (product.Sold == false)
+                    {
+                        @Decimal(product.Price)
+                    }
+                    else
+                    {
+                        <text>Vendido</text>
+                    }
+                </div>
+
+            </div>
+        }
+    </div>
+}
+
+@if (string.IsNullOrEmpty(tag) == false)
+{
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Lista", "Produto")">Todos</a></li>
+        <li><a href="@Url.Action("Lista", "Produto", new { tag = tag })">@tag</a></li>
+    </ol>
+}
+
+@helper Decimal(decimal value)
+{
+    if (value != 0)
+    {
+        var spanClass = value > 0 ? "positive" : "negative";
+        <span class="@spanClass">@value.Show()</span>
+    }
+}

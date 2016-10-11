@@ -1,4 +1,6 @@
 ﻿using System;
+using NLog;
+using StructureMap;
 
 namespace SolidR
 {
@@ -8,5 +10,9 @@ namespace SolidR
 
         public const string ConnectionString =
             "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=how_to_ef;Integrated Security=SSPI;";
+
+        // TODO: Refactor
+        public static Logger Log => SolidR.Log.App;
+        public static IContainer Container { get; set; }
     }
 }

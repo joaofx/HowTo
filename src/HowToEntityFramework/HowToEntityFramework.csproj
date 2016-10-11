@@ -72,6 +72,10 @@
       <HintPath>..\packages\Shouldly.2.8.2\lib\net451\Shouldly.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="StructureMap, Version=4.4.1.451, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.4.1\lib\net45\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -92,21 +96,13 @@
     <Compile Include="HowTo\AuditableTest.cs" />
     <Compile Include="HowTo\CascadeDeleteOrphansTest.cs" />
     <Compile Include="HowTo\EncapsulatedCollectionsTest.cs" />
-    <Compile Include="Infra\DatabaseMigrator.cs" />
-    <Compile Include="Infra\EntityFrameworkMappingConfiguration.cs" />
-    <Compile Include="Infra\EntityTypeConfigurationEx.cs" />
-    <Compile Include="Infra\ForeignKeyNamingConvention.cs" />
     <Compile Include="Infra\IDatabaseCleaner.cs" />
     <Compile Include="Infra\IntegratedTest.cs" />
-    <Compile Include="Infra\DatabaseContext.cs" />
     <Compile Include="HowTo\SoftDeleteTest.cs" />
     <Compile Include="HowTo\PrivateSetterTest.cs" />
     <Compile Include="HowTo\RequiredConstructorTest.cs" />
-    <Compile Include="Infra\Log.cs" />
-    <Compile Include="Infra\NLogCommandInterceptor.cs" />
-    <Compile Include="Infra\QueryableExtensions.cs" />
     <Compile Include="Infra\RespawnDatabaseCleaner.cs" />
-    <Compile Include="Mappings\ProductMapping.cs" />
+    <Compile Include="Infra\TestRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -116,10 +112,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Concerns\" />
-    <Folder Include="Domain\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\HowShop.Core\HowShop.Core.csproj">
       <Project>{0AB4A244-F858-4347-B87C-3EB7B927D656}</Project>
