@@ -51,6 +51,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Domain\Audit.cs" />
     <Compile Include="Domain\Effective.cs" />
+    <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\IAuditable.cs" />
     <Compile Include="Domain\IEffectivable.cs" />
     <Compile Include="Domain\IEntity.cs" />

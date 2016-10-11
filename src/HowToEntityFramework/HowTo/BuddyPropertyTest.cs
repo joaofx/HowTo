@@ -29,7 +29,7 @@ namespace HowToEntityFramework.HowTo
             {
                 var dublin = db.Stores.FirstOrDefault(x => x.Name == "Dublin");
 
-                //dublin.OpenAt.ShouldBe(new LocalTime(9, 0));
+                dublin.OpenAt.ShouldBe(new LocalTime(9, 0));
                 //dublin.CloseAt.ShouldBe(new LocalTime(19, 0));
             }
         }

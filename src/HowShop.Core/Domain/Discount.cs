@@ -2,9 +2,8 @@ using SolidR.Domain;
 
 namespace HowShop.Core.Domain
 {
-    public class Discount : IEffectivable, IEntity
+    public class Discount : Entity, IEffectivable
     {
-        public long Id { get; private set; }
         public Effective Effective { get; private set; }
         public decimal Price { get; private set; }
         public Product Product { get; private set; }

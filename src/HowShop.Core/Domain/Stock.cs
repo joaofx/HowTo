@@ -2,10 +2,8 @@
 
 namespace HowShop.Core.Domain
 {
-    public class Stock : IEntity
+    public class Stock : Entity
     {
-        public long Id { get; private set; }
-
         public Product Product { get; private set; }
         public Store Store { get; private set; }
         public int Quantity { get; private set; }

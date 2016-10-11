@@ -4,12 +4,11 @@ using SolidR.Domain;
 
 namespace HowShop.Core.Domain
 {
-    public class Product : IAuditable, IEntity
+    public class Product : Entity, IAuditable
     {
         //public ICollection<Stock> Stocks { get; set; } = new HashSet<Stock>();
         protected virtual ICollection<Stock> _stocks { get; set; } = new HashSet<Stock>();
 
-        public long Id { get; private set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public Audit Audit { get; set; } = new Audit();
@@ -32,7 +31,7 @@ namespace HowShop.Core.Domain
 
         public void RemoveStock(Store store)
         {
-            var internalStore = _stocks.FirstOrDefault(x => x.Id == store.Id);
+            var internalStore = _stocks.FirstOrDefault(x => x.Store == store);
             _stocks.Remove(internalStore);
         }
     }

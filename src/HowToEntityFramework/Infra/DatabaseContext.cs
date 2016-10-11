@@ -27,11 +27,13 @@ namespace HowToEntityFramework.Infra
             QueryFilterManager.Filter<ISoftDeletable>(q => q.Where(x => x.IsDeleted == false));
 
             // TODO: Move mappings
-            modelBuilder.Entity<Product>().HasMany(x => x.Stocks);
+            modelBuilder.Entity<Product>()
+                .HasMany(x => x.Stocks);
 
             //modelBuilder.Entity<Stock>().HasKey(x => new { x.Id, x.ProductId });
-            
-            modelBuilder.Properties()
+
+            modelBuilder
+                .Properties()
                 .Where(p => p.Name.EndsWith("Buddy"))
                 .Configure(p => p.HasColumnName(p.ClrPropertyInfo.Name.Replace("Buddy", string.Empty)));
         }
@@ -39,10 +41,10 @@ namespace HowToEntityFramework.Infra
         public override int SaveChanges()
         {
             // TODO: Some conventional configurable way
-            //foreach (var orphan in Stocks.Local.Where(x => x.Product == null).ToList())
-            //{
-            //    Stocks.Remove(orphan);
-            //}
+            foreach (var orphan in Stocks.Local.Where(x => x.Product == null).ToList())
+            {
+                Stocks.Remove(orphan);
+            }
 
             // TODO: IoC Before Save Handlers
             var entitiesBeingCreated = ChangeTracker.Entries<IAuditable>()
