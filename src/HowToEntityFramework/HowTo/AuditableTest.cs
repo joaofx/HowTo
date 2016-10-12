@@ -2,13 +2,12 @@
 using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
-using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR;
 using SolidR.TestFx;
 
-namespace HowToEntityFramework.HowTo
+namespace HowTo.IntegratedTests.HowTo
 {
     [TestFixture]
     public class AuditableTest : IntegratedTest
@@ -22,7 +21,7 @@ namespace HowToEntityFramework.HowTo
             // arrange & CreateAt
             App.Clock = () => createdAt;
 
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Products.Add(new Product("iPhone", 599));
                 db.Products.Add(new Product("Galaxyyy", 499));
@@ -34,7 +33,7 @@ namespace HowToEntityFramework.HowTo
             // act & UpdateAt
             App.Clock = () => updatedAt;
 
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 var galaxy = db.Products.Single(x => x.Name == "Galaxyyy");
                 galaxy.Name = "Galaxy";
@@ -42,7 +41,7 @@ namespace HowToEntityFramework.HowTo
             }
 
             // assert
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 var galaxy = db.Products.Single(x => x.Name == "Galaxy");
                 galaxy.Audit.CreatedAt.ShouldBe(createdAt);

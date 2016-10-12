@@ -1,13 +1,12 @@
 ﻿using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
-using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.EntityFramework;
 using SolidR.TestFx;
 
-namespace HowToEntityFramework.HowTo
+namespace HowTo.IntegratedTests.HowTo
 {
     [TestFixture]
     public class CascadeDeleteOrphansTest : IntegratedTest
@@ -16,7 +15,7 @@ namespace HowToEntityFramework.HowTo
         public void Should_save_encapsulated_collections()
         {
             // arrange
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 var dublin = new Store("Dublin");
                 var london = new Store("London");
@@ -30,7 +29,7 @@ namespace HowToEntityFramework.HowTo
             }
 
             // act
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 var dublin = db.Stores.SingleOrDefault(x => x.Name == "Dublin");
 
@@ -47,7 +46,7 @@ namespace HowToEntityFramework.HowTo
             }
 
             // assert
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Stocks.Count().ShouldBe(1);
 

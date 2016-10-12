@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
-using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
 
-namespace HowToEntityFramework.HowTo
+namespace HowTo.IntegratedTests.HowTo
 {
     [TestFixture]
     public class SoftDeleteTest : IntegratedTest
@@ -16,7 +14,7 @@ namespace HowToEntityFramework.HowTo
         public void When_deleting_ISoftDeletable_entity_should_update_IsDeleted_to_true_and_not_bringing_it_in_normal_queries()
         {
             // arrange
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Users.Add(new User("John", 20));
                 db.Users.Add(new User("Paul", 30));
@@ -27,7 +25,7 @@ namespace HowToEntityFramework.HowTo
             }
 
             // act
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 var john = db.Users.Single(x => x.Name == "John");
                 john.IsDeleted = true;
@@ -35,7 +33,7 @@ namespace HowToEntityFramework.HowTo
             }
 
             // assert
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Users.Count(x => x.Name == "John").ShouldBe(0);
                 db.Users.Count().ShouldBe(3); // beatles without john

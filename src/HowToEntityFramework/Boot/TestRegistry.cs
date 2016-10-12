@@ -1,15 +1,12 @@
-﻿using HowShop.Core.Infra;
-using SolidR.FluentMigrator;
-using SolidR.TestFx;
+﻿using SolidR.TestFx;
 using StructureMap;
 
-namespace HowToEntityFramework.Infra
+namespace HowTo.IntegratedTests.Boot
 {
     public class TestRegistry : Registry
     {
         public TestRegistry()
         {
-            For<IDatabaseMigrator>().Use<FluentDatabaseMigrator>();
             For<IDatabaseCleaner>().Use<RespawnDatabaseCleaner>();
         }
     }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToEntityFramework", "HowToEntityFramework\HowToEntityFramework.csproj", "{4B31CFDF-FE21-4ACE-A6EF-FD0793DD01B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowTo.IntegratedTests", "HowToEntityFramework\HowTo.IntegratedTests.csproj", "{4B31CFDF-FE21-4ACE-A6EF-FD0793DD01B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowShop.Core", "HowShop.Core\HowShop.Core.csproj", "{0AB4A244-F858-4347-B87C-3EB7B927D656}"
 EndProject
@@ -16,8 +16,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{445829CA-1E4E-4F68-892F-49C521243917}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{3807B846-B915-4563-9BDA-0911698F73A0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowShop.Tests", "HowShop.Tests\HowShop.Tests.csproj", "{70BB1FC6-138C-4DE5-BC9E-DF1D83A8970D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +43,6 @@ Global
 		{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70BB1FC6-138C-4DE5-BC9E-DF1D83A8970D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70BB1FC6-138C-4DE5-BC9E-DF1D83A8970D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70BB1FC6-138C-4DE5-BC9E-DF1D83A8970D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70BB1FC6-138C-4DE5-BC9E-DF1D83A8970D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

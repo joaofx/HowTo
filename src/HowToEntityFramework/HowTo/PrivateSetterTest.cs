@@ -2,12 +2,11 @@
 using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
-using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
 
-namespace HowToEntityFramework.HowTo
+namespace HowTo.IntegratedTests.HowTo
 {
     /// <summary>
     /// How? Set property as virtual
@@ -18,14 +17,14 @@ namespace HowToEntityFramework.HowTo
         [Test]
         public void Should_load_private_setter_property()
         {
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Users.Add(new User("John", 20));
                 db.Users.Add(new User("Paul", 30));
                 db.SaveChanges();
             }
 
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 var result = db.Users.ToList();
 

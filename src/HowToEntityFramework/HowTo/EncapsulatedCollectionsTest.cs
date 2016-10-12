@@ -6,7 +6,7 @@ using Shouldly;
 using SolidR.EntityFramework;
 using SolidR.TestFx;
 
-namespace HowToEntityFramework.HowTo
+namespace HowTo.IntegratedTests.HowTo
 {
     /// <summary>
     /// References:
@@ -26,13 +26,13 @@ namespace HowToEntityFramework.HowTo
             iphone.AddQuantityInStock(dublin, 10);
             iphone.AddQuantityInStock(london, 20);
             
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Products.Add(iphone);
                 db.SaveChanges();
             }
 
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 var result = db.Products
                     .Where(x => x.Name == iphone.Name)

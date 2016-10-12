@@ -2,13 +2,12 @@
 using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
-using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.Domain;
 using SolidR.TestFx;
 
-namespace HowToEntityFramework.HowTo
+namespace HowTo.IntegratedTests.HowTo
 {
     [TestFixture]
     public class EffectiveTest : IntegratedTest
@@ -22,7 +21,7 @@ namespace HowToEntityFramework.HowTo
             var june = new Effective(new DateTime(2016, 6, 1), new DateTime(2016, 6, 30));
             var julyToNow = new Effective(new DateTime(2016, 7, 1));
 
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Products.Add(iphone);
                 db.Products.Add(galaxy);
@@ -33,7 +32,7 @@ namespace HowToEntityFramework.HowTo
                 db.SaveChanges();
             }
             
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Discounts
                     .Where(x => x.ProductId == iphone.Id)

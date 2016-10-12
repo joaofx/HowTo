@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
 
-namespace HowToEntityFramework.HowTo
+namespace HowTo.IntegratedTests.HowTo
 {
     /// <summary>
     /// How? Create a private empty constructor to let EF initialize the entity on runtime
@@ -16,7 +16,7 @@ namespace HowToEntityFramework.HowTo
        [SetUp]
         public void Scenario()
         {
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 db.Products.Add(new Product("iPhone 6", 699.99m));
                 db.Products.Add(new Product("Samsung Galaxy S7", 799.99m));
@@ -27,7 +27,7 @@ namespace HowToEntityFramework.HowTo
         [Test]
         public void Assert()
         {
-            using (var db = new DatabaseContext())
+            using (var db = new HowToContext())
             {
                 var products = db.Products.ToList();
 

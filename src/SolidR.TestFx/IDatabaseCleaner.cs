@@ -1,4 +1,4 @@
-namespace HowToEntityFramework.Infra
+namespace SolidR.TestFx
 {
     public interface IDatabaseCleaner
     {

@@ -1,7 +1,7 @@
-using HowToEntityFramework.Infra;
+using System.Data.Entity;
+using System.Linq;
 using NUnit.Framework;
 using SolidR.FluentMigrator;
-using StructureMap;
 
 namespace SolidR.TestFx
 {
@@ -12,7 +12,7 @@ namespace SolidR.TestFx
 
         static IntegratedTest()
         {
-            App.Container = new Container(_ =>
+            App.Initialize(_ =>
             {
                 _.Scan(s =>
                 {
@@ -26,15 +26,36 @@ namespace SolidR.TestFx
         [SetUp]
         public void IntegratedBeforeEachTest()
         {
-            Log.App.Info("Cleaning all Tables");
+            App.Log.Info("Cleaning all Tables");
             _databaseCleaner.CleanAllTables(App.ConnectionString);
         }
 
         [TestFixtureSetUp]
         public void IntegratedBeforeEachTestFixture()
         {
-            Log.App.Info("Running Database Migration");
+            App.Log.Info("Running Database Migration");
             _databaseMigrator.UpdateSchema();  
-        }        
+        }
+
+        public void SaveAll(params object[] entities)
+        {
+            using (var db = App.Container.GetInstance<DbContext>())
+            {
+                db.Configuration.AutoDetectChangesEnabled = false;
+                db.Configuration.ValidateOnSaveEnabled = false;
+
+                foreach (var entity in entities)
+                {
+                    var entry = db.ChangeTracker.Entries().FirstOrDefault(entityEntry => entityEntry.Entity == entity);
+
+                    if (entry == null)
+                    {
+                        db.Set(entity.GetType()).Add(entity);
+                    }
+                }
+
+                db.SaveChanges();
+            };
+        }
     }
 }

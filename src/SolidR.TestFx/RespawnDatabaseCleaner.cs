@@ -1,4 +1,3 @@
-using HowToEntityFramework.Infra;
 using Respawn;
 
 namespace SolidR.TestFx

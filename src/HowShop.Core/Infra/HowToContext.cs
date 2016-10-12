@@ -1,3 +1,5 @@
+using System;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -9,7 +11,7 @@ using SolidR.EntityFramework;
 
 namespace HowShop.Core.Infra
 {
-    public class DatabaseContext : DbContext
+    public class HowToContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -17,9 +19,9 @@ namespace HowShop.Core.Infra
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Store> Stores { get; set; }
 
-        public DatabaseContext() : base(App.ConnectionString)
+        public HowToContext() : base(App.ConnectionString)
         {
-            Database.SetInitializer<DatabaseContext>(null);
+            Database.SetInitializer<HowToContext>(null);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
