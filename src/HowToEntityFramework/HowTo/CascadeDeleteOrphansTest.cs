@@ -5,6 +5,7 @@ using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.EntityFramework;
+using SolidR.TestFx;
 
 namespace HowToEntityFramework.HowTo
 {

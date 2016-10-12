@@ -96,7 +96,6 @@
     <Compile Include="EntityFramework\QueryableExtensions.cs" />
     <Compile Include="EntityFramework\DbModelBuilderExtensions.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="FluentMigrator\FluentDatabaseMigrator.cs" />
     <Compile Include="FluentMigrator\IDatabaseMigrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

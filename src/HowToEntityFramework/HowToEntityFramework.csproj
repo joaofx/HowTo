@@ -115,6 +115,10 @@
       <Project>{0AB4A244-F858-4347-B87C-3EB7B927D656}</Project>
       <Name>HowShop.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SolidR.TestFx\SolidR.TestFx.csproj">
+      <Project>{08CE14CC-499B-4BB5-A6F7-DC7C2F112209}</Project>
+      <Name>SolidR.TestFx</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SolidR\SolidR.csproj">
       <Project>{A47B50A6-2374-4A63-985B-81C1624BF253}</Project>
       <Name>SolidR</Name>

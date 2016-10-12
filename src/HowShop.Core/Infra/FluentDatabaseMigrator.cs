@@ -1,18 +1,21 @@
 ﻿using System;
-using System.Reflection;
 using FluentMigrator.Runner;
 using FluentMigrator.Runner.Announcers;
 using FluentMigrator.Runner.Initialization;
 using FluentMigrator.Runner.Processors;
 using FluentMigrator.Runner.Processors.SqlServer;
+using HowShop.Core.Domain;
+using SolidR;
+using SolidR.FluentMigrator;
 
-namespace SolidR.FluentMigrator
+namespace HowShop.Core.Infra
 {
     public class FluentDatabaseMigrator : IDatabaseMigrator
     {
-        public void UpdateSchema(Assembly assembly)
+        public void UpdateSchema()
         {
             //App.Log.Framework.DebugFormat("Migrating {0}", migration.FullName);
+            var assembly = typeof(Product).Assembly;
 
             var announcer = new TextWriterAnnouncer(s =>
             {

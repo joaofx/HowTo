@@ -5,6 +5,7 @@ using HowShop.Core.Infra;
 using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
+using SolidR.TestFx;
 
 namespace HowToEntityFramework.HowTo
 {

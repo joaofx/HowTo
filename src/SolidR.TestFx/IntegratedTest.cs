@@ -16,7 +16,7 @@ namespace SolidR.TestFx
             {
                 _.Scan(s =>
                 {
-                    s.AssemblyContainingType<IntegratedTest>();
+                    s.AssembliesFromApplicationBaseDirectory();
                     s.LookForRegistries();
                     s.WithDefaultConventions();
                 });
@@ -34,7 +34,7 @@ namespace SolidR.TestFx
         public void IntegratedBeforeEachTestFixture()
         {
             Log.App.Info("Running Database Migration");
-            _databaseMigrator.UpdateSchema(typeof(Product).Assembly);  
+            _databaseMigrator.UpdateSchema();  
         }        
     }
 }

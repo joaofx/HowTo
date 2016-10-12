@@ -1,4 +1,6 @@
-﻿using SolidR.FluentMigrator;
+﻿using HowShop.Core.Infra;
+using SolidR.FluentMigrator;
+using SolidR.TestFx;
 using StructureMap;
 
 namespace HowToEntityFramework.Infra

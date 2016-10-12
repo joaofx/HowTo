@@ -6,6 +6,7 @@ using HowToEntityFramework.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.Domain;
+using SolidR.TestFx;
 
 namespace HowToEntityFramework.HowTo
 {

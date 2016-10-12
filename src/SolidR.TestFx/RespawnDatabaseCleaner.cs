@@ -1,6 +1,7 @@
+using HowToEntityFramework.Infra;
 using Respawn;
 
-namespace HowToEntityFramework.Infra
+namespace SolidR.TestFx
 {
     public class RespawnDatabaseCleaner : IDatabaseCleaner
     {
