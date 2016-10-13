@@ -1,3 +1,4 @@
+using FluentValidation;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using MediatR;
@@ -26,6 +27,15 @@ namespace HowShop.Core.Commands
             {
                 var product = new Product(message.Name, message.Price);
                 _db.Products.Add(product);
+            }
+        }
+
+        public class Validator : AbstractValidator<Command>
+        {
+            public Validator()
+            {
+                RuleFor(x => x.Name).NotEmpty();
+                RuleFor(x => x.Price).GreaterThan(0);
             }
         }
     }

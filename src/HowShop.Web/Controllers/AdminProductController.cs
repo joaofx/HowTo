@@ -3,6 +3,7 @@ using HowShop.Core.Commands;
 using HowShop.Core.Queries;
 using HowShop.Web.Models;
 using MediatR;
+using SolidR.Mvc;
 
 namespace HowShop.Web.Controllers
 {
@@ -23,14 +24,14 @@ namespace HowShop.Web.Controllers
 
         public ActionResult New()
         {
-            var result = _mediator.Send(new ProductEdit.Command());
-            return View(result);
+            return View("Edit", new ProductEdit.Command());
         }
 
-        [OutputCache(Duration = 3600, VaryByParam = "id")]
-        public ActionResult Mostrar(string id)
+        [HttpPost]
+        public ActionResult Edit(ProductEdit.Command command)
         {
-            return View(Products.ById(id));
+            _mediator.Send(command);
+            return this.RedirectToActionJson(c => c.Index());
         }
     }
 }

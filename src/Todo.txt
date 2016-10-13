@@ -1,0 +1,12 @@
+
+
+LOG
+
+Show DbContext GetHashCode when:
+- Opening connection
+- Closing connection
+
+Show DbTransaction GetHashCode when:
+- Beginning transaction
+- Commiting transaction
+- Rolling back transaction
