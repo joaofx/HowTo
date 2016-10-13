@@ -1,8 +1,9 @@
 using System.Data;
 using System.Data.Entity;
+using HowShop.Core.Infra;
 using MediatR;
 
-namespace SolidR.Handlers
+namespace HowShop.Core.Handlers
 {
     public class TransactionHandler<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
@@ -10,7 +11,7 @@ namespace SolidR.Handlers
         private readonly IRequestHandler<TRequest, TResponse> _inner;
         private readonly DbContext _dbContext;
 
-        public TransactionHandler(IRequestHandler<TRequest, TResponse> inner, DbContext dbContext)
+        public TransactionHandler(IRequestHandler<TRequest, TResponse> inner, HowShopContext dbContext)
         {
             _inner = inner;
             _dbContext = dbContext;

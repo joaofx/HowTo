@@ -14,7 +14,7 @@ namespace HowTo.IntegratedTests.HowTo
         public void When_deleting_ISoftDeletable_entity_should_update_IsDeleted_to_true_and_not_bringing_it_in_normal_queries()
         {
             // arrange
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 db.Users.Add(new User("John", 20));
                 db.Users.Add(new User("Paul", 30));
@@ -25,7 +25,7 @@ namespace HowTo.IntegratedTests.HowTo
             }
 
             // act
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var john = db.Users.Single(x => x.Name == "John");
                 john.IsDeleted = true;
@@ -33,7 +33,7 @@ namespace HowTo.IntegratedTests.HowTo
             }
 
             // assert
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 db.Users.Count(x => x.Name == "John").ShouldBe(0);
                 db.Users.Count().ShouldBe(3); // beatles without john

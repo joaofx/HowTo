@@ -16,7 +16,7 @@ namespace HowTo.IntegratedTests.HowTo
        [SetUp]
         public void Scenario()
         {
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 db.Products.Add(new Product("iPhone 6", 699.99m));
                 db.Products.Add(new Product("Samsung Galaxy S7", 799.99m));
@@ -27,7 +27,7 @@ namespace HowTo.IntegratedTests.HowTo
         [Test]
         public void Assert()
         {
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var products = db.Products.ToList();
 

@@ -1,0 +1,65 @@
+﻿@using HowShop.Web
+@model HowShop.Web.Models.Product
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Lista", "Produto")">Todos</a></li>
+    <li><a href="@Url.Action("Lista", "Produto", new { tag = @Model.Tag })">@Model.Tag</a></li>
+    <li><a href="@Url.Action("Mostrar", "Produto", new { tag = @Model.Id })">@Model.Title</a></li>
+</ol>
+
+
+<div class="row">
+    
+    <div class="col-md-4 @(Model.Sold ? "sold" : "")">
+
+        <h2>@Model.Title</h2>
+
+        <p>
+            <div class="label label-@(Model.Sold ? "sold" : "success") price">
+                @if (Model.Sold == false)
+                {
+                    @Decimal(Model.Price)
+                }
+                else
+                {
+                    <text>Vendido</text>
+                }
+            </div>
+        </p>
+
+        <p>
+            <a href="@Url.Action("Index", "Contato")">Ficou interessado? Entre em Contato</a>
+        </p>
+
+        <p>@Text(Model.Description)</p>
+
+    </div>
+
+    
+    <div class="col-md-6">
+        
+        @foreach (var image in Model.RemoteImages)
+        {
+            <div class="row">
+                <img src="http://i.imgur.com/@(image).jpg" alt="Foto">
+            </div>
+        }
+            
+
+    </div>
+    
+</div>
+
+@helper Text(string text)
+{
+    @Html.Raw(text.Replace("\n", "<br/>"))
+}
+
+@helper Decimal(decimal value)
+{
+    if (value != 0)
+    {
+        var spanClass = value > 0 ? "positive" : "negative";
+        <span class="@spanClass">@value.Show()</span>
+    }
+}

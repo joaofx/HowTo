@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using HowShop.Core.Handlers;
 using HowShop.Core.Infra;
 using MediatR;
 using SolidR.Handlers;

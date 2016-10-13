@@ -97,14 +97,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boot\DatabaseRegistry.cs" />
+    <Compile Include="Boot\DbContextRegistry.cs" />
     <Compile Include="Boot\MediatorRegistry.cs" />
+    <Compile Include="Commands\ProductEdit.cs" />
     <Compile Include="Domain\Discount.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\Stock.cs" />
     <Compile Include="Domain\Store.cs" />
     <Compile Include="Domain\User.cs" />
-    <Compile Include="Infra\HowToContext.cs" />
+    <Compile Include="Handlers\TransactionHandler.cs" />
+    <Compile Include="Infra\HowShopContext.cs" />
     <Compile Include="Infra\DatabaseContextExtensions.cs" />
     <Compile Include="Infra\EntityFrameworkMigrator.cs" />
     <Compile Include="Infra\FluentDatabaseMigrator.cs" />

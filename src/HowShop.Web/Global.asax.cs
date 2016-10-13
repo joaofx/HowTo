@@ -16,8 +16,8 @@ namespace HowShop.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //var migrator = App.Container.GetInstance<IDatabaseMigrator>();
-            //migrator.UpdateSchema();
+            var migrator = App.Container.GetInstance<IDatabaseMigrator>();
+            migrator.UpdateSchema();
         }
     }
 }

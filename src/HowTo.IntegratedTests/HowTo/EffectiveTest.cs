@@ -21,7 +21,7 @@ namespace HowTo.IntegratedTests.HowTo
             var june = new Effective(new DateTime(2016, 6, 1), new DateTime(2016, 6, 30));
             var julyToNow = new Effective(new DateTime(2016, 7, 1));
 
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 db.Products.Add(iphone);
                 db.Products.Add(galaxy);
@@ -32,7 +32,7 @@ namespace HowTo.IntegratedTests.HowTo
                 db.SaveChanges();
             }
             
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 db.Discounts
                     .Where(x => x.ProductId == iphone.Id)

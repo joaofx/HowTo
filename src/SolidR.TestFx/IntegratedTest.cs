@@ -1,5 +1,7 @@
+using System;
 using System.Data.Entity;
 using System.Linq;
+using MediatR;
 using NUnit.Framework;
 using SolidR.FluentMigrator;
 
@@ -9,6 +11,8 @@ namespace SolidR.TestFx
     {
         private readonly IDatabaseCleaner _databaseCleaner = App.Container.GetInstance<IDatabaseCleaner>();
         private readonly IDatabaseMigrator _databaseMigrator = App.Container.GetInstance<IDatabaseMigrator>();
+
+        protected readonly IMediator Mediator = App.Container.GetInstance<IMediator>();
 
         static IntegratedTest()
         {
@@ -37,25 +41,5 @@ namespace SolidR.TestFx
             _databaseMigrator.UpdateSchema();  
         }
 
-        public void SaveAll(params object[] entities)
-        {
-            using (var db = App.Container.GetInstance<DbContext>())
-            {
-                db.Configuration.AutoDetectChangesEnabled = false;
-                db.Configuration.ValidateOnSaveEnabled = false;
-
-                foreach (var entity in entities)
-                {
-                    var entry = db.ChangeTracker.Entries().FirstOrDefault(entityEntry => entityEntry.Entity == entity);
-
-                    if (entry == null)
-                    {
-                        db.Set(entity.GetType()).Add(entity);
-                    }
-                }
-
-                db.SaveChanges();
-            };
-        }
     }
 }

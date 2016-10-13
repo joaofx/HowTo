@@ -15,7 +15,7 @@ namespace HowTo.IntegratedTests.HowTo
         public void Should_save_not_primitive_type()
         {
             // arrange
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var dublin = new Store("Dublin", new LocalTime(9, 0), new LocalTime(19, 0));
                 //var amsterdam = new Store("Amsterdam", new LocalTime(9, 0), new LocalTime(18, 0));
@@ -26,7 +26,7 @@ namespace HowTo.IntegratedTests.HowTo
                 db.SaveChanges();
             }
 
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var dublin = db.Stores.FirstOrDefault(x => x.Name == "Dublin");
 

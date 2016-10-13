@@ -26,13 +26,13 @@ namespace HowTo.IntegratedTests.HowTo
             iphone.AddQuantityInStock(dublin, 10);
             iphone.AddQuantityInStock(london, 20);
             
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 db.Products.Add(iphone);
                 db.SaveChanges();
             }
 
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var result = db.Products
                     .Where(x => x.Name == iphone.Name)

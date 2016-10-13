@@ -105,7 +105,6 @@
     <Compile Include="EntityFramework\QueryableExtensions.cs" />
     <Compile Include="EntityFramework\DbModelBuilderExtensions.cs" />
     <Compile Include="FluentMigrator\IDatabaseMigrator.cs" />
-    <Compile Include="Handlers\TransactionHandler.cs" />
     <Compile Include="Handlers\ValidatorHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,11 +5,11 @@ using StructureMap;
 
 namespace HowShop.Core.Boot
 {
-    public class DatabaseRegistry : Registry
+    public class DbContextRegistry : Registry
     {
-        public DatabaseRegistry()
+        public DbContextRegistry()
         {
-            For<DbContext>().Use<HowToContext>();
+            For<DbContext>().Use<HowShopContext>().ContainerScoped();
             For<IDatabaseMigrator>().Use<FluentDatabaseMigrator>();
         }
     }

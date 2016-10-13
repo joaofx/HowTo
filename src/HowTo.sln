@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowTo.IntegratedTests", "HowToEntityFramework\HowTo.IntegratedTests.csproj", "{4B31CFDF-FE21-4ACE-A6EF-FD0793DD01B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowTo.IntegratedTests", "HowTo.IntegratedTests\HowTo.IntegratedTests.csproj", "{4B31CFDF-FE21-4ACE-A6EF-FD0793DD01B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowShop.Core", "HowShop.Core\HowShop.Core.csproj", "{0AB4A244-F858-4347-B87C-3EB7B927D656}"
 EndProject

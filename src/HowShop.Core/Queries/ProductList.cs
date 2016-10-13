@@ -14,9 +14,9 @@ namespace HowShop.Core.Queries
 
         public class Handler : IRequestHandler<Query, IEnumerable<Product>>
         {
-            private readonly HowToContext _db;
+            private readonly HowShopContext _db;
 
-            public Handler(HowToContext db)
+            public Handler(HowShopContext db)
             {
                 _db = db;
             }

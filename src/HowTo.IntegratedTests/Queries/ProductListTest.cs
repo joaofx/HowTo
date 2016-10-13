@@ -1,14 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using HowShop.Core.Domain;
-using HowShop.Core.Infra;
 using HowShop.Core.Queries;
 using MediatR;
 using NUnit.Framework;
 using Shouldly;
 using SolidR;
 using SolidR.TestFx;
-using StructureMap;
+using static HowTo.IntegratedTests.Testing;
 
 namespace HowTo.IntegratedTests.Queries
 {
@@ -20,7 +18,6 @@ namespace HowTo.IntegratedTests.Queries
         {
             // arrange
             // TODO - Use AutoFixture
-            var mediator = App.Container.GetInstance<IMediator>();
             var iphone = new Product("iPhone", 599.99m);
             var galaxy = new Product("Galaxy", 499.49m);
             var motorola = new Product("Motorola", 355.55m);
@@ -28,8 +25,7 @@ namespace HowTo.IntegratedTests.Queries
             SaveAll(iphone, galaxy, motorola);
 
             // act
-            //var result = Send(new ProductList.Query());
-            var result = mediator.Send(new ProductList.Query());
+            var result = Send(new ProductList.Query());
 
             // assert
             result.Count().ShouldBe(3);

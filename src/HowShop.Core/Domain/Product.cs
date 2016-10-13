@@ -9,10 +9,11 @@ namespace HowShop.Core.Domain
         //public ICollection<Stock> Stocks { get; set; } = new HashSet<Stock>();
         protected virtual ICollection<Stock> _stocks { get; set; } = new HashSet<Stock>();
 
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public Audit Audit { get; set; } = new Audit();
+        public string Name { get; private set; }
+        public decimal Price { get; private set; }
+        public Audit Audit { get; private set; } = new Audit();
         public IEnumerable<Stock> Stocks => _stocks;
+        public bool Sold => false;
 
         private Product()
         {
@@ -33,6 +34,11 @@ namespace HowShop.Core.Domain
         {
             var internalStore = _stocks.FirstOrDefault(x => x.Store == store);
             _stocks.Remove(internalStore);
+        }
+
+        public void Edit(string name)
+        {
+            Name = name;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace HowTo.IntegratedTests.HowTo
             // arrange & CreateAt
             App.Clock = () => createdAt;
 
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 db.Products.Add(new Product("iPhone", 599));
                 db.Products.Add(new Product("Galaxyyy", 499));
@@ -33,15 +33,15 @@ namespace HowTo.IntegratedTests.HowTo
             // act & UpdateAt
             App.Clock = () => updatedAt;
 
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var galaxy = db.Products.Single(x => x.Name == "Galaxyyy");
-                galaxy.Name = "Galaxy";
+                galaxy.Edit("Galaxy");
                 db.SaveChanges();
             }
 
             // assert
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var galaxy = db.Products.Single(x => x.Name == "Galaxy");
                 galaxy.Audit.CreatedAt.ShouldBe(createdAt);

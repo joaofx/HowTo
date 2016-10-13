@@ -1,0 +1,30 @@
+﻿@model IEnumerable<HowShop.Core.Domain.Product>
+
+<div class="row">
+    
+    <a href="@Url.Action("New", "AdminProduct")">New Product</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <th scope="row">@product.Id</th>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>
+                        <a href="#">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

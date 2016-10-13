@@ -15,7 +15,7 @@ namespace HowTo.IntegratedTests.HowTo
         public void Should_save_encapsulated_collections()
         {
             // arrange
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var dublin = new Store("Dublin");
                 var london = new Store("London");
@@ -29,7 +29,7 @@ namespace HowTo.IntegratedTests.HowTo
             }
 
             // act
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 var dublin = db.Stores.SingleOrDefault(x => x.Name == "Dublin");
 
@@ -46,7 +46,7 @@ namespace HowTo.IntegratedTests.HowTo
             }
 
             // assert
-            using (var db = new HowToContext())
+            using (var db = new HowShopContext())
             {
                 db.Stocks.Count().ShouldBe(1);
 
