@@ -9,7 +9,7 @@ namespace SolidR.Boot
         public HtmlTagRegistry()
         {
             var htmlConventionLibrary = new HtmlConventionLibrary();
-            new DefaultAspNetMvcHtmlConventions().Apply(htmlConventionLibrary);
+            new TwitterBootstrapConventions().Apply(htmlConventionLibrary);
             new DefaultHtmlConventions().Apply(htmlConventionLibrary);
             For<HtmlConventionLibrary>().Use(htmlConventionLibrary);
         }

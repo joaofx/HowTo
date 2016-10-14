@@ -1,17 +1,20 @@
-﻿@using SolidR.Mvc
+﻿@using Microsoft.Web.Mvc.Html
+@using SolidR.Mvc
 @model HowShop.Core.Commands.ProductEdit.Command
 
 <div class="row">
     <div class="col-md-12">
 
         <h1>Edit Product</h1>
-        
-        @Html.ValidationPanel()
 
-        <div class="well bs-component">
+        <form method="post" action="@Url.Action("Edit")" class="form-horizontal">
             
-            <form method="post" action="@Url.Action("Edit")" class="form-horizontal">
-                
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+            @Html.FormSummary()
+
+            <div class="well bs-component">
+
                 <fieldset>
 
                     <div class="form-group">
@@ -20,7 +23,7 @@
                             @Html.Input(m => m.Name)
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         @Html.Label(m => m.Price)
                         <div class="col-lg-10">
@@ -36,9 +39,9 @@
                     </div>
                 </fieldset>
 
-            </form>
+            </div>
 
-        </div>
+        </form>
 
     </div>
 </div>

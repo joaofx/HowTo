@@ -1,40 +1,40 @@
-﻿//'use strict';
+﻿'use strict';
+
+// depending on bootstrap classes. think in a way to configure this for apps that does not use bootstrap
 
 var SolidRform = (function ($) {
 
-    var formSummarySelector = '#validationSummary';
+    var formSummarySelector = ".form-summary";
     var $form = null;
-    var scope = null;
-
-    var getFixedValidationSummary = function () {
-        return $(formSummarySelector, scope);
-    }
 
     var findFormSummary = function () {
-        var $summary = null;
+        var $summary;
 
-        if ($form === null) {
-            return getFixedValidationSummary();
+        if ($form === null || $form.length === 0) {
+            return $(formSummarySelector);
         }
 
-        $summary = $form.find(".form-summary", scope);
+        $summary = $form.find(formSummarySelector);
 
-        if ($summary.length === 0) {
-            return getFixedValidationSummary();
-        }
+        if ($summary.length === 0)
+            // could not find summary inside the form, lets search for the closest outside form
+            $summary = $form.closest(formSummarySelector);
+
+        if ($summary.length === 0)
+            // could not find summary outside form, is there any on the page?
+            $summary = $(formSummarySelector);
 
         return $summary;
     }
 
     var highlightFields = function (response) {
-
-        $('.form-group', scope).removeClass('has-error');
+        $('.form-group').removeClass('has-error');
 
         $.each(response, function (index, val) {
             var nameSelector = '[name = "' + val.PropertyName.replace(/(:|\.|\[|\])/g, "\\$1") + '"]';
             var idSelector = '#' + val.PropertyName.replace(/(:|\.|\[|\])/g, "\\$1");
 
-            var $el = $(nameSelector, scope) || $(idSelector, scope);
+            var $el = $(nameSelector) || $(idSelector);
 
             if (response.length > 0) {
                 $el.closest('.form-group').addClass('has-error');
@@ -46,13 +46,12 @@ var SolidRform = (function ($) {
 
         var $summary = findFormSummary()
             .empty()
-            .removeClass('hidden')
-            .append('<span class="glyphicon glyphicon-warning-sign"><strong class="error-message">The following errors occurred with your submission:</strong></span>');
+            .removeClass('hidden');
 
-        _.each(response, function (error) {
-            var $li = $('<li></li>', scope).text(error.ErrorMessage);
+        for (var i = 0, len = response.length; i < len; i++) {
+            var $li = $('<li></li>').text(response[i].ErrorMessage);
             $li.appendTo($summary);
-        });
+        }
     };
 
     var handleException = function (response) {
@@ -69,15 +68,12 @@ var SolidRform = (function ($) {
             var data = JSON.parse(response.responseText);
             highlightFields(data);
             showSummary(data);
-            window.scrollTo(0, 0); // TODO: scroll to form element
         } catch (e) {
             handleException(response);
         }
     };
 
-    var onError = function (response, scopeId) {
-        scope = (scopeId && typeof (scope) === 'string') || "";
-
+    var onError = function (response) {
         if (response.status === 400) {
             handleInvalid(response);
         } else {
@@ -96,7 +92,7 @@ var SolidRform = (function ($) {
 
     var post = function (action, $button, formData) {
 
-        // TODO: better way to set form
+        // find the closest form on the button that was submitted
         if ($form == null || $form == undefined) {
             $form = $button.closest("form");
         }

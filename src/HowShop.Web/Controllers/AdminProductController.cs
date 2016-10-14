@@ -27,7 +27,14 @@ namespace HowShop.Web.Controllers
             return View("Edit", new ProductEdit.Command());
         }
 
+        public ActionResult Edit(ProductEdit.Query query)
+        {
+            var result = _mediator.Send(query);
+            return View("Edit", result);
+        }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(ProductEdit.Command command)
         {
             _mediator.Send(command);

@@ -55,6 +55,14 @@ namespace SolidR.Mvc
             return generator.DisplayFor(expression);
         }
 
+        public static HtmlTag Display<T, TOtherModel>(this HtmlHelper<T> helper, TOtherModel otherModel, Expression<Func<TOtherModel, object>> expression)
+            where T : class
+            where TOtherModel : class
+        {
+            var generator = GetGenerator(otherModel);
+            return generator.DisplayFor(expression, model: otherModel);
+        }
+
         public static HtmlTag DisplayLabel<T>(this HtmlHelper<T> helper, Expression<Func<T, object>> expression)
             where T : class
         {
@@ -118,17 +126,7 @@ namespace SolidR.Mvc
 
             return divTag;
         }
-
-        public static HtmlTag ValidationPanel(this HtmlHelper helper)
-        {
-            return new HtmlTag("div")
-                .Id("validationSummary")
-                .AddClass("validationSummary")
-                .AddClass("alert")
-                .AddClass("alert-danger")
-                .AddClass("hidden");
-        }
-
+        
         public static HtmlTag Link<TController>(this HtmlHelper helper, Expression<Action<TController>> action) where TController : Controller
         {
             var linkText = ((MethodCallExpression)action.Body).Method.Name;

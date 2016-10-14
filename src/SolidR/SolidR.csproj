@@ -149,13 +149,14 @@
     <Compile Include="FluentMigrator\IDatabaseMigrator.cs" />
     <Compile Include="Handlers\ValidatorHandler.cs" />
     <Compile Include="Mvc\ControllerExtensions.cs" />
+    <Compile Include="Mvc\FormHelpers.cs" />
     <Compile Include="Mvc\HandleAjaxPostException.cs" />
     <Compile Include="Mvc\HandleValidationException.cs" />
     <Compile Include="Mvc\HtmlHelperExtensions.cs" />
     <Compile Include="Mvc\LinkBuilder.cs" />
     <Compile Include="Mvc\UrlHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tags\DefaultAspNetMvcHtmlConventions.cs" />
+    <Compile Include="Tags\TwitterBootstrapConventions.cs" />
     <Compile Include="Tags\DefaultDisplayLabelBuilder.cs" />
     <Compile Include="Tags\HtmlTagExtensions.cs" />
     <Compile Include="Boot\HtmlTagRegistry.cs" />

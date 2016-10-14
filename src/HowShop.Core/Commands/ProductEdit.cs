@@ -7,6 +7,33 @@ namespace HowShop.Core.Commands
 {
     public class ProductEdit
     {
+        public class Query : IRequest<Command>
+        {
+            public long Id { get; set; }
+        }
+
+        public class QueryHandler : IRequestHandler<Query, Command>
+        {
+            private readonly HowShopContext _db;
+
+            public QueryHandler(HowShopContext db)
+            {
+                _db = db;
+            }
+
+            public Command Handle(Query message)
+            {
+                // TODO: use automapper
+                var product = _db.Products.Find(message.Id);
+
+                return new Command
+                {
+                    Name = product.Name,
+                    Price = product.Price
+                };
+            }
+        }
+
         public class Command : IRequest
         {
             public long Id { get; set; }

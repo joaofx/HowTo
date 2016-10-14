@@ -5,9 +5,9 @@ using HtmlTags.Conventions;
 
 namespace SolidR.Tags
 {
-    public class DefaultAspNetMvcHtmlConventions : HtmlConventionRegistry
+    public class TwitterBootstrapConventions : HtmlConventionRegistry
     {
-        public DefaultAspNetMvcHtmlConventions()
+        public TwitterBootstrapConventions()
         {
             // TODO: Split this into Html5 Conventions and TwitterBootstrap Conventions. Check if is possible to compose Conventions
             Editors
