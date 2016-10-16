@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using HowShop.Core.Commands;
 using HowShop.Core.Queries;
-using HowShop.Web.Models;
 using MediatR;
 using SolidR.Mvc;
 
@@ -35,7 +34,7 @@ namespace HowShop.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ProductEdit.Command command)
+        public ActionResult Save(ProductEdit.Command command)
         {
             _mediator.Send(command);
             return this.RedirectToActionJson(c => c.Index());

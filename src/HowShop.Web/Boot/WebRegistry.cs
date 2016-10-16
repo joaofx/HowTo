@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IoC.cs" company="Web Advanced">
+// <copyright file="DefaultRegistry.cs" company="Web Advanced">
 // Copyright 2012 Web Advanced (www.webadvanced.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,13 +15,20 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using SolidR.Mvc.DependencyResolution;
+using StructureMap;
 
-namespace HowShop.Web.DependencyResolution {
-    using StructureMap;
-	
-    public static class IoC {
-        public static IContainer Initialize() {
-            return new Container(c => c.AddRegistry<DefaultRegistry>());
+namespace HowShop.Web.Boot
+{
+    public class WebRegistry : Registry
+    {
+        public WebRegistry()
+        {
+            Scan(scan => 
+            {
+                scan.WithDefaultConventions();
+				scan.With(new ControllerConvention());
+            });
         }
     }
 }

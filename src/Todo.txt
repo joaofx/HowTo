@@ -1,6 +1,6 @@
 
 
-LOG
+## LOG
 
 Show DbContext GetHashCode when:
 - Opening connection
@@ -10,3 +10,13 @@ Show DbTransaction GetHashCode when:
 - Beginning transaction
 - Commiting transaction
 - Rolling back transaction
+
+## UI
+
+Use Turbolinks
+Use jQuery-ujs from rails for ajax helpers
+
+## Localization
+
+HtmlTags to use the correct culture
+Use the current user culture to format numbers, currency and dates

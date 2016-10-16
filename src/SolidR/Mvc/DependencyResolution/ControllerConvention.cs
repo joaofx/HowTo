@@ -15,15 +15,16 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace HowShop.Web.DependencyResolution {
-    using System;
-    using System.Web.Mvc;
+using System;
+using System.Web.Mvc;
+using StructureMap;
+using StructureMap.Graph;
+using StructureMap.Graph.Scanning;
+using StructureMap.Pipeline;
+using StructureMap.TypeRules;
+
+namespace SolidR.Mvc.DependencyResolution {
     // updated to support StructureMap 4.X
-    using StructureMap;
-    using StructureMap.Graph;
-    using StructureMap.Graph.Scanning;
-    using StructureMap.Pipeline;
-    using StructureMap.TypeRules;
 
     public class ControllerConvention : IRegistrationConvention {
         #region Public Methods and Operators

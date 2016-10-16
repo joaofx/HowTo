@@ -17,25 +17,29 @@
 
 using System.Web.Mvc;
 using HowShop.Web;
-using HowShop.Web.DependencyResolution;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using SolidR;
+using SolidR.Mvc.DependencyResolution;
 using StructureMap;
 using WebActivatorEx;
+using StructureMapScopeModule = HowShop.Web.Boot.StructureMapScopeModule;
 
-[assembly: PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
-[assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), "End")]
+[assembly: PreApplicationStartMethod(typeof(StructureMapMvc), "Start")]
+[assembly: ApplicationShutdownMethod(typeof(StructureMapMvc), "End")]
 
 namespace HowShop.Web {
-    public static class StructuremapMvc {
+    public static class StructureMapMvc
+    {
 
         public static StructureMapDependencyScope StructureMapDependencyScope { get; set; }
 
-		public static void End() {
+		public static void End()
+        {
             StructureMapDependencyScope.Dispose();
         }
 		
-        public static void Start() {
+        public static void Start()
+        {
             App.Initialize(cfg =>
             {
                 cfg.Scan(scan =>

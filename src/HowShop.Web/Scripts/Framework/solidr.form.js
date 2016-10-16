@@ -1,13 +1,14 @@
-﻿'use strict';
+﻿SolidR.form = (function($, undefined) {
 
-// depending on bootstrap classes. think in a way to configure this for apps that does not use bootstrap
+    'use strict';
 
-var SolidRform = (function ($) {
-
+    // TODO: depending on bootstrap classes. think in a way to configure this for apps that does not use bootstrap
+    // TODO: unit tests
+    // TODO: SolidR.Form namespace
     var formSummarySelector = ".form-summary";
     var $form = null;
 
-    var findFormSummary = function () {
+    var findFormSummary = function() {
         var $summary;
 
         if ($form === null || $form.length === 0) {
@@ -17,20 +18,20 @@ var SolidRform = (function ($) {
         $summary = $form.find(formSummarySelector);
 
         if ($summary.length === 0)
-            // could not find summary inside the form, lets search for the closest outside form
+        // could not find summary inside the form, lets search for the closest outside form
             $summary = $form.closest(formSummarySelector);
 
         if ($summary.length === 0)
-            // could not find summary outside form, is there any on the page?
+        // could not find summary outside form, is there any on the page?
             $summary = $(formSummarySelector);
 
         return $summary;
-    }
+    };
 
-    var highlightFields = function (response) {
+    var highlightFields = function(response) {
         $('.form-group').removeClass('has-error');
 
-        $.each(response, function (index, val) {
+        $.each(response, function(index, val) {
             var nameSelector = '[name = "' + val.PropertyName.replace(/(:|\.|\[|\])/g, "\\$1") + '"]';
             var idSelector = '#' + val.PropertyName.replace(/(:|\.|\[|\])/g, "\\$1");
 
@@ -42,7 +43,7 @@ var SolidRform = (function ($) {
         });
     };
 
-    var showSummary = function (response) {
+    var showSummary = function(response) {
 
         var $summary = findFormSummary()
             .empty()
@@ -54,7 +55,7 @@ var SolidRform = (function ($) {
         }
     };
 
-    var handleException = function (response) {
+    var handleException = function(response) {
         var data = JSON.parse(response.responseText);
 
         $(findFormSummary())
@@ -63,7 +64,7 @@ var SolidRform = (function ($) {
             .removeClass('hidden');
     };
 
-    var handleInvalid = function (response) {
+    var handleInvalid = function(response) {
         try {
             var data = JSON.parse(response.responseText);
             highlightFields(data);
@@ -73,15 +74,15 @@ var SolidRform = (function ($) {
         }
     };
 
-    var onError = function (response) {
+    var onError = function(response) {
         if (response.status === 400) {
             handleInvalid(response);
         } else {
             handleException(response);
         }
-    }
+    };
 
-    var redirect = function (data) {
+    var redirect = function(data) {
         if (data.redirect) {
             window.location = data.redirect;
         } else {
@@ -90,10 +91,10 @@ var SolidRform = (function ($) {
         }
     };
 
-    var post = function (action, $button, formData) {
+    var post = function(action, $button, formData) {
 
         // find the closest form on the button that was submitted
-        if ($form == null || $form == undefined) {
+        if ($form === null || $form === undefined) {
             $form = $button.closest("form");
         }
 
@@ -109,18 +110,18 @@ var SolidRform = (function ($) {
             statusCode: {
                 200: redirect
             },
-            complete: function () {
+            complete: function() {
                 $button.prop('disabled', false);
             }
-        }).error(function (response) {
+        }).error(function(response) {
             onError(response, $button.closest('form'));
         });
 
         return false;
-    }
+    };
 
     //$('form[method=post]').not('.no-ajax').not('[data-custom=true]').on('submit', function () {
-    $(document).on("submit", "form[method=post]", function () {
+    $(document).on("submit", "form[method=post]", function() {
         var $this = $(this);
         $form = $this;
 
@@ -139,20 +140,19 @@ var SolidRform = (function ($) {
         return false;
     });
 
-    var setForm = function (form) {
+    var setForm = function(form) {
         $form = form;
-    }
+    };
 
-    $(document).on("bind", "form", function () {
+    $(document).on("bind", "form", function() {
         var $form = $(this);
         $form.att("novalidate", "novalidate");
     });
 
-    // exposing that can be used for others components
     return {
         onError: onError,
         post: post,
         setForm: setForm
-    }
+    };
 
 })(jQuery);

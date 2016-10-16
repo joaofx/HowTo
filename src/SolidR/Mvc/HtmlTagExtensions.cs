@@ -1,6 +1,6 @@
 ﻿using HtmlTags;
 
-namespace SolidR.Tags
+namespace SolidR.Mvc
 {
     public static class HtmlTagExtensions
     {
@@ -11,8 +11,7 @@ namespace SolidR.Tags
 
         public static HtmlTag AddPattern(this HtmlTag tag, string pattern)
         {
-            var retVal = tag.Data("pattern", pattern);
-            return retVal;
+            return tag.Data("pattern", pattern);
         }
 
         public static HtmlTag AutoCapitalize(this HtmlTag tag)

@@ -1,13 +1,12 @@
-﻿@using Microsoft.Web.Mvc.Html
-@using SolidR.Mvc
-@model HowShop.Core.Commands.ProductEdit.Command
+﻿@using SolidR.Mvc
+@model ProductEdit.Command
 
 <div class="row">
     <div class="col-md-12">
 
         <h1>Edit Product</h1>
 
-        <form method="post" action="@Url.Action("Edit")" class="form-horizontal">
+        <form method="post" action="@(Url.Action<AdminProductController>(x => x.Save(null)))" class="form-horizontal">
             
             @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.Id)

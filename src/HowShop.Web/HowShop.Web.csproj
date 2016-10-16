@@ -154,20 +154,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="App_Start\StructureMapMvc.cs" />
+    <Compile Include="Boot\HtmlTagRegistry.cs" />
+    <Compile Include="Boot\StructureMapScopeModule.cs" />
     <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\AdminProductController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
-    <Compile Include="DependencyResolution\ControllerConvention.cs" />
-    <Compile Include="DependencyResolution\DefaultRegistry.cs" />
-    <Compile Include="DependencyResolution\IoC.cs" />
-    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
-    <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
+    <Compile Include="Boot\WebRegistry.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlConventions\HowShopHtmlConventions.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductFixture.cs" />
     <Compile Include="Models\Products.cs" />
@@ -182,7 +181,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Framework\form.js" />
+    <Content Include="Scripts\Framework\solidr.js" />
+    <Content Include="Scripts\Framework\solidr.form.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -211,7 +211,6 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Mostrar.cshtml" />
     <Content Include="Views\AdminProduct\Index.cshtml" />
-    <Content Include="Views\AdminProduct\Mostrar.cshtml" />
     <Content Include="Views\AdminProduct\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
