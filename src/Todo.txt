@@ -1,4 +1,10 @@
+## Shop
 
+Users Management
+- Name, email, profile: Admin (everything), Backoffice (manage products)
+
+User Settings
+- User can set their own settings: 
 
 ## LOG
 

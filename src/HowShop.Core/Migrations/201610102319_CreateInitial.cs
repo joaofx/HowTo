@@ -1,4 +1,9 @@
-﻿using FluentMigrator;
+﻿using System;
+using System.Linq.Expressions;
+using FluentMigrator;
+using FluentMigrator.Builders;
+using FluentMigrator.Builders.Create.Table;
+using FluentMigrator.Infrastructure.Extensions;
 
 namespace HowShop.Core.Migrations
 {
@@ -7,12 +12,18 @@ namespace HowShop.Core.Migrations
     {
         public override void Up()
         {
+            //Create.Table("Product")
+            //    .WithIdentity(this)
+            //    .WithName(this);
+            //    //.With(x => x.Name())
+            //    //.WithMoney("Price");
+            
             Create.Table("Product")
-                .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()
-                .WithColumn("Name").AsString(64).NotNullable()
-                .WithColumn("Price").AsDecimal().NotNullable()
+                .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()    
                 .WithColumn("Audit_UpdatedAt").AsDateTime().Nullable()
-                .WithColumn("Audit_CreatedAt").AsDateTime().Nullable();
+                .WithColumn("Audit_CreatedAt").AsDateTime().Nullable()
+                .WithColumn("Name").AsString(64).NotNullable()
+                .WithColumn("Price").AsDecimal().NotNullable();
 
             Create.Table("Stock")
                 .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()
@@ -38,6 +49,44 @@ namespace HowShop.Core.Migrations
                 .WithColumn("Name").AsString()
                 .WithColumn("YearOfBirth").AsInt32()
                 .WithColumn("IsDeleted").AsBoolean().Nullable();
+        }
+    }
+
+    public static class MigrationExtensions
+    {
+        static MigrationExtensions()
+        {
+            //For(x => x.Name());
+        }
+
+        public static void CreateTable(this AutoReversingMigration migration, string tableName)
+        {
+            var version = migration.GetType().GetOneAttribute<MigrationAttribute>().Version;
+
+        }
+        
+        //public static ICreateTableColumnOptionOrWithColumnSyntax With(this ICreateTableWithColumnSyntax syntax, Expression<Func<object, object>> )
+        //{
+        //    return syntax.WithColumn("Name").AsString(64).NotNullable();
+        //}
+        
+        public static ICreateTableColumnOptionOrWithColumnSyntax WithIdentity(this ICreateTableWithColumnSyntax syntax, IMigration migration, string columnName = "Id")
+        {
+            var version = migration.GetType().GetOneAttribute<MigrationAttribute>().Version;
+            return syntax.WithColumn("Name").AsString(64).NotNullable();
+        }
+
+        public static ICreateTableColumnOptionOrWithColumnSyntax WithName(this ICreateTableWithColumnSyntax syntax, IMigration migration, string columnName = "Name")
+        {
+            var version = migration.GetType().GetOneAttribute<MigrationAttribute>().Version;
+            return syntax.WithColumn("Name").AsString(64).NotNullable();
+        }
+    }
+
+    public class SchemaConvention
+    {
+        public SchemaConvention()
+        {
         }
     }
 }
