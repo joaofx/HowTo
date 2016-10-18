@@ -1,6 +1,8 @@
-﻿@using HowShop.Web.Models
+﻿@using HowShop.Core.Security
+@using HowShop.Web.Models
 @{
     var tags = Products.Tags();
+    var userSession = new UserSession();
 }
 <!DOCTYPE html>
 <html>
@@ -33,15 +35,25 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Settings</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="@()">Sign Out</a></li>
-                        </ul>
-                    </li>
+                    @if (userSession.IsLogged)
+                    {
+
+                        <li class="active">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">@userSession.CurrentUser.Name <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@(Url.Action<UserController>(x => x.Settings()))">Settings</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@(Url.Action<LoginController>(x => x.SignOut()))">Sign Out</a></li>
+                            </ul>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="active">
+                            <a href="@(Url.Action<LoginController>(x => x.Index()))">Login</a>
+                        </li>
+                    }
                 </ul>
 
             </div>

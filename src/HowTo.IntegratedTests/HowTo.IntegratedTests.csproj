@@ -48,6 +48,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentMigrator, Version=1.6.2.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentMigrator.1.6.2\lib\40\FluentMigrator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MediatR, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MediatR.2.1.0\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
@@ -105,7 +109,6 @@
     <Compile Include="HowTo\PrivateSetterTest.cs" />
     <Compile Include="HowTo\RequiredConstructorTest.cs" />
     <Compile Include="Boot\TestRegistry.cs" />
-    <Compile Include="ConsoleTest.cs" />
     <Compile Include="Testing.cs" />
     <Compile Include="Queries\ProductListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

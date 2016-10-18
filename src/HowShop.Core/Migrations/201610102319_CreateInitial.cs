@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using FluentMigrator;
-using FluentMigrator.Builders;
-using FluentMigrator.Builders.Create.Table;
+﻿using FluentMigrator;
 using FluentMigrator.Infrastructure.Extensions;
 
 namespace HowShop.Core.Migrations
@@ -12,12 +8,6 @@ namespace HowShop.Core.Migrations
     {
         public override void Up()
         {
-            //Create.Table("Product")
-            //    .WithIdentity(this)
-            //    .WithName(this);
-            //    //.With(x => x.Name())
-            //    //.WithMoney("Price");
-            
             Create.Table("Product")
                 .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()    
                 .WithColumn("Audit_UpdatedAt").AsDateTime().Nullable()
@@ -49,6 +39,13 @@ namespace HowShop.Core.Migrations
                 .WithColumn("Name").AsString()
                 .WithColumn("YearOfBirth").AsInt32()
                 .WithColumn("IsDeleted").AsBoolean().Nullable();
+
+            //Create.Table("Product")
+            //    .WithIdentity(this)
+            //    .WithName(this);
+
+            //.With(x => x.Name())
+            //.WithMoney("Price");
         }
     }
 
@@ -70,23 +67,18 @@ namespace HowShop.Core.Migrations
         //    return syntax.WithColumn("Name").AsString(64).NotNullable();
         //}
         
-        public static ICreateTableColumnOptionOrWithColumnSyntax WithIdentity(this ICreateTableWithColumnSyntax syntax, IMigration migration, string columnName = "Id")
-        {
-            var version = migration.GetType().GetOneAttribute<MigrationAttribute>().Version;
-            return syntax.WithColumn("Name").AsString(64).NotNullable();
-        }
+        //public static ICreateTableColumnOptionOrWithColumnSyntax WithIdentity(this ICreateTableWithColumnSyntax syntax, IMigration migration)
+        //{
+        //    if (migration.Version)
+        //    return Forever(_ => )
+        //    var version = migration.GetType().GetOneAttribute<MigrationAttribute>().Version;
+        //    return syntax.WithColumn("Name").AsString(64).NotNullable();
+        //}
 
-        public static ICreateTableColumnOptionOrWithColumnSyntax WithName(this ICreateTableWithColumnSyntax syntax, IMigration migration, string columnName = "Name")
-        {
-            var version = migration.GetType().GetOneAttribute<MigrationAttribute>().Version;
-            return syntax.WithColumn("Name").AsString(64).NotNullable();
-        }
-    }
-
-    public class SchemaConvention
-    {
-        public SchemaConvention()
-        {
-        }
+        //public static ICreateTableColumnOptionOrWithColumnSyntax WithName(this ICreateTableWithColumnSyntax syntax, IMigration migration, string columnName = "Name")
+        //{
+        //    var version = migration.GetType().GetOneAttribute<MigrationAttribute>().Version;
+        //    return syntax.WithColumn("Name").AsString(64).NotNullable();
+        //}
     }
 }

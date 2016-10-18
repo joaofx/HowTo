@@ -99,7 +99,10 @@
   <ItemGroup>
     <Compile Include="Boot\DbContextRegistry.cs" />
     <Compile Include="Boot\MediatorRegistry.cs" />
+    <Compile Include="Commands\LoginSignOut.cs" />
+    <Compile Include="Commands\UserSettingsEdit.cs" />
     <Compile Include="Commands\ProductEdit.cs" />
+    <Compile Include="Security\UserSession.cs" />
     <Compile Include="Domain\Discount.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\Stock.cs" />

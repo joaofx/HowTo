@@ -1,0 +1,29 @@
+﻿@model IEnumerable<User>
+
+<h1>Login</h1>
+
+<div class="row">
+    
+    <div class="col-lg-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in Model)
+            {
+                    <tr>
+                        <td>@Html.Display(user, p => p.Name)</td>
+                        <td>
+                            <a href="@(Url.Action<LoginController>(c => c.SignIn(user.Name)))">Login</a>
+                        </td>
+                    </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    
+</div>
