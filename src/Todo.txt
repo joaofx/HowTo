@@ -11,6 +11,9 @@ Show DbTransaction GetHashCode when:
 - Commiting transaction
 - Rolling back transaction
 
+Adapter for Log
+Use Container to change the Log Adapter
+
 ## UI
 
 Use Turbolinks
