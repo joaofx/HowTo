@@ -105,6 +105,7 @@
     <Compile Include="HowTo\PrivateSetterTest.cs" />
     <Compile Include="HowTo\RequiredConstructorTest.cs" />
     <Compile Include="Boot\TestRegistry.cs" />
+    <Compile Include="ConsoleTest.cs" />
     <Compile Include="Testing.cs" />
     <Compile Include="Queries\ProductListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -14,8 +14,9 @@ namespace HowShop.Core.Infra
     {
         public void UpdateSchema()
         {
-            //App.Log.Framework.DebugFormat("Migrating {0}", migration.FullName);
             var assembly = typeof(Product).Assembly;
+
+            App.Log.Info("Migrating {0}", assembly.FullName);
 
             var announcer = new TextWriterAnnouncer(s =>
             {
@@ -23,7 +24,7 @@ namespace HowShop.Core.Infra
 
                 if (string.IsNullOrEmpty(s) == false)
                 {
-                    //Log.Framework.DebugFormat(s);
+                    App.Log.Debug(s);
                 }
             });
 
@@ -39,7 +40,7 @@ namespace HowShop.Core.Infra
 
             runner.MigrateUp();
 
-            //Log.Framework.DebugFormat("Database migrated");
+            App.Log.Info("Database migrated");
         }
     }
 }
