@@ -1,0 +1,51 @@
+﻿@model UserSettingsEdit.Command
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h1>User Settings</h1>
+
+        <form method="post" action="@(Url.Action<UserController>(x => x.SaveSettings(null)))" class="form-horizontal">
+            
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.UserId)
+            @Html.FormSummary()
+
+            <div class="well bs-component">
+
+                <fieldset>
+
+                    <div class="form-group">
+                        @Html.Label(m => m.Language)
+                        <div class="col-lg-10">
+                            @Html.DropDownFor(m => m.Language, Model.Languages)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label(m => m.Culture)
+                        <div class="col-lg-10">
+                            @Html.DropDownFor(m => m.Culture, Model.Cultures)
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.Label(m => m.TimeZone)
+                        <div class="col-lg-10">
+                            @Html.DropDownFor(m => m.TimeZone, Model.TimeZones)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

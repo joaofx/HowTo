@@ -156,6 +156,7 @@
     <Compile Include="Mvc\DefaultDisplayLabelBuilder.cs" />
     <Compile Include="Mvc\DependencyResolution\ControllerConvention.cs" />
     <Compile Include="Mvc\DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="Mvc\DropDownHelpers.cs" />
     <Compile Include="Mvc\FormHelpers.cs" />
     <Compile Include="Mvc\HandleAjaxPostException.cs" />
     <Compile Include="Mvc\HandleValidationException.cs" />

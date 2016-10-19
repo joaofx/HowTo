@@ -24,5 +24,11 @@ namespace HowShop.Web.Controllers
         {
             return View(new UserSettingsEdit.Command());
         }
+
+        public ActionResult SaveSettings(UserSettingsEdit.Command command)
+        {
+            _mediator.Send(command);
+            return this.RedirectToAction(x => x.Settings());
+        }
     }
 }
