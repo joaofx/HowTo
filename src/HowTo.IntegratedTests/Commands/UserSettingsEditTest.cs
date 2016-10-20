@@ -2,6 +2,7 @@
 using System.Linq;
 using HowShop.Core.Commands;
 using HowShop.Core.Domain;
+using NodaMoney;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
@@ -25,7 +26,8 @@ namespace HowTo.IntegratedTests.Commands
                 UserId = admin.Id,
                 Language = "pt-BR",
                 Culture = "pt_BR",
-                TimeZone = "1200"
+                TimeZone = "1200",
+                Currency = Currency.FromCode("EUR")
             });
 
             // assert
@@ -36,6 +38,7 @@ namespace HowTo.IntegratedTests.Commands
                 user.Language.ShouldBe("pt-BR");
                 user.Culture.ShouldBe("pt_BR");
                 user.TimeZone.ShouldBe(1200);
+                user.Currency.Code.ShouldBe("EUR");
             });
         }
     }

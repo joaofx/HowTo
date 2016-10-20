@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HowShop.Core.Infra;
 using MediatR;
+using NodaMoney;
 
 namespace HowShop.Core.Commands
 {
@@ -17,6 +18,8 @@ namespace HowShop.Core.Commands
             public string TimeZone { get; set; }
 
             public string Culture { get; set; }
+
+            public Currency Currency { get; set; }
 
             public Dictionary<string, string> Languages => new Dictionary<string, string>()
             {

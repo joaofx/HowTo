@@ -12,7 +12,8 @@ namespace HowShop.Core.Migrations
             Alter.Table("User")
                 .AddColumn("Language").AsString(5).Nullable()
                 .AddColumn("TimeZone").AsInt32().Nullable()
-                .AddColumn("Culture").AsString(5).Nullable();
+                .AddColumn("Culture").AsString(5).Nullable()
+                .AddColumn("Currency").AsString(3).Nullable();
         }
 
         public override void Down()
@@ -22,6 +23,7 @@ namespace HowShop.Core.Migrations
             Delete.Column("Language").FromTable("User");
             Delete.Column("TimeZone").FromTable("User");
             Delete.Column("Culture").FromTable("User");
+            Delete.Column("Currency").FromTable("User");
         }
     }
 }
