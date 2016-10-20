@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using HowShop.Core.Domain;
-using HowShop.Core.Queries;
 using HowShop.Core.Security;
 using MediatR;
-using SolidR.Mvc;
 
 namespace HowShop.Web.Controllers
 {
@@ -30,21 +28,21 @@ namespace HowShop.Web.Controllers
         {
             return View(new List<User>()
             {
-                new User("Admin", 20),
-                new User("Backoffice", 20)
+                new User("Admin"),
+                new User("Backoffice")
             });
         }
 
         public ActionResult SignIn(string name)
         {
-            _userSession.SignIn(new User(name, 20));
+            _userSession.SignIn(new User(name));
             return RedirectToAction("Index", "AdminProduct");
         }
 
         public ActionResult SignOut()
         {
             _userSession.SignOut();
-            return this.RedirectToAction(x => x.Index());
+            return RedirectToAction("Index", "Login");
         }
     }
 }

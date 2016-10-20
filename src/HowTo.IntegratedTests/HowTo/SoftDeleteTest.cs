@@ -16,10 +16,10 @@ namespace HowTo.IntegratedTests.HowTo
             // arrange
             using (var db = new HowShopContext())
             {
-                db.Users.Add(new User("John", 20));
-                db.Users.Add(new User("Paul", 30));
-                db.Users.Add(new User("Ringo", 40));
-                db.Users.Add(new User("George", 50));
+                db.Users.Add(new User("John"));
+                db.Users.Add(new User("Paul"));
+                db.Users.Add(new User("Ringo"));
+                db.Users.Add(new User("George"));
 
                 db.SaveChanges();
             }

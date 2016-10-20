@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using NUnit.Framework;
 using Shouldly;
-using SolidR.EntityFramework;
 using SolidR.TestFx;
 
 namespace HowTo.IntegratedTests.HowTo

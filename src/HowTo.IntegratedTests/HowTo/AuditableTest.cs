@@ -5,6 +5,7 @@ using HowShop.Core.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR;
+using SolidR.Core;
 using SolidR.TestFx;
 
 namespace HowTo.IntegratedTests.HowTo

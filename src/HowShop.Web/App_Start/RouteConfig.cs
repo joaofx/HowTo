@@ -14,6 +14,8 @@ namespace HowShop.Web
                 "{controller}/{action}/{id}", 
                 new { controller = "AdminProduct", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapMvcAttributeRoutes();
         }
     }
 }

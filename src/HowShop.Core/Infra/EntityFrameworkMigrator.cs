@@ -1,5 +1,5 @@
 using System.Data.Entity.Migrations;
-using SolidR.FluentMigrator;
+using SolidR.Core.FluentMigrator;
 
 namespace HowShop.Core.Infra
 {
@@ -9,6 +9,11 @@ namespace HowShop.Core.Infra
         {
             var migrator = new DbMigrator(new MigrationConfiguration());
             migrator.Update();
+        }
+
+        public void DowngradeSchema()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

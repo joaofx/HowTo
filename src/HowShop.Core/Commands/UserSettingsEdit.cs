@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HowShop.Core.Infra;
 using MediatR;
 
 namespace HowShop.Core.Commands
@@ -32,6 +33,22 @@ namespace HowShop.Core.Commands
                 { "en-GB", "English (United Kingdom)" },
                 { "pt-BR", "Portuguese (Brazil)" },
             };
+        }
+
+        public class Handler : RequestHandler<Command>
+        {
+            private readonly HowShopContext _db;
+
+            public Handler(HowShopContext db)
+            {
+                _db = db;
+            }
+
+            protected override void HandleCore(Command message)
+            {
+                var user = _db.Users.Find(message.UserId);
+                user.ChangeSettings(message);
+            }
         }
     }
 }

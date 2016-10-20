@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using HowShop.Core.Domain;
-using SolidR.EntityFramework;
+using SolidR.Core.EntityFramework;
 
 namespace HowShop.Core.Infra
 {

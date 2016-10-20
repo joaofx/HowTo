@@ -1,22 +1,34 @@
 ﻿using System;
-using SolidR.Domain;
+using HowShop.Core.Commands;
+using SolidR.Core.Domain;
 
 namespace HowShop.Core.Domain
 {
     public class User : Entity, ISoftDeletable
     {
         public string Name { get; private set; }
-        public virtual int YearOfBirth { get; private set; }
         public bool IsDeleted { get; set; }
+
+        public string Language { get; private set; }
+
+        public int TimeZone { get; private set; }
+
+        public string Culture { get; private set; }
 
         private User()
         {
         }
 
-        public User(string name, int actualAge)
+        public User(string name)
         {
             Name = name;
-            YearOfBirth = DateTime.Now.AddYears(-actualAge).Year;
+        }
+
+        public void ChangeSettings(UserSettingsEdit.Command command)
+        {
+            Language = command.Language;
+            TimeZone = Convert.ToInt32(command.TimeZone);
+            Culture = command.Culture;
         }
     }
 }

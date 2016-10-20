@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using SolidR.Mvc;
+using SolidR.Core.Mvc;
 
 namespace HowShop.Web
 {

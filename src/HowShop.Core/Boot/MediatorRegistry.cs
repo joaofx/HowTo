@@ -2,9 +2,8 @@
 using System.IO;
 using FluentValidation;
 using HowShop.Core.Handlers;
-using HowShop.Core.Infra;
 using MediatR;
-using SolidR.Handlers;
+using SolidR.Core.Handlers;
 using StructureMap;
 
 namespace HowShop.Core.Boot
