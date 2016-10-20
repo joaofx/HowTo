@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HowShop.Core.Infra;
 using MediatR;
+using NodaMoney;
 
 namespace HowShop.Core.Commands
 {
@@ -16,6 +18,8 @@ namespace HowShop.Core.Commands
             public string TimeZone { get; set; }
 
             public string Culture { get; set; }
+
+            public Currency Currency { get; set; }
 
             public Dictionary<string, string> Languages => new Dictionary<string, string>()
             {
@@ -32,6 +36,22 @@ namespace HowShop.Core.Commands
                 { "en-GB", "English (United Kingdom)" },
                 { "pt-BR", "Portuguese (Brazil)" },
             };
+        }
+
+        public class Handler : RequestHandler<Command>
+        {
+            private readonly HowShopContext _db;
+
+            public Handler(HowShopContext db)
+            {
+                _db = db;
+            }
+
+            protected override void HandleCore(Command message)
+            {
+                var user = _db.Users.Find(message.UserId);
+                user.ChangeSettings(message);
+            }
         }
     }
 }

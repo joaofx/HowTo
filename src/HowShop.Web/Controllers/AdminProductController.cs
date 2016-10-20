@@ -2,7 +2,7 @@
 using HowShop.Core.Commands;
 using HowShop.Core.Queries;
 using MediatR;
-using SolidR.Mvc;
+using SolidR.Core.Mvc;
 
 namespace HowShop.Web.Controllers
 {

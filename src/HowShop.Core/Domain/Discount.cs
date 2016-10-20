@@ -1,4 +1,4 @@
-using SolidR.Domain;
+using SolidR.Core.Domain;
 
 namespace HowShop.Core.Domain
 {

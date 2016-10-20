@@ -15,12 +15,13 @@ namespace HowTo.IntegratedTests.HowTo
     public class PrivateSetterTest : IntegratedTest
     {
         [Test]
+        [Ignore("TODO: User another properties")]
         public void Should_load_private_setter_property()
         {
             using (var db = new HowShopContext())
             {
-                db.Users.Add(new User("John", 20));
-                db.Users.Add(new User("Paul", 30));
+                db.Users.Add(new User("John"));
+                db.Users.Add(new User("Paul"));
                 db.SaveChanges();
             }
 
@@ -29,10 +30,7 @@ namespace HowTo.IntegratedTests.HowTo
                 var result = db.Users.ToList();
 
                 result[0].Name.ShouldBe("John");
-                result[0].YearOfBirth.ShouldBe(DateTime.Now.Year - 20);
-
                 result[1].Name.ShouldBe("Paul");
-                result[1].YearOfBirth.ShouldBe(DateTime.Now.Year - 30);
             }
         }
     }

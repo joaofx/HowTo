@@ -1,13 +1,11 @@
-using System;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using HowShop.Core.Domain;
-using SolidR;
-using SolidR.Domain;
-using SolidR.EntityFramework;
+using SolidR.Core;
+using SolidR.Core.Domain;
+using SolidR.Core.EntityFramework;
 
 namespace HowShop.Core.Infra
 {

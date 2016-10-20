@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SolidR.Domain;
+using SolidR.Core.Domain;
 
 namespace HowShop.Core.Domain
 {

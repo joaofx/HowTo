@@ -157,7 +157,7 @@
     <Compile Include="App_Start\StructureMapMvc.cs" />
     <Compile Include="Boot\HtmlTagRegistry.cs" />
     <Compile Include="Boot\StructureMapScopeModule.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserSettingsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\AdminProductController.cs" />
@@ -215,7 +215,7 @@
     <Content Include="Views\AdminProduct\Index.cshtml" />
     <Content Include="Views\AdminProduct\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\User\Settings.cshtml" />
+    <Content Include="Views\UserSettings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -233,9 +233,9 @@
       <Project>{0AB4A244-F858-4347-B87C-3EB7B927D656}</Project>
       <Name>HowShop.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SolidR\SolidR.csproj">
-      <Project>{A47B50A6-2374-4A63-985B-81C1624BF253}</Project>
-      <Name>SolidR</Name>
+    <ProjectReference Include="..\SolidR.Core\SolidR.Core.csproj">
+      <Project>{7B75619A-928B-401D-B6CE-0B9660B23AA7}</Project>
+      <Name>SolidR.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

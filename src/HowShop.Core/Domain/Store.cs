@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using NodaTime;
-using SolidR.Domain;
+using SolidR.Core.Domain;
 
 namespace HowShop.Core.Domain
 {

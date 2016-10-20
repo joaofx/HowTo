@@ -15,7 +15,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using SolidR.Mvc.DependencyResolution;
+using SolidR.Core.Mvc.DependencyResolution;
 using StructureMap;
 
 namespace HowShop.Web.Boot

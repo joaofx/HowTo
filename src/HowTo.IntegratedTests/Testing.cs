@@ -3,6 +3,7 @@ using System.Linq;
 using HowShop.Core.Infra;
 using MediatR;
 using SolidR;
+using SolidR.Core;
 
 namespace HowTo.IntegratedTests
 {

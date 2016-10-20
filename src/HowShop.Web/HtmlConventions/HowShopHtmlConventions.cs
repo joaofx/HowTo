@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using HtmlTags.Conventions;
-using SolidR.Mvc;
+using SolidR.Core.Mvc;
 
 namespace HowShop.Web.HtmlConventions
 {

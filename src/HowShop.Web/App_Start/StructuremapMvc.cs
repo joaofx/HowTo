@@ -18,8 +18,8 @@
 using System.Web.Mvc;
 using HowShop.Web;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-using SolidR;
-using SolidR.Mvc.DependencyResolution;
+using SolidR.Core;
+using SolidR.Core.Mvc.DependencyResolution;
 using StructureMap;
 using WebActivatorEx;
 using StructureMapScopeModule = HowShop.Web.Boot.StructureMapScopeModule;

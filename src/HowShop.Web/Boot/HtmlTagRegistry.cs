@@ -1,6 +1,6 @@
 ﻿using HowShop.Web.HtmlConventions;
 using HtmlTags.Conventions;
-using SolidR.Mvc;
+using SolidR.Core.Mvc;
 using StructureMap;
 
 namespace HowShop.Web.Boot

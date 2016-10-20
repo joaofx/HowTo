@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using HowShop.Core.Infra;
-using SolidR.FluentMigrator;
+using SolidR.Core.FluentMigrator;
 using StructureMap;
 
 namespace HowShop.Core.Boot

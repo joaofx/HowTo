@@ -1,9 +1,7 @@
-using System;
-using System.Data.Entity;
-using System.Linq;
 using MediatR;
 using NUnit.Framework;
-using SolidR.FluentMigrator;
+using SolidR.Core;
+using SolidR.Core.FluentMigrator;
 
 namespace SolidR.TestFx
 {
