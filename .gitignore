@@ -170,3 +170,6 @@ www
 
 */*/wwwroot/lib
 /src/HowToEntityFramework/*.DotSettings
+/tools/Cake
+/tools/*.md5sum
+/tools/nuget.exe
