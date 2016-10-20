@@ -13,10 +13,11 @@ namespace HowShop.Core.Infra
             modelBuilder.Entity<User>().Ignore(x => x.Currency);
 
             modelBuilder
+                .Conventions.Add();
                   .Properties()
                   .Configure(c =>
                   {
-                      var nonPublicProperties = c.ClrType.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance);
+                      var nonPublicProperties = c.ClrPropertyInfo..ClrType.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance);
 
                       foreach (var p in nonPublicProperties)
                       {
