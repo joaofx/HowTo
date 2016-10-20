@@ -39,6 +39,9 @@ namespace HowTo.IntegratedTests.Commands
                 user.Culture.ShouldBe("pt_BR");
                 user.TimeZone.ShouldBe(1200);
                 user.Currency.Code.ShouldBe("EUR");
+
+                //var byBuddyProp = db.Users.Single(x => x.Currency == Currency.FromCode("EUR"));
+                //byBuddyProp.ShouldBe(user);
             });
         }
     }

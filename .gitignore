@@ -173,3 +173,5 @@ www
 /tools/Cake
 /tools/*.md5sum
 /tools/nuget.exe
+artifacts
+build

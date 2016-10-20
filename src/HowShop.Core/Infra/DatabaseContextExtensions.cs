@@ -1,5 +1,7 @@
 ﻿using System.Data.Entity;
+using System.Reflection;
 using HowShop.Core.Domain;
+using SolidR.Core;
 using SolidR.Core.EntityFramework;
 
 namespace HowShop.Core.Infra
@@ -10,28 +12,61 @@ namespace HowShop.Core.Infra
         {
             modelBuilder.Entity<Product>().HasMany(x => x.Stocks);
 
-            modelBuilder.Entity<User>().Ignore(x => x.Currency);
+            //modelBuilder.Entity<User>().Ignore(x => x.Currency);
 
-            modelBuilder
-                .Conventions.Add();
-                  .Properties()
-                  .Configure(c =>
-                  {
-                      var nonPublicProperties = c.ClrPropertyInfo..ClrType.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance);
+            //modelBuilder
+            //    .Conventions.Add();
+            //      .Properties()
+            //      .Configure(c =>
+            //      {
+            //          var nonPublicProperties = c.ClrPropertyInfo..ClrType.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance);
 
-                      foreach (var p in nonPublicProperties)
-                      {
-                          c.Property(p).HasColumnName(p.Name);
-                      }
-                  });
+            //          foreach (var p in nonPublicProperties)
+            //          {
+            //              c.Property(p).HasColumnName(p.Name);
+            //          }
+            //      });
 
-            modelBuilder
-                .Properties()
-                .Where(p => p.Name.EndsWith("Buddy"))
-                .Configure(p =>
+            modelBuilder.Types()
+                .Configure(c =>
                 {
-                    p.HasColumnName(p.ClrPropertyInfo.Name.Replace("Buddy", string.Empty));
+                    var type = c.ClrType;
+                    var nonPublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance);
+
+                    foreach (var nonPublicProperty in nonPublicProperties)
+                    {
+                        if (nonPublicProperty.Name.EndsWith("Value"))
+                        {
+                            var publicPropertyName = nonPublicProperty.Name.Replace("Value", string.Empty);
+                            var publicProperty = type.GetProperty(publicPropertyName);
+
+                            if (publicProperty != null)
+                            {
+                                c.Ignore(publicPropertyName);
+                                c.Property(nonPublicProperty.Name).HasColumnName(publicPropertyName);
+                            }
+                        }
+                    }
                 });
+
+            //modelBuilder
+            //    .Properties()
+            //    .Where(p => p.Name.EndsWith("Value"))
+            //    .Configure(p =>
+            //    {
+            //        var complexTypePropertyName = p.ClrPropertyInfo.Name.Replace("Value", string.Empty);
+            //        var complexTypeProperty = p.ClrPropertyInfo.DeclaringType.GetProperty(complexTypePropertyName);
+
+            //        if (complexTypeProperty != null)
+            //        {
+            //            p.HasColumnName(complexTypePropertyName);
+            //        }
+            //    });
+
+            //modelBuilder.Properties().Configure(p =>
+            //{
+            //    App.Log.Debug($"{p.ClrPropertyInfo.DeclaringType.Name} - {p.ClrPropertyInfo.Name}");
+            //});
 
             return modelBuilder;
         }

@@ -15,11 +15,11 @@ namespace HowShop.Core.Domain
 
         public Currency Currency
         {
-            get { return NodaMoney.Currency.FromCode(CurrencyBuddy); }
-            private set { CurrencyBuddy = value.Code; }
+            get { return Currency.FromCode(CurrencyValue); }
+            private set { CurrencyValue = value.Code; }
         }
 
-        protected string CurrencyBuddy { get; set; }
+        protected string CurrencyValue { get; private set; }
 
         private User()
         {

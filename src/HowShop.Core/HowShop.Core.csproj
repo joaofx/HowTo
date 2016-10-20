@@ -75,7 +75,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.10\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NodaMoney, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -119,6 +119,7 @@
     <Compile Include="Commands\LoginSignOut.cs" />
     <Compile Include="Commands\UserSettingsEdit.cs" />
     <Compile Include="Commands\ProductEdit.cs" />
+    <Compile Include="Domain\Currencies.cs" />
     <Compile Include="Migrations\201610192315_AlterUserDropYearBirthAddSettings.cs" />
     <Compile Include="Security\UserSession.cs" />
     <Compile Include="Domain\Discount.cs" />

@@ -22,6 +22,7 @@ namespace SolidR
 
             try
             {
+                // TODO: find all assemblies that have IShellTask
                 var factory = new CommandFactory();
                 factory.RegisterCommands(typeof(Program).Assembly);
 
@@ -36,13 +37,9 @@ namespace SolidR
             catch (Exception ex)
             {
                 Console2.Error("Error: " + ex.Message);
-                Console.ReadLine();
                 _success = false;
             }
-
-            Console2.Alert("Press enter to exit...");
-            Console.ReadLine();
-
+            
             return _success ? 0 : 1;
         }
     }

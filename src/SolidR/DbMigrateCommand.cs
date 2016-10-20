@@ -5,7 +5,7 @@ using SolidR.Core.FluentMigrator;
 
 namespace SolidR
 {
-    [CommandDescription("Update database schema", Name = "db:migrate")]
+    [CommandDescription("Update database schema", Name = "migrate")]
     public class DbMigrateCommand : FubuCommand<DbMigrateInput>
     {
         private readonly IDatabaseMigrator _databaseMigrator;

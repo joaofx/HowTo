@@ -28,11 +28,18 @@
                             @Html.DropDownFor(m => m.Culture, Model.Cultures)
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         @Html.Label(m => m.TimeZone)
                         <div class="col-lg-10">
                             @Html.DropDownFor(m => m.TimeZone, Model.TimeZones)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label(m => m.Currency)
+                        <div class="col-lg-10">
+                            @Html.Input(m => m.Currency)
                         </div>
                     </div>
 
