@@ -173,6 +173,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlConventions\LanguageDropDownModifier.cs" />
+    <Compile Include="HtmlConventions\CurrencyDropDownModifier.cs" />
     <Compile Include="HtmlConventions\HowShopHtmlConventions.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductFixture.cs" />

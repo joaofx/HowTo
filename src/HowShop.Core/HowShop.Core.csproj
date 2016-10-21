@@ -119,7 +119,8 @@
     <Compile Include="Commands\LoginSignOut.cs" />
     <Compile Include="Commands\UserSettingsEdit.cs" />
     <Compile Include="Commands\ProductEdit.cs" />
-    <Compile Include="Domain\Currencies.cs" />
+    <Compile Include="Concerns\Language.cs" />
+    <Compile Include="Concerns\Currencies.cs" />
     <Compile Include="Migrations\201610192315_AlterUserDropYearBirthAddSettings.cs" />
     <Compile Include="Security\UserSession.cs" />
     <Compile Include="Domain\Discount.cs" />

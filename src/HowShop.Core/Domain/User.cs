@@ -1,5 +1,6 @@
 ﻿using System;
 using HowShop.Core.Commands;
+using HowShop.Core.Concerns;
 using NodaMoney;
 using SolidR.Core.Domain;
 
@@ -9,7 +10,13 @@ namespace HowShop.Core.Domain
     {
         public string Name { get; private set; }
         public bool IsDeleted { get; set; }
-        public string Language { get; private set; }
+
+        public Language Language
+        {
+            get { return Language.FromId(LanguageValue); }
+            private set { LanguageValue = value.Id; }
+        }
+
         public int TimeZone { get; private set; }
         public string Culture { get; private set; }
 
@@ -19,7 +26,9 @@ namespace HowShop.Core.Domain
             private set { CurrencyValue = value.Code; }
         }
 
-        protected string CurrencyValue { get; private set; }
+        public string CurrencyValue { get; private set; }
+
+        private string LanguageValue { get; set; }
 
         private User()
         {

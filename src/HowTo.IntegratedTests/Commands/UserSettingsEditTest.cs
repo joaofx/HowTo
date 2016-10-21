@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using HowShop.Core.Commands;
+using HowShop.Core.Concerns;
 using HowShop.Core.Domain;
 using NodaMoney;
 using NUnit.Framework;
@@ -24,7 +25,7 @@ namespace HowTo.IntegratedTests.Commands
             Send(new UserSettingsEdit.Command
             {
                 UserId = admin.Id,
-                Language = "pt-BR",
+                Language = Language.FromId("pt_BR"),
                 Culture = "pt_BR",
                 TimeZone = "1200",
                 Currency = Currency.FromCode("EUR")
@@ -35,7 +36,7 @@ namespace HowTo.IntegratedTests.Commands
             {
                 var user = db.Users.Single();
                 user.Name.ShouldBe(admin.Name);
-                user.Language.ShouldBe("pt-BR");
+                user.Language.Id.ShouldBe("pt_BR");
                 user.Culture.ShouldBe("pt_BR");
                 user.TimeZone.ShouldBe(1200);
                 user.Currency.Code.ShouldBe("EUR");

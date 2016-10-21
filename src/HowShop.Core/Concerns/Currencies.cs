@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NodaMoney;
 
-namespace HowShop.Core.Domain
+namespace HowShop.Core.Concerns
 {
     public class Currencies
     {
