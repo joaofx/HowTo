@@ -1,12 +1,10 @@
 ﻿using FubuCore.CommandLine;
-using Import;
 using MediatR;
-using SolidR.Core;
 using SolidR.Core.FluentMigrator;
 
-namespace SolidR
+namespace SolidR.Core.ShellTasks
 {
-    [CommandDescription("Downgrade one version of database schema", Name = "downgrade")]
+    [CommandDescription("Downgrade one version of database schema", Name = "db:downgrade")]
     public class MigrateDownCommand : FubuCommand<Unit>
     {
         private readonly IDatabaseMigrator _databaseMigrator;

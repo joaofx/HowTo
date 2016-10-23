@@ -1,7 +1,7 @@
 ﻿using System;
 using FubuCore.CommandLine;
-using Import;
 using SolidR.Core;
+using SolidR.Core.Tasks;
 
 namespace SolidR
 {
@@ -17,14 +17,14 @@ namespace SolidR
                 {
                     scan.AssembliesFromApplicationBaseDirectory();
                     scan.LookForRegistries();
+                    scan.AddAllTypesOf<IShellTask>();
                 });
             });
 
             try
             {
-                // TODO: find all assemblies that have IShellTask
                 var factory = new CommandFactory();
-                factory.RegisterCommands(typeof(Program).Assembly);
+                RegisterAllCommands(factory);
 
                 var executor = new CommandExecutor(factory);
                 _success = executor.Execute(args);
@@ -41,6 +41,16 @@ namespace SolidR
             }
             
             return _success ? 0 : 1;
+        }
+
+        private static void RegisterAllCommands(CommandFactory factory)
+        {
+            var shellTasks = App.Container.GetAllInstances<IShellTask>();
+            
+            foreach (var shellTask in shellTasks)
+            {
+                factory.RegisterCommands(shellTask.GetType().Assembly);
+            }
         }
     }
 }

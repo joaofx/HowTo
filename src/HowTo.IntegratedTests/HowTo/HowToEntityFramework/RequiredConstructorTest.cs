@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
 
-namespace HowTo.IntegratedTests.HowTo
+namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 {
     /// <summary>
     /// How? Create a private empty constructor to let EF initialize the entity on runtime

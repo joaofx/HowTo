@@ -1,12 +1,10 @@
 ﻿using FubuCore.CommandLine;
-using Import;
 using MediatR;
-using SolidR.Core;
 using SolidR.Core.FluentMigrator;
 
-namespace SolidR
+namespace SolidR.Core.ShellTasks
 {
-    [CommandDescription("Update database schema", Name = "migrate")]
+    [CommandDescription("Update database schema", Name = "db:update")]
     public class MigrateUpCommand : FubuCommand<Unit>
     {
         private readonly IDatabaseMigrator _databaseMigrator;

@@ -110,14 +110,14 @@
   <ItemGroup>
     <Compile Include="Commands\UserSettingsEditTest.cs" />
     <Compile Include="Commands\ProductEditTest.cs" />
-    <Compile Include="HowTo\BuddyPropertyTest.cs" />
-    <Compile Include="HowTo\EffectiveTest.cs" />
-    <Compile Include="HowTo\AuditableTest.cs" />
-    <Compile Include="HowTo\CascadeDeleteOrphansTest.cs" />
-    <Compile Include="HowTo\EncapsulatedCollectionsTest.cs" />
-    <Compile Include="HowTo\SoftDeleteTest.cs" />
-    <Compile Include="HowTo\PrivateSetterTest.cs" />
-    <Compile Include="HowTo\RequiredConstructorTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\BuddyPropertyTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\EffectiveTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\AuditableTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\CascadeDeleteOrphansTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\EncapsulatedCollectionsTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\SoftDeleteTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\PrivateSetterTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\RequiredConstructorTest.cs" />
     <Compile Include="Boot\TestRegistry.cs" />
     <Compile Include="Testing.cs" />
     <Compile Include="Queries\ProductListTest.cs" />

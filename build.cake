@@ -1,5 +1,6 @@
 var target = Argument("target", "Build");
 var outputDir =  MakeAbsolute(Directory("./build")).ToString();
+var solidrOutputDir =  MakeAbsolute(Directory("./build/SolidR")).ToString();
 
 Task("Settings")
     .Does(() => {
@@ -30,18 +31,20 @@ Task("Build")
 			);
     });
 
-Task("SolidR")
-	.IsDependentOn("Build")
-    .Does(() => {
-		MSBuild("./src/HowTo.sln", configurator =>
-    		configurator
-				.SetConfiguration("Debug")
-				.SetVerbosity(Verbosity.Minimal)
-				.UseToolVersion(MSBuildToolVersion.VS2015)
-				.SetMSBuildPlatform(MSBuildPlatform.x86)
-				.SetPlatformTarget(PlatformTarget.MSIL)
-				.WithProperty("OutDir", outputDir)
-			);
-    });
+// Task("SolidR")
+// 	.IsDependentOn("Settings")
+//     .Does(() => {
+// 		MSBuild("./src/SolidR/SolidR.csproj", configurator =>
+//     		configurator
+// 				.SetConfiguration("Release")
+// 				.SetVerbosity(Verbosity.Minimal)
+// 				.UseToolVersion(MSBuildToolVersion.VS2015)
+// 				.SetMSBuildPlatform(MSBuildPlatform.x86)
+// 				.SetPlatformTarget(PlatformTarget.MSIL)
+// 				.WithProperty("OutDir", solidrOutputDir)
+// 			);
+
+// 		CopyDirectory(solidrOutputDir, @"C:\tools\solidr");
+//     });
 
 RunTarget(target);

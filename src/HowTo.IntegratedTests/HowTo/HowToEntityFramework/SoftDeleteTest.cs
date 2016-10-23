@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
 
-namespace HowTo.IntegratedTests.HowTo
+namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 {
     [TestFixture]
     public class SoftDeleteTest : IntegratedTest

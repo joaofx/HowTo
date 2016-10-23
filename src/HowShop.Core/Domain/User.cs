@@ -18,17 +18,22 @@ namespace HowShop.Core.Domain
         }
 
         public int TimeZone { get; private set; }
-        public string Culture { get; private set; }
-
+      
         public Currency Currency
         {
             get { return Currency.FromCode(CurrencyValue); }
             private set { CurrencyValue = value.Code; }
         }
 
-        public string CurrencyValue { get; private set; }
+        public Culture Culture
+        {
+            get { return Culture.FromId(CultureValue); }
+            private set { CultureValue = value.Id; }
+        }
 
-        private string LanguageValue { get; set; }
+        public string CurrencyValue { get; private set; }
+        public string LanguageValue { get; private set; }
+        public string CultureValue { get; private set; }
 
         private User()
         {

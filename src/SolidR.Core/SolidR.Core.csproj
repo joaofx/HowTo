@@ -58,6 +58,10 @@
       <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FubuCore, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FubuCore.2.0.1.321\lib\FubuCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HtmlTags, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlTags.4.2.0\lib\net45\HtmlTags.dll</HintPath>
       <Private>True</Private>
@@ -137,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Console2.cs" />
     <Compile Include="Domain\Audit.cs" />
     <Compile Include="Domain\Effective.cs" />
     <Compile Include="Domain\Entity.cs" />
@@ -167,6 +172,8 @@
     <Compile Include="Mvc\SolidrConventions.cs" />
     <Compile Include="Mvc\UrlHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellTasks\MigrateDownCommand.cs" />
+    <Compile Include="ShellTasks\MigrateUpCommand.cs" />
     <Compile Include="Tasks\HelpTask.cs" />
     <Compile Include="Tasks\IShellTask.cs" />
   </ItemGroup>

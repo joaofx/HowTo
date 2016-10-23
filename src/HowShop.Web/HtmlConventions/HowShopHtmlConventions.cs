@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using HtmlTags.Conventions;
-using SolidR.Core.Domain;
 using SolidR.Core.Mvc;
 
 namespace HowShop.Web.HtmlConventions
@@ -23,6 +20,7 @@ namespace HowShop.Web.HtmlConventions
 
             Editors.Modifier<CurrencyDropDownModifier>();
             Editors.Modifier<LanguageDropDownModifier>();
+            Editors.Modifier<CultureDropDownModifier>();
 
             Labels.Always.AddClass("control-label");
             Labels.Always.AddClass("col-md-2");

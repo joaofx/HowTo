@@ -7,7 +7,7 @@ using Shouldly;
 using SolidR.Core.Domain;
 using SolidR.TestFx;
 
-namespace HowTo.IntegratedTests.HowTo
+namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 {
     [TestFixture]
     public class EffectiveTest : IntegratedTest

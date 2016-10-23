@@ -26,7 +26,7 @@ namespace HowTo.IntegratedTests.Commands
             {
                 UserId = admin.Id,
                 Language = Language.FromId("pt_BR"),
-                Culture = "pt_BR",
+                Culture = Culture.FromId("pt_BR"),
                 TimeZone = "1200",
                 Currency = Currency.FromCode("EUR")
             });
@@ -37,12 +37,9 @@ namespace HowTo.IntegratedTests.Commands
                 var user = db.Users.Single();
                 user.Name.ShouldBe(admin.Name);
                 user.Language.Id.ShouldBe("pt_BR");
-                user.Culture.ShouldBe("pt_BR");
+                user.Culture.Id.ShouldBe("pt_BR");
                 user.TimeZone.ShouldBe(1200);
                 user.Currency.Code.ShouldBe("EUR");
-
-                //var byBuddyProp = db.Users.Single(x => x.Currency == Currency.FromCode("EUR"));
-                //byBuddyProp.ShouldBe(user);
             });
         }
     }

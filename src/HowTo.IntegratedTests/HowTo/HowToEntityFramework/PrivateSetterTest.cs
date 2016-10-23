@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
 
-namespace HowTo.IntegratedTests.HowTo
+namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 {
     /// <summary>
     /// How? Set property as virtual

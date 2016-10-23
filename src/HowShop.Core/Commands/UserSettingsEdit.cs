@@ -18,18 +18,11 @@ namespace HowShop.Core.Commands
 
             public string TimeZone { get; set; }
 
-            public string Culture { get; set; }
+            public Culture Culture { get; set; }
 
             public Currency Currency { get; set; }
             
             public Dictionary<string, string> TimeZones => TimeZoneInfo.GetSystemTimeZones().ToDictionary(x => x.Id, x => $"{x.BaseUtcOffset} - {x.DisplayName}");
-
-            public Dictionary<string, string> Cultures => new Dictionary<string, string>()
-            {
-                { "en-US", "English (United States)" },
-                { "en-GB", "English (United Kingdom)" },
-                { "pt-BR", "Portuguese (Brazil)" },
-            };
         }
 
         public class Handler : RequestHandler<Command>

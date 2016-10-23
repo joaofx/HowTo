@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using System.Reflection;
 using HowShop.Core.Domain;
 using SolidR.Core;
@@ -31,9 +32,9 @@ namespace HowShop.Core.Infra
                 .Configure(c =>
                 {
                     var type = c.ClrType;
-                    var nonPublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance);
+                    var readOnlyProperties = type.GetProperties().Where(p => p.CanRead);
 
-                    foreach (var nonPublicProperty in nonPublicProperties)
+                    foreach (var nonPublicProperty in readOnlyProperties)
                     {
                         if (nonPublicProperty.Name.EndsWith("Value"))
                         {

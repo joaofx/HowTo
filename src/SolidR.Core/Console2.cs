@@ -1,7 +1,7 @@
-namespace Import
-{
-    using System;
+using System;
 
+namespace SolidR.Core
+{
     public class Console2
     {
         public static void Alert(string message, params object[] args)

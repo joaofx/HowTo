@@ -60,28 +60,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Boot\ShellTaskRegistry.cs" />
-    <Compile Include="Console2.cs" />
-    <Compile Include="MigrateUpCommand.cs" />
-    <Compile Include="MigrateDownCommand.cs" />
-    <Compile Include="DbMigrateInput.cs" />
-    <Compile Include="SolidrTasks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HowShop.Core\HowShop.Core.csproj">
-      <Project>{0ab4a244-f858-4347-b87c-3eb7b927d656}</Project>
-      <Name>HowShop.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HowShop.Web\HowShop.Web.csproj">
-      <Project>{0d5f6f78-5811-42bf-b14d-75792b11183c}</Project>
-      <Name>HowShop.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SolidR.Core\SolidR.Core.csproj">
       <Project>{7B75619A-928B-401D-B6CE-0B9660B23AA7}</Project>
       <Name>SolidR.Core</Name>
