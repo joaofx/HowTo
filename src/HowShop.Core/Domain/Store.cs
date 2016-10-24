@@ -9,22 +9,20 @@ namespace HowShop.Core.Domain
     {
         public string Name { get; private set; }
 
-        [NotMapped]
         public LocalTime OpenAt
         {
-            get { return LocalTime.FromTicksSinceMidnight(OpenAtBuddy.Ticks); }
-            private set { OpenAtBuddy = TimeSpan.FromTicks(value.TickOfDay); }
+            get { return LocalTime.FromTicksSinceMidnight(OpenAtValue.Ticks); }
+            private set { OpenAtValue = TimeSpan.FromTicks(value.TickOfDay); }
         }
 
-        //[NotMapped]
-        //public LocalTime CloseAt
-        //{
-        //    get { return LocalTime.FromTicksSinceMidnight(CloseAtBuddy.Ticks); }
-        //    private set { CloseAtBuddy = TimeSpan.FromTicks(CloseAt.TickOfDay); }
-        //}
+        public LocalTime CloseAt
+        {
+            get { return LocalTime.FromTicksSinceMidnight(CloseAtValue.Ticks); }
+            private set { CloseAtValue = TimeSpan.FromTicks(CloseAt.TickOfDay); }
+        }
 
-        public TimeSpan OpenAtBuddy { get; private set; }
-        protected TimeSpan CloseAtBuddy { get; private set; }
+        public TimeSpan OpenAtValue { get; protected set; }
+        public TimeSpan CloseAtValue { get; protected set; }
 
         private Store()
         {
@@ -37,12 +35,8 @@ namespace HowShop.Core.Domain
 
         public Store(string name, LocalTime openAt, LocalTime closeAt) : this(name)
         {
-            OpenAtBuddy = TimeSpan.FromTicks(openAt.TickOfDay);
-
-            //OpenAt = openAt;
-            //OpenAt = TimeSpan.FromTicks(openAt.TickOfDay);
-            //OpenAtNoda = openAt;
-            //CloseAt = closeAt;
+            OpenAt = openAt;
+            CloseAt = closeAt;
         }
     }
 }

@@ -29,3 +29,7 @@ Use jQuery-ujs from rails for ajax helpers
 
 HtmlTags to use the correct culture
 Use the current user culture to format numbers, currency and dates
+
+## EF
+
+Update convention for complex type. Fix from Audit_UpdatedAt to AuditUpdatedAt

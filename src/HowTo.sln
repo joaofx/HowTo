@@ -17,14 +17,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{3807
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9E1F6E5D-F1F6-407C-88CF-9CFE50B40FFD}"
 	ProjectSection(SolutionItems) = preProject
-		Features.txt = Features.txt
 		..\build.cake = ..\build.cake
+		Features.txt = Features.txt
 		Todo.txt = Todo.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidR.Core", "SolidR.Core\SolidR.Core.csproj", "{7B75619A-928B-401D-B6CE-0B9660B23AA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidR", "SolidR\SolidR.csproj", "{8B66E3EA-078C-481E-A9B0-C971113505BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{34714827-26C6-4F52-982F-A95D5E564C4D}"
+	ProjectSection(SolutionItems) = preProject
+		..\config\dev.config = ..\config\dev.config
+		..\config\test.config = ..\config\test.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

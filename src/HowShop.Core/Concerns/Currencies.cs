@@ -5,7 +5,7 @@ namespace HowShop.Core.Concerns
 {
     public class Currencies
     {
-        public IEnumerable<Currency> GetAll() => new[]
+        public static IEnumerable<Currency> GetAll() => new[]
         {
             Currency.FromCode("USD"),
             Currency.FromCode("EUR"),

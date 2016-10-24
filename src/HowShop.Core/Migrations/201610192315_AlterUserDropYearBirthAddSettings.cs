@@ -11,7 +11,7 @@ namespace HowShop.Core.Migrations
 
             Alter.Table("User")
                 .AddColumn("Language").AsString(5).Nullable()
-                .AddColumn("TimeZone").AsInt32().Nullable()
+                .AddColumn("TimeZone").AsString(255).Nullable()
                 .AddColumn("Culture").AsString(5).Nullable()
                 .AddColumn("Currency").AsString(3).Nullable();
         }

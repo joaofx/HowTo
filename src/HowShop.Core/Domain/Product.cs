@@ -6,7 +6,6 @@ namespace HowShop.Core.Domain
 {
     public class Product : Entity, IAuditable
     {
-        //public ICollection<Stock> Stocks { get; set; } = new HashSet<Stock>();
         protected virtual ICollection<Stock> _stocks { get; set; } = new HashSet<Stock>();
 
         public string Name { get; private set; }

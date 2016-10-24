@@ -1,5 +1,4 @@
 ﻿using HowShop.Core.Concerns;
-using HtmlTags;
 using HtmlTags.Conventions;
 using HtmlTags.Conventions.Elements;
 
@@ -14,22 +13,29 @@ namespace HowShop.Web.HtmlConventions
 
         public void Modify(ElementRequest request)
         {
-            request.CurrentTag.RemoveAttr("type");
-            request.CurrentTag.TagName("select");
+            request.ModifyWithDropDown(
+                Language.GetAll(), 
+                x => x.Id,
+                x => x.Name);
 
-            var value = request.Value<Language>();
+            //request.CurrentTag.ConvertToSelect();
 
-            foreach (var language in Language.GetAll())
-            {
-                var optionTag = new HtmlTag("option")
-                    .Value(language.Id)
-                    .Text(language.Name);
+            //request.CurrentTag.RemoveAttr("type");
+            //request.CurrentTag.TagName("select");
 
-                if (value == language)
-                    optionTag.Attr("selected");
+            //var value = request.Value<Language>();
 
-                request.CurrentTag.Append(optionTag);
-            }
+            //foreach (var language in Language.GetAll())
+            //{
+            //    var optionTag = new HtmlTag("option")
+            //        .Value(language.Id)
+            //        .Text(language.Name);
+
+            //    if (value == language)
+            //        optionTag.Attr("selected");
+
+            //    request.CurrentTag.Append(optionTag);
+            //}
         }
     }
 }

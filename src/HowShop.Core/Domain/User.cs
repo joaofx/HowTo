@@ -17,8 +17,12 @@ namespace HowShop.Core.Domain
             private set { LanguageValue = value.Id; }
         }
 
-        public int TimeZone { get; private set; }
-      
+        public TimeZoneInfo TimeZone
+        {
+            get { return TimeZoneInfo.FindSystemTimeZoneById(TimeZoneValue); }
+            private set { TimeZoneValue = value.Id; }
+        }
+        
         public Currency Currency
         {
             get { return Currency.FromCode(CurrencyValue); }
@@ -34,6 +38,7 @@ namespace HowShop.Core.Domain
         public string CurrencyValue { get; private set; }
         public string LanguageValue { get; private set; }
         public string CultureValue { get; private set; }
+        public string TimeZoneValue { get; private set; }
 
         private User()
         {
@@ -47,7 +52,7 @@ namespace HowShop.Core.Domain
         public void ChangeSettings(UserSettingsEdit.Command command)
         {
             Language = command.Language;
-            TimeZone = Convert.ToInt32(command.TimeZone);
+            TimeZone = command.TimeZone;
             Culture = command.Culture;
             Currency = command.Currency;
         }

@@ -173,7 +173,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlConventions\TimeZoneDropDownModifier.cs" />
     <Compile Include="HtmlConventions\CultureDropDownModifier.cs" />
+    <Compile Include="HtmlConventions\ElementRequestExtensions.cs" />
     <Compile Include="HtmlConventions\LanguageDropDownModifier.cs" />
     <Compile Include="HtmlConventions\CurrencyDropDownModifier.cs" />
     <Compile Include="HtmlConventions\HowShopHtmlConventions.cs" />
@@ -292,5 +294,8 @@
       if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
       start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
     </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>copy "$(SolutionDir)..\config\dev.config" "$(ProjectDir)\database.config" /y</PreBuildEvent>
   </PropertyGroup>
 </Project>

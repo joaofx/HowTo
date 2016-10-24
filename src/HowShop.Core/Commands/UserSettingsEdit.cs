@@ -16,13 +16,13 @@ namespace HowShop.Core.Commands
 
             public Language Language { get; set; }
 
-            public string TimeZone { get; set; }
+            public TimeZoneInfo TimeZone { get; set; }
 
             public Culture Culture { get; set; }
 
             public Currency Currency { get; set; }
             
-            public Dictionary<string, string> TimeZones => TimeZoneInfo.GetSystemTimeZones().ToDictionary(x => x.Id, x => $"{x.BaseUtcOffset} - {x.DisplayName}");
+            //public Dictionary<string, string> TimeZones => TimeZoneInfo.GetSystemTimeZones().ToDictionary(x => x.Id, x => $"{x.BaseUtcOffset} - {x.DisplayName}");
         }
 
         public class Handler : RequestHandler<Command>

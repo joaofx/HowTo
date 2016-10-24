@@ -1,6 +1,4 @@
 ﻿using HowShop.Core.Concerns;
-using HowShop.Core.Domain;
-using HtmlTags;
 using HtmlTags.Conventions;
 using HtmlTags.Conventions.Elements;
 using NodaMoney;
@@ -16,22 +14,27 @@ namespace HowShop.Web.HtmlConventions
 
         public void Modify(ElementRequest request)
         {
-            request.CurrentTag.RemoveAttr("type");
-            request.CurrentTag.TagName("select");
+            request.ModifyWithDropDown(
+                Currencies.GetAll(),
+                x => x.Code,
+                x => $"{x.Code} {x.Symbol} - {x.EnglishName}");
 
-            var value = request.Value<Currency>();
+            //request.CurrentTag.RemoveAttr("type");
+            //request.CurrentTag.TagName("select");
 
-            foreach (var currency in request.Get<Currencies>().GetAll())
-            {
-                var optionTag = new HtmlTag("option")
-                    .Value(currency.Code)
-                    .Text($"{currency.Code} {currency.Symbol} - {currency.EnglishName}");
+            //var value = request.Value<Currency>();
 
-                if (value == currency)
-                    optionTag.Attr("selected");
+            //foreach (var currency in request.Get<Currencies>().GetAll())
+            //{
+            //    var optionTag = new HtmlTag("option")
+            //        .Value(currency.Code)
+            //        .Text();
 
-                request.CurrentTag.Append(optionTag);
-            }
+            //    if (value == currency)
+            //        optionTag.Attr("selected");
+
+            //    request.CurrentTag.Append(optionTag);
+            //}
         }
     }
 }

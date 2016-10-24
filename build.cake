@@ -1,10 +1,12 @@
-var target = Argument("target", "Build");
+var target = Argument("target", "CopyConfigs");
 var outputDir =  MakeAbsolute(Directory("./build")).ToString();
 var solidrOutputDir =  MakeAbsolute(Directory("./build/SolidR")).ToString();
+var environment = Argument("env", "dev");
 
 Task("Settings")
     .Does(() => {
-		Information(outputDir);
+		Information("Output: "+outputDir);
+        Information("Environment: "+environment);
     });
 
 Task("Clean")
@@ -29,6 +31,12 @@ Task("Build")
 				.SetPlatformTarget(PlatformTarget.MSIL)
 				.WithProperty("OutDir", outputDir)
 			);
+    });
+
+Task("CopyConfigs")
+    .IsDependentOn("Build")
+    .Does(() => {
+        CopyFile("config/"+environment+".config", outputDir+"/database.config");
     });
 
 // Task("SolidR")
