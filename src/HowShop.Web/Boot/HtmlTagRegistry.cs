@@ -10,9 +10,11 @@ namespace HowShop.Web.Boot
         public HtmlTagRegistry()
         {
             var htmlConventionLibrary = new HtmlConventionLibrary();
+
             new SolidrConventions().Apply(htmlConventionLibrary);
             new HowShopHtmlConventions().Apply(htmlConventionLibrary);
             new DefaultHtmlConventions().Apply(htmlConventionLibrary);
+
             For<HtmlConventionLibrary>().Use(htmlConventionLibrary);
         }
     }

@@ -117,12 +117,15 @@
     <Compile Include="Boot\DbContextRegistry.cs" />
     <Compile Include="Boot\MediatorRegistry.cs" />
     <Compile Include="Commands\LoginSignOut.cs" />
+    <Compile Include="Commands\UserEdit.cs" />
     <Compile Include="Commands\UserSettingsEdit.cs" />
     <Compile Include="Commands\ProductEdit.cs" />
     <Compile Include="Concerns\Culture.cs" />
     <Compile Include="Concerns\Language.cs" />
     <Compile Include="Concerns\Currencies.cs" />
+    <Compile Include="Migrations\201610251440_AlterUserAddEmailPassword.cs" />
     <Compile Include="Migrations\201610192315_AlterUserDropYearBirthAddSettings.cs" />
+    <Compile Include="Queries\UserList.cs" />
     <Compile Include="Security\UserSession.cs" />
     <Compile Include="Domain\Discount.cs" />
     <Compile Include="Domain\Product.cs" />

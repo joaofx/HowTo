@@ -9,6 +9,9 @@ namespace HowShop.Core.Domain
     public class User : Entity, ISoftDeletable
     {
         public string Name { get; private set; }
+        public string Email { get; private set; }
+        public string Password { get; private set; }
+
         public bool IsDeleted { get; set; }
 
         public Language Language
@@ -44,9 +47,11 @@ namespace HowShop.Core.Domain
         {
         }
 
-        public User(string name)
+        public User(string name, string email, string password)
         {
             Name = name;
+            Email = email;
+            Password = password;
         }
 
         public void ChangeSettings(UserSettingsEdit.Command command)

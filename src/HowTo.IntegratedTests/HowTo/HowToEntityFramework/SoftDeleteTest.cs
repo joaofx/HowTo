@@ -16,10 +16,10 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
             // arrange
             using (var db = new HowShopContext())
             {
-                db.Users.Add(new User("John"));
-                db.Users.Add(new User("Paul"));
-                db.Users.Add(new User("Ringo"));
-                db.Users.Add(new User("George"));
+                db.Users.Add(new User("John", "admin@admin.com", "123"));
+                db.Users.Add(new User("Paul", "admin@admin.com", "123"));
+                db.Users.Add(new User("Ringo", "admin@admin.com", "123"));
+                db.Users.Add(new User("George", "admin@admin.com", "123"));
 
                 db.SaveChanges();
             }

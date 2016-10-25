@@ -8,16 +8,18 @@ using static HowTo.IntegratedTests.Testing;
 namespace HowTo.IntegratedTests.Commands
 {
     [TestFixture]
-    public class ProductEditTest : IntegratedTest
+    public class UserEditTest : IntegratedTest
     {
         [Test]
         public void Should_save()
         {
             // arrange
-            var command = new ProductEdit.Command
+            var command = new UserEdit.Command
             {
-                Name = "Ferrari",
-                Price = 150900.99m
+                Name = "John Lennon",
+                Email = "john@shop.com",
+                Password = "123",
+                ConfirmPassword = "123"
             };
 
             // act
@@ -26,9 +28,10 @@ namespace HowTo.IntegratedTests.Commands
             // assert
             WithDb(db =>
             {
-                var product = db.Products.Single();
-                product.Name.ShouldBe(command.Name);
-                product.Price.ShouldBe(command.Price);
+                var user = db.Users.Single();
+                user.Name.ShouldBe(command.Name);
+                user.Email.ShouldBe(command.Email);
+                user.Password.ShouldBe(command.Password);
             });
         }
     }

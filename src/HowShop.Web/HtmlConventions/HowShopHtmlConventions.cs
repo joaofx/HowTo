@@ -18,9 +18,11 @@ namespace HowShop.Web.HtmlConventions
                     .Data("date-format", "mm/dd/yyyy")
                     .Value(m.Value<DateTime?>() != null ? m.Value<DateTime>().ToShortDateString() : string.Empty));
 
+            // TODO: Scan all modifiers?
             Editors.Modifier<CurrencyDropDownModifier>();
             Editors.Modifier<LanguageDropDownModifier>();
             Editors.Modifier<CultureDropDownModifier>();
+            Editors.Modifier<TimeZoneDropDownModifier>();
 
             Labels.Always.AddClass("control-label");
             Labels.Always.AddClass("col-md-2");

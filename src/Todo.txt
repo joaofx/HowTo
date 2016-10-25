@@ -1,3 +1,10 @@
+
+- Add AutoMapper to map ProductEdit and UserEdit
+- Setup AutoFixture to create entities on tests
+- Create InputBlock for Input and labels
+- Nodata helper for show empty table
+- Add progress in buttons while waiting for response
+
 ## Shop
 
 Users Management

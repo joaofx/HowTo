@@ -162,6 +162,7 @@
     <Compile Include="App_Start\StructureMapMvc.cs" />
     <Compile Include="Boot\HtmlTagRegistry.cs" />
     <Compile Include="Boot\StructureMapScopeModule.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\UserSettingsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ContatoController.cs" />
@@ -226,6 +227,8 @@
     <Content Include="Views\AdminProduct\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\UserSettings\Index.cshtml" />
+    <Content Include="Views\AdminUser\Edit.cshtml" />
+    <Content Include="Views\AdminUser\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

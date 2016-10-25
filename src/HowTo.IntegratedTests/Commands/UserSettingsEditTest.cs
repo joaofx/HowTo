@@ -18,7 +18,7 @@ namespace HowTo.IntegratedTests.Commands
         public void Should_save()
         {
             // arrange
-            var admin = new User("Admin");
+            var admin = new User("Admin", "admin@admin.com", "123");
             SaveAll(admin);
 
             // act
@@ -38,7 +38,7 @@ namespace HowTo.IntegratedTests.Commands
                 user.Name.ShouldBe(admin.Name);
                 user.Language.Id.ShouldBe("pt_BR");
                 user.Culture.Id.ShouldBe("pt_BR");
-                user.TimeZone.Id.ShouldBe("1200");
+                user.TimeZone.Id.ShouldBe("Tokyo Standard Time");
                 user.Currency.Code.ShouldBe("EUR");
             });
         }

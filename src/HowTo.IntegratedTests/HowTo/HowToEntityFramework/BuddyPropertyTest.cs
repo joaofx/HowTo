@@ -17,7 +17,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
         public void Should_save()
         {
             // arrange
-            var admin = new User("Admin");
+            var admin = new User("Admin", "admin@admin.com", "123");
             admin.ChangeSettings(new UserSettingsEdit.Command
             {
                 Language = Language.FromId("pt_BR")
@@ -36,7 +36,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
         public void Should_query_value_property()
         {
             // arrange
-            var admin = new User("Admin");
+            var admin = new User("Admin", "admin@admin.com", "123");
             admin.ChangeSettings(new UserSettingsEdit.Command
             {
                 Language = Language.FromId("pt_BR")

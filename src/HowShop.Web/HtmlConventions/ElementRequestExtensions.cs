@@ -7,6 +7,11 @@ using HtmlTags.Conventions;
 
 namespace HowShop.Web.HtmlConventions
 {
+    /// <summary>
+    /// TODO: unit tests
+    /// TODO: unit tests when current value is null
+    /// TODO: tagBuilder as function
+    /// </summary>
     public static class ElementRequestExtensions
     {
         public static void ModifyWithDropDown<TType>(
@@ -23,10 +28,10 @@ namespace HowShop.Web.HtmlConventions
             foreach (var item in items)
             {
                 var optionTag = new HtmlTag("option")
-                    .Value(getId(item).ToString())
+                    .Value(getId(item))
                     .Text(getDisplay(item));
 
-                if (value.Equals(item))
+                if (value != null && value.Equals(item))
                     optionTag.Attr("selected");
 
                 request.CurrentTag.Append(optionTag);

@@ -18,23 +18,6 @@ namespace HowShop.Web.HtmlConventions
                 Currencies.GetAll(),
                 x => x.Code,
                 x => $"{x.Code} {x.Symbol} - {x.EnglishName}");
-
-            //request.CurrentTag.RemoveAttr("type");
-            //request.CurrentTag.TagName("select");
-
-            //var value = request.Value<Currency>();
-
-            //foreach (var currency in request.Get<Currencies>().GetAll())
-            //{
-            //    var optionTag = new HtmlTag("option")
-            //        .Value(currency.Code)
-            //        .Text();
-
-            //    if (value == currency)
-            //        optionTag.Attr("selected");
-
-            //    request.CurrentTag.Append(optionTag);
-            //}
         }
     }
 }

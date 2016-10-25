@@ -20,6 +20,10 @@ namespace SolidR.Core.Mvc
                 .IfPropertyIs<byte[]>()
                 .BuildBy(a => new HiddenTag().Value(Convert.ToBase64String(a.Value<byte[]>())));
             
+            Editors
+                .If(er => er.Accessor.Name.EndsWith("password", StringComparison.OrdinalIgnoreCase))
+                .ModifyWith(x => x.CurrentTag.Attr("type", "password"));
+
             Labels
                 .ModifyForAttribute<DisplayAttribute>((t, a) => t.Text(a.Name));
 

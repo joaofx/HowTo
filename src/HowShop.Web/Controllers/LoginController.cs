@@ -28,14 +28,14 @@ namespace HowShop.Web.Controllers
         {
             return View(new List<User>()
             {
-                new User("Admin"),
-                new User("Backoffice")
+                new User("Admin", "admin@admin.com", "123"),
+                new User("Backoffice", "admin@admin.com", "123")
             });
         }
 
         public ActionResult SignIn(string name)
         {
-            _userSession.SignIn(new User(name));
+            _userSession.SignIn(new User(name, string.Empty, string.Empty));
             return RedirectToAction("Index", "AdminProduct");
         }
 

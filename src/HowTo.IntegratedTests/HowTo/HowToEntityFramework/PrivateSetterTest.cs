@@ -19,8 +19,8 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
         {
             using (var db = new HowShopContext())
             {
-                db.Users.Add(new User("John"));
-                db.Users.Add(new User("Paul"));
+                db.Users.Add(new User("John", "admin@admin.com", "123"));
+                db.Users.Add(new User("Paul", "admin@admin.com", "123"));
                 db.SaveChanges();
             }
 
