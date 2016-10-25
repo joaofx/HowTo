@@ -3,7 +3,7 @@ using HtmlTags.Conventions;
 using HtmlTags.Conventions.Elements;
 using NodaMoney;
 
-namespace HowShop.Web.HtmlConventions
+namespace HowShop.Web.Html.Conventions
 {
     public class CurrencyDropDownModifier : IElementModifier
     {

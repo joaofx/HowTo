@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="BusinessRulesException.cs" />
     <Compile Include="Console2.cs" />
     <Compile Include="Domain\Audit.cs" />
     <Compile Include="Domain\Effective.cs" />
@@ -169,7 +170,6 @@
     <Compile Include="Mvc\HtmlHelperExtensions.cs" />
     <Compile Include="Mvc\HtmlTagExtensions.cs" />
     <Compile Include="Mvc\LinkBuilder.cs" />
-    <Compile Include="Mvc\SolidrConventions.cs" />
     <Compile Include="Mvc\UrlHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShellTasks\MigrateDownCommand.cs" />

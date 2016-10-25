@@ -1,4 +1,4 @@
-﻿using HowShop.Web.HtmlConventions;
+﻿using HowShop.Web.Html.Conventions;
 using HtmlTags.Conventions;
 using SolidR.Core.Mvc;
 using StructureMap;
@@ -10,11 +10,8 @@ namespace HowShop.Web.Boot
         public HtmlTagRegistry()
         {
             var htmlConventionLibrary = new HtmlConventionLibrary();
-
-            new SolidrConventions().Apply(htmlConventionLibrary);
             new HowShopHtmlConventions().Apply(htmlConventionLibrary);
             new DefaultHtmlConventions().Apply(htmlConventionLibrary);
-
             For<HtmlConventionLibrary>().Use(htmlConventionLibrary);
         }
     }

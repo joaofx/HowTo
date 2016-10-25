@@ -6,6 +6,7 @@ using SolidR.Core.Mvc;
 
 namespace HowShop.Web.Controllers
 {
+    [RoutePrefix("Admin/User")]
     public class AdminUserController : Controller
     {
         private readonly IMediator _mediator;
@@ -26,9 +27,9 @@ namespace HowShop.Web.Controllers
             return View("Edit", new UserEdit.Command());
         }
 
-        public ActionResult Edit(UserEdit.Query query)
+        public ActionResult Edit(long id)
         {
-            var result = _mediator.Send(query);
+            var result = _mediator.Send(new UserEdit.Query { Id = id });
             return View("Edit", result);
         }
 

@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Data.Entity.Infrastructure;
+using System.Web.Mvc;
 using Newtonsoft.Json;
 
 namespace SolidR.Core.Mvc
@@ -13,7 +15,7 @@ namespace SolidR.Core.Mvc
 
                 App.Log.Error(filterContext.Exception);
 
-                var errorMessage = "An error ocurred while the system was processing your request. Try again otherwise contact the Support";
+                var errorMessage = GetExceptionMessage(filterContext.Exception);
 
                 var content = JsonConvert.SerializeObject(
                     new
@@ -33,6 +35,16 @@ namespace SolidR.Core.Mvc
                 filterContext.Result = result;
                 filterContext.ExceptionHandled = true;
             }
+        }
+
+        private string GetExceptionMessage(Exception exception)
+        {
+            if (exception.GetType() == typeof(BusinessRulesException))
+            {
+                return exception.Message;
+            }
+
+            return "An error ocurred while the system was processing your request. Try again otherwise contact the Support";
         }
     }
 }

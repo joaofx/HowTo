@@ -23,7 +23,7 @@ namespace HowShop.Core.Domain
         public TimeZoneInfo TimeZone
         {
             get { return TimeZoneInfo.FindSystemTimeZoneById(TimeZoneValue); }
-            private set { TimeZoneValue = value.Id; }
+            private set { TimeZoneValue = value?.Id; }
         }
         
         public Currency Currency

@@ -1,47 +1,34 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using HowShop.Core.Domain;
-using HowShop.Core.Security;
+﻿using System.Web.Mvc;
+using HowShop.Core.Commands;
 using MediatR;
 
 namespace HowShop.Web.Controllers
 {
-    /// <summary>
-    /// TODO: Proper authentication
-    /// https://weblog.west-wind.com/posts/2015/Apr/29/Adding-minimal-OWIN-Identity-Authentication-to-an-Existing-ASPNET-MVC-Application
-    /// http://www.khalidabuhakmeh.com/asp-net-mvc-5-authentication-breakdown
-    /// https://coding.abel.nu/2014/06/understanding-the-owin-external-authentication-pipeline/
-    /// http://stackoverflow.com/questions/26166826/usecookieauthentication-vs-useexternalsignincookie
-    /// </summary>
     public class LoginController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly UserSession _userSession;
 
-        public LoginController(IMediator mediator, UserSession userSession)
+        public LoginController(IMediator mediator)
         {
             _mediator = mediator;
-            _userSession = userSession;
         }
 
         public ActionResult Index()
         {
-            return View(new List<User>()
-            {
-                new User("Admin", "admin@admin.com", "123"),
-                new User("Backoffice", "admin@admin.com", "123")
-            });
+            return View(new UserLogin.Command());
         }
 
-        public ActionResult SignIn(string name)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignIn(UserLogin.Command command)
         {
-            _userSession.SignIn(new User(name, string.Empty, string.Empty));
+            _mediator.Send(command);
             return RedirectToAction("Index", "AdminProduct");
         }
 
         public ActionResult SignOut()
         {
-            _userSession.SignOut();
+            _mediator.Send(new UserLogout.Command());
             return RedirectToAction("Index", "Login");
         }
     }

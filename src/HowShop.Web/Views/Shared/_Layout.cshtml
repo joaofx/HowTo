@@ -1,78 +1,61 @@
-﻿@using HowShop.Core.Security
-@using HowShop.Web.Models
+﻿@using HowShop.Web.Models
 @{
     var tags = Products.Tags();
     var userSession = new UserSession();
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HowShop</title>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css" rel="stylesheet" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("HowShop", "Lista", "Produto", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">@Html.ActionLink("Contato", "Index", "Contato")</li>
-                    @foreach (var tag in tags)
+
+@{
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("HowShop", "Lista", "Produto", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">@Html.ActionLink("Contato", "Index", "Contato")</li>
+
+                @*@foreach (var tag in tags)
                     {
                         <li><a href="@Url.Action("Lista", "Produto", new {tag = tag})">@tag</a></li>
-                    }
-                </ul>
+                    }*@
+            </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    @if (userSession.IsLogged)
-                    {
+            <ul class="nav navbar-nav navbar-right">
+                @if (userSession.IsLogged)
+                {
 
-                        <li class="active">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">@userSession.CurrentUser.Name <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@(Url.Action<UserSettingsController>(x => x.Index()))">Settings</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="@(Url.Action<LoginController>(x => x.SignOut()))">Sign Out</a></li>
-                            </ul>
-                        </li>
+                    <li class="active">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Logged <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@(Url.Action<UserSettingsController>(x => x.Index()))">Settings</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@(Url.Action<LoginController>(x => x.SignOut()))">Sign Out</a></li>
+                        </ul>
+                    </li>
 
-                    }
-                    else
-                    {
-                        <li class="active">
-                            <a href="@(Url.Action<LoginController>(x => x.Index()))">Login</a>
-                        </li>
-                    }
-                </ul>
+                }
+                else
+                {
+                    <li class="active">
+                        <a href="@(Url.Action<LoginController>(x => x.Index()))">Login</a>
+                    </li>
+                }
+            </ul>
 
-            </div>
         </div>
     </div>
+</div>
 
-    <div class="container body-content">
-        
-        @RenderBody()
-        <hr />
-        @*<footer>
-            <p><a href="http://www.joaofx.com">www.joaofx.com</a></p>
-        </footer>*@
-    </div>
+<div class="container body-content">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/solidr")
-    @RenderSection("scripts", required: false)
-    
-</body>
-</html>
+    @RenderBody()
+
+</div>

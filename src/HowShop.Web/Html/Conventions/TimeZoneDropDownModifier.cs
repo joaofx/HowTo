@@ -1,37 +1,35 @@
-﻿using HowShop.Core.Concerns;
+﻿using System;
 using HtmlTags.Conventions;
 using HtmlTags.Conventions.Elements;
 
-namespace HowShop.Web.HtmlConventions
+namespace HowShop.Web.Html.Conventions
 {
-    public class LanguageDropDownModifier : IElementModifier
+    public class TimeZoneDropDownModifier : IElementModifier
     {
         public bool Matches(ElementRequest token)
         {
-            return token.Accessor.PropertyType == typeof (Language);
+            return token.Accessor.PropertyType == typeof (TimeZoneInfo);
         }
 
         public void Modify(ElementRequest request)
         {
             request.ModifyWithDropDown(
-                Language.GetAll(), 
+                TimeZoneInfo.GetSystemTimeZones(),
                 x => x.Id,
-                x => x.Name);
-
-            //request.CurrentTag.ConvertToSelect();
+                x => x.DisplayName);
 
             //request.CurrentTag.RemoveAttr("type");
             //request.CurrentTag.TagName("select");
 
-            //var value = request.Value<Language>();
+            //var value = request.Value<Culture>();
 
-            //foreach (var language in Language.GetAll())
+            //foreach (var currency in Culture.GetAll())
             //{
             //    var optionTag = new HtmlTag("option")
-            //        .Value(language.Id)
-            //        .Text(language.Name);
+            //        .Value(currency.Id)
+            //        .Text(currency.Name);
 
-            //    if (value == language)
+            //    if (value == currency)
             //        optionTag.Attr("selected");
 
             //    request.CurrentTag.Append(optionTag);

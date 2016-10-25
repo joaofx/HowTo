@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using HowShop.Core.Concerns;
 using HtmlTags;
 using HtmlTags.Conventions;
 
-namespace HowShop.Web.HtmlConventions
+namespace HowShop.Web.Html.Conventions
 {
     /// <summary>
     /// TODO: unit tests

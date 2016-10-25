@@ -60,7 +60,7 @@
 
         $(findFormSummary())
             .empty()
-            .append('<span class="glyphicon glyphicon-warning-sign"><strong class="error-message">' + data.ErrorMessage + '</strong></span>')
+            .append('<span>' + data.ErrorMessage + '</span>')
             .removeClass('hidden');
     };
 

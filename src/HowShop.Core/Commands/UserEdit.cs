@@ -65,8 +65,8 @@ namespace HowShop.Core.Commands
             {
                 RuleFor(x => x.Name).NotEmpty();
                 RuleFor(x => x.Email).NotEmpty().EmailAddress();
-                RuleFor(x => x.Password).NotEmpty();
-                RuleFor(x => x.ConfirmPassword).NotEmpty().Equal(x => x.ConfirmPassword);
+                RuleFor(x => x.Password).NotEmpty().Equal(x => x.ConfirmPassword);
+                RuleFor(x => x.ConfirmPassword).NotEmpty();
             }
         }
     }

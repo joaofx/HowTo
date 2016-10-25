@@ -2,7 +2,7 @@
 using HtmlTags.Conventions;
 using HtmlTags.Conventions.Elements;
 
-namespace HowShop.Web.HtmlConventions
+namespace HowShop.Web.Html.Conventions
 {
     public class CultureDropDownModifier : IElementModifier
     {

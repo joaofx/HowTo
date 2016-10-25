@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using HowShop.Core.Commands;
-using HowShop.Core.Security;
 using MediatR;
 
 namespace HowShop.Web.Controllers
@@ -9,12 +8,10 @@ namespace HowShop.Web.Controllers
     public class UserSettingsController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly UserSession _userSession;
 
-        public UserSettingsController(IMediator mediator, UserSession userSession)
+        public UserSettingsController(IMediator mediator)
         {
             _mediator = mediator;
-            _userSession = userSession;
         }
 
         public ActionResult Index()

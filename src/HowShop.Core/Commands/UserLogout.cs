@@ -1,9 +1,9 @@
-using HowShop.Core.Security;
+using HowShop.Core.Concerns;
 using MediatR;
 
 namespace HowShop.Core.Commands
 {
-    public class LoginSignOut
+    public class UserLogout
     {
         public class Command : IRequest
         {
@@ -11,16 +11,16 @@ namespace HowShop.Core.Commands
 
         public class Handler : RequestHandler<Command>
         {
-            private readonly UserSession _userSession;
+            private readonly IUserSession _userSession;
 
-            public Handler(UserSession userSession)
+            public Handler(IUserSession userSession)
             {
                 _userSession = userSession;
             }
 
             protected override void HandleCore(Command message)
             {
-                _userSession.SignOut();
+                _userSession.Logout();
             }
         }
     }

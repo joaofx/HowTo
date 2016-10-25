@@ -175,3 +175,5 @@ www
 /tools/nuget.exe
 artifacts
 build
+TestResult.xml
+tools

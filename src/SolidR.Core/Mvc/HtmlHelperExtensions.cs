@@ -63,6 +63,14 @@ namespace SolidR.Core.Mvc
             return generator.DisplayFor(expression, model: otherModel);
         }
 
+        public static HtmlTag DisplayLabel<T, TOtherModel>(this HtmlHelper<T> helper, TOtherModel otherModel, Expression<Func<TOtherModel, object>> expression)
+            where T : class
+            where TOtherModel : class
+        {
+            var generator = GetGenerator(otherModel);
+            return generator.TagFor(expression, "DisplayLabels");
+        }
+
         public static HtmlTag DisplayLabel<T>(this HtmlHelper<T> helper, Expression<Func<T, object>> expression)
             where T : class
         {
@@ -70,7 +78,7 @@ namespace SolidR.Core.Mvc
             return generator.TagFor(expression, "DisplayLabels");
         }
 
-        public static HtmlTag DisplayLabel<T>(this HtmlHelper<IList<T>> helper, Expression<Func<T, object>> expression)
+        public static HtmlTag DisplayLabel<T>(this HtmlHelper<IEnumerable<T>> helper, Expression<Func<T, object>> expression)
             where T : class
         {
             var generator = GetGenerator(default(T));
