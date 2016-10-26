@@ -4,12 +4,12 @@ using SolidR.Core.FluentMigrator;
 
 namespace SolidR.Core.ShellTasks
 {
-    [CommandDescription("Downgrade one version of database schema", Name = "db:downgrade")]
-    public class MigrateDownCommand : FubuCommand<Unit>
+    [CommandDescription("Downgrade one version of database schema", Name = "db.rollback")]
+    public class DbRollbackShellTask : FubuCommand<Unit>
     {
         private readonly IDatabaseMigrator _databaseMigrator;
 
-        public MigrateDownCommand()
+        public DbRollbackShellTask()
         {
             _databaseMigrator = App.Container.GetInstance<IDatabaseMigrator>();
         }

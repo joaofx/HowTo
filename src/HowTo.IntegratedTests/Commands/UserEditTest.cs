@@ -19,7 +19,8 @@ namespace HowTo.IntegratedTests.Commands
                 Name = "John Lennon",
                 Email = "john@shop.com",
                 Password = "123",
-                ConfirmPassword = "123"
+                ConfirmPassword = "123",
+                //Profile = Profile.
             };
 
             // act

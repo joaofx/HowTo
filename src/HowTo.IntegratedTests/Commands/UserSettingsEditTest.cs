@@ -27,6 +27,7 @@ namespace HowTo.IntegratedTests.Commands
                 UserId = admin.Id,
                 Language = Language.FromId("pt_BR"),
                 Culture = Culture.FromId("pt_BR"),
+                // TODO: change to NodaTime
                 TimeZone = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time"),
                 Currency = Currency.FromCode("EUR")
             });

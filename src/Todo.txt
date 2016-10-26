@@ -1,4 +1,10 @@
 
+- Change projects to work with dev_settings.config and test_settings.config instead of database.config
+- Set Profile to an user
+- Create Admin page
+- Protected Admin page from not Profile.Admin or Profile.Backoffice
+- Protected Admin User from not Profile.Admin
+- User self register
 - Add AutoMapper to map ProductEdit and UserEdit
 - Setup AutoFixture to create entities on tests
 - Create InputBlock for Input and labels

@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using HowShop.Core.Commands;
 using MediatR;
+using SolidR.Core.Mvc;
 
 namespace HowShop.Web.Controllers
 {
@@ -23,7 +24,7 @@ namespace HowShop.Web.Controllers
         public ActionResult SignIn(UserLogin.Command command)
         {
             _mediator.Send(command);
-            return RedirectToAction("Index", "AdminProduct");
+            return this.RedirectToActionJson<AdminProductController>(x => x.Index());
         }
 
         public ActionResult SignOut()

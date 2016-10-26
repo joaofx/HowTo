@@ -54,6 +54,7 @@ namespace HowShop.Core.Commands
 
             protected override void HandleCore(Command message)
             {
+                // TODO: hash password
                 var user = new User(message.Name, message.Email, message.Password);
                 _db.Users.Add(user);
             }
