@@ -18,7 +18,7 @@ namespace HowTo.IntegratedTests.Commands
         public void Should_save()
         {
             // arrange
-            var admin = new User("Admin", "admin@admin.com", "123");
+            var admin = Fixtures.Create<User>();
             SaveAll(admin);
 
             // act
