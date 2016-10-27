@@ -17,23 +17,6 @@ namespace HowShop.Web.Html.Conventions
                 TimeZoneInfo.GetSystemTimeZones(),
                 x => x.Id,
                 x => x.DisplayName);
-
-            //request.CurrentTag.RemoveAttr("type");
-            //request.CurrentTag.TagName("select");
-
-            //var value = request.Value<Culture>();
-
-            //foreach (var currency in Culture.GetAll())
-            //{
-            //    var optionTag = new HtmlTag("option")
-            //        .Value(currency.Id)
-            //        .Text(currency.Name);
-
-            //    if (value == currency)
-            //        optionTag.Attr("selected");
-
-            //    request.CurrentTag.Append(optionTag);
-            //}
         }
     }
 }

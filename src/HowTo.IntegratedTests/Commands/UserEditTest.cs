@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using HowShop.Core.Commands;
+using HowShop.Core.Domain;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
@@ -20,7 +21,7 @@ namespace HowTo.IntegratedTests.Commands
                 Email = "john@shop.com",
                 Password = "123",
                 ConfirmPassword = "123",
-                //Profile = Profile.
+                Profile = Profile.Admin
             };
 
             // act
@@ -33,6 +34,7 @@ namespace HowTo.IntegratedTests.Commands
                 user.Name.ShouldBe(command.Name);
                 user.Email.ShouldBe(command.Email);
                 user.Password.ShouldBe(command.Password);
+                user.Profile.ShouldBe(command.Profile);
             });
         }
     }

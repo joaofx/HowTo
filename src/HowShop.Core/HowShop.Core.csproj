@@ -142,6 +142,8 @@
     <Compile Include="Concerns\Culture.cs" />
     <Compile Include="Concerns\Language.cs" />
     <Compile Include="Concerns\Currencies.cs" />
+    <Compile Include="Domain\Profile.cs" />
+    <Compile Include="Migrations\201610271328_AlterUserAddProfile.cs" />
     <Compile Include="Migrations\201610251440_AlterUserAddEmailPassword.cs" />
     <Compile Include="Migrations\201610192315_AlterUserDropYearBirthAddSettings.cs" />
     <Compile Include="Queries\UserList.cs" />

@@ -1,9 +1,11 @@
 
-- Change projects to work with dev_settings.config and test_settings.config instead of database.config
 - Set Profile to an user
-- Create Admin page
 - Protected Admin page from not Profile.Admin or Profile.Backoffice
 - Protected Admin User from not Profile.Admin
+
+- Hash passwords with salt
+- Change projects to work with dev_settings.config and test_settings.config instead of database.config
+- Create Admin page
 - User self register
 - Add AutoMapper to map ProductEdit and UserEdit
 - Setup AutoFixture to create entities on tests
@@ -11,38 +13,25 @@
 - Nodata helper for show empty table
 - Add progress in buttons while waiting for response
 
-## Shop
+- [F] Users Management - Name, email, profile: Admin (everything), Backoffice (manage products)
+- [F] User can set their own settings: 
 
-Users Management
-- Name, email, profile: Admin (everything), Backoffice (manage products)
+- Show DbContext GetHashCode when:
+	- Opening connection
+	- Closing connection
 
-User Settings
-- User can set their own settings: 
+- Show DbTransaction GetHashCode when:
+	- Beginning transaction
+	- Commiting transaction
+	- Rolling back transaction
 
-## LOG
+- Adapter for Log
+	- Use Container to change the Log Adapter
 
-Show DbContext GetHashCode when:
-- Opening connection
-- Closing connection
+- Use Turbolinks
+- Use jQuery-ujs from rails for ajax helpers
 
-Show DbTransaction GetHashCode when:
-- Beginning transaction
-- Commiting transaction
-- Rolling back transaction
+- HtmlTags to use the correct culture
+- Use the current user culture to format numbers, currency and dates
 
-Adapter for Log
-Use Container to change the Log Adapter
-
-## UI
-
-Use Turbolinks
-Use jQuery-ujs from rails for ajax helpers
-
-## Localization
-
-HtmlTags to use the correct culture
-Use the current user culture to format numbers, currency and dates
-
-## EF
-
-Update convention for complex type. Fix from Audit_UpdatedAt to AuditUpdatedAt
+- Update EF convention for complex type. Fix from Audit_UpdatedAt to AuditUpdatedAt
