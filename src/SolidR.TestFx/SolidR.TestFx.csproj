@@ -50,6 +50,10 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.50.2.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.50.2\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Respawn, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Respawn.0.1.0.0\lib\net45\Respawn.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FixtureHelpers\EntityOmitterBuilder.cs" />
+    <Compile Include="FixtureHelpers\ListOmitterBuilder.cs" />
+    <Compile Include="FixtureHelpers\IdOmitterBuilder.cs" />
+    <Compile Include="FixtureHelpers\IsDeletedBuilder.cs" />
     <Compile Include="IDatabaseCleaner.cs" />
     <Compile Include="IntegratedTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
