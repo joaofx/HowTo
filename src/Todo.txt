@@ -4,6 +4,7 @@
 - Create InputBlock for Input and labels
 - Nodata helper for show empty table
 - Add progress in buttons while waiting for response
+- Use SemanticComparison to compare two objects on unittests
 
 ## Shop
 
