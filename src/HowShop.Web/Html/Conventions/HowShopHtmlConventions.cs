@@ -52,11 +52,13 @@ namespace HowShop.Web.Html.Conventions
             Editors.Always.AddClass("form-control");
 
             // TODO: Scan all modifiers?
+            Editors.Modifier<EnumDropDownModifier>();
+
             Editors.Modifier<CurrencyDropDownModifier>();
             Editors.Modifier<LanguageDropDownModifier>();
             Editors.Modifier<CultureDropDownModifier>();
             Editors.Modifier<TimeZoneDropDownModifier>();
-
+            
             Editors.IfPropertyIs<DateTime?>().ModifyWith(m => m
                   .CurrentTag
                   .AddPattern("9{1,2}/9{1,2}/9999")

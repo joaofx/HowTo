@@ -1,7 +1,7 @@
 ﻿using System;
 using FubuCore.CommandLine;
+using MediatR;
 using SolidR.Core;
-using SolidR.Core.Tasks;
 
 namespace SolidR
 {
@@ -17,7 +17,9 @@ namespace SolidR
                 {
                     scan.AssembliesFromApplicationBaseDirectory();
                     scan.LookForRegistries();
-                    scan.AddAllTypesOf<IShellTask>();
+
+                    // todo: scan any fubucommand
+                    scan.AddAllTypesOf(typeof(FubuCommand<Unit>));
                 });
             });
 
@@ -45,7 +47,7 @@ namespace SolidR
 
         private static void RegisterAllCommands(CommandFactory factory)
         {
-            var shellTasks = App.Container.GetAllInstances<IShellTask>();
+            var shellTasks = App.Container.GetAllInstances(typeof(FubuCommand<Unit>));
             
             foreach (var shellTask in shellTasks)
             {

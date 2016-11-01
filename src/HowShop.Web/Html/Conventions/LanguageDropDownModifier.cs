@@ -17,25 +17,6 @@ namespace HowShop.Web.Html.Conventions
                 Language.GetAll(), 
                 x => x.Id,
                 x => x.Name);
-
-            //request.CurrentTag.ConvertToSelect();
-
-            //request.CurrentTag.RemoveAttr("type");
-            //request.CurrentTag.TagName("select");
-
-            //var value = request.Value<Language>();
-
-            //foreach (var language in Language.GetAll())
-            //{
-            //    var optionTag = new HtmlTag("option")
-            //        .Value(language.Id)
-            //        .Text(language.Name);
-
-            //    if (value == language)
-            //        optionTag.Attr("selected");
-
-            //    request.CurrentTag.Append(optionTag);
-            //}
         }
     }
 }

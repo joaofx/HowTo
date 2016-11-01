@@ -4,12 +4,12 @@ using SolidR.Core.FluentMigrator;
 
 namespace SolidR.Core.ShellTasks
 {
-    [CommandDescription("Update database schema", Name = "db:update")]
-    public class MigrateUpCommand : FubuCommand<Unit>
+    [CommandDescription("Update database schema", Name = "db.migrate")]
+    public class DbMigrateShellTask : FubuCommand<Unit>
     {
         private readonly IDatabaseMigrator _databaseMigrator;
 
-        public MigrateUpCommand()
+        public DbMigrateShellTask()
         {
             _databaseMigrator = App.Container.GetInstance<IDatabaseMigrator>();
         }

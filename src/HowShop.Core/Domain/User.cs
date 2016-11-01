@@ -8,6 +8,8 @@ namespace HowShop.Core.Domain
 {
     public class User : Entity, ISoftDeletable
     {
+        private UserEdit.Command message;
+
         public string Name { get; private set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
@@ -42,6 +44,7 @@ namespace HowShop.Core.Domain
         public string LanguageValue { get; private set; }
         public string CultureValue { get; private set; }
         public string TimeZoneValue { get; private set; }
+        public Profile Profile { get; set; }
 
         private User()
         {
@@ -52,6 +55,14 @@ namespace HowShop.Core.Domain
             Name = name;
             Email = email;
             Password = password;
+        }
+
+        public User(UserEdit.Command message)
+        {
+            Name = message.Name;
+            Email = message.Email;
+            Password = message.Password;
+            Profile = message.Profile;
         }
 
         public void ChangeSettings(UserSettingsEdit.Command command)

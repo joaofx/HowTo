@@ -18,6 +18,7 @@
                     <tr>
                         <th>@Html.DisplayLabel(x => x.Name)</th>
                         <th>@Html.DisplayLabel(x => x.Email)</th>
+                        <th>@Html.DisplayLabel(x => x.Profile)</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                         <tr>
                             <td>@Html.Display(user, p => p.Name)</td>
                             <td>@Html.Display(user, p => p.Email)</td>
+                            <td>@Html.Display(user, p => p.Profile)</td>
                             <td>
                                 <a href="@(Url.Action<AdminUserController>(c => c.Edit(user.Id)))">Edit</a> | 
                                 <a href="@(Url.Action<AdminUserController>(c => c.Edit(user.Id)))" data-toggle="modal" data-target="#myModal-@user.Id">

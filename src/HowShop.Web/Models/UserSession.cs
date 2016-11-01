@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Security.Claims;
+﻿using System;
 using System.Web;
+using System.Web.Security;
 using HowShop.Core.Concerns;
 using HowShop.Core.Domain;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
 
 namespace HowShop.Web.Models
 {
@@ -18,33 +16,37 @@ namespace HowShop.Web.Models
     /// </summary>
     public class UserSession : IUserSession
     {
-        private readonly IAuthenticationManager _authenticationManager;
-
-        public UserSession()
-        {
-            // TODO: not use HttpContext
-            var ctx = HttpContext.Current.Request.GetOwinContext();
-            _authenticationManager = ctx.Authentication;
-        }
-
-        public bool IsLogged => _authenticationManager.User.Identity.IsAuthenticated;
+        public bool IsLogged => HttpContext.Current.User.Identity.IsAuthenticated;
 
         public void Login(User user, bool remember)
         {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.Email, user.Email)
-            };
+            FormsAuthentication.SetAuthCookie(user.Email, true);
 
-            var id = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
-
-            _authenticationManager.SignIn(id);
+            if (remember)
+                SetAuthenticationCookieExpiration(user.Email);
         }
 
         public void Logout()
         {
-            _authenticationManager.SignOut();
+            FormsAuthentication.SignOut();
+        }
+
+        private void SetAuthenticationCookieExpiration(string userName)
+        {
+            HttpCookie cookie = FormsAuthentication.GetAuthCookie(userName, true);
+            cookie.Expires = DateTime.Now.AddDays(5);
+            var decriptedCookie = FormsAuthentication.Decrypt(cookie.Value);
+
+            var at = new FormsAuthenticationTicket(
+                decriptedCookie.Version,
+                decriptedCookie.Name,
+                decriptedCookie.IssueDate,
+                cookie.Expires,
+                true,
+                decriptedCookie.UserData);
+
+            cookie.Value = FormsAuthentication.Encrypt(at);
+            HttpContext.Current.Response.Cookies.Add(cookie);
         }
     }
 }

@@ -29,7 +29,8 @@ namespace HowShop.Core.Commands
                 return new Command
                 {
                     Name = user.Name,
-                    Email = user.Email
+                    Email = user.Email,
+                    Profile = user.Profile
                 };
             }
         }
@@ -41,6 +42,7 @@ namespace HowShop.Core.Commands
             public string Email { get; set; }
             public string Password { get; set; }
             public string ConfirmPassword { get; set; }
+            public Profile Profile { get; set; }
         }
 
         public class Handler : RequestHandler<Command>
@@ -54,7 +56,9 @@ namespace HowShop.Core.Commands
 
             protected override void HandleCore(Command message)
             {
-                var user = new User(message.Name, message.Email, message.Password);
+                // TODO: hash password
+                // TODO: can't change password
+                var user = new User(message);
                 _db.Users.Add(user);
             }
         }

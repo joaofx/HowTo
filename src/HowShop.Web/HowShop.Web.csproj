@@ -198,6 +198,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Html\Conventions\EnumDropDownModifier.cs" />
     <Compile Include="Html\LayoutExtensions.cs" />
     <Compile Include="Html\Conventions\TimeZoneDropDownModifier.cs" />
     <Compile Include="Html\Conventions\CultureDropDownModifier.cs" />

@@ -1,4 +1,5 @@
-﻿using SolidR.TestFx;
+﻿using HowShop.Core.Concerns;
+using SolidR.TestFx;
 using StructureMap;
 
 namespace HowTo.IntegratedTests.Boot
@@ -8,6 +9,7 @@ namespace HowTo.IntegratedTests.Boot
         public TestRegistry()
         {
             For<IDatabaseCleaner>().Use<RespawnDatabaseCleaner>();
+            For<IUserSession>().Use<TestUserSession>();
         }
     }
 }
