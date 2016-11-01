@@ -29,7 +29,8 @@ namespace HowShop.Core.Commands
                 return new Command
                 {
                     Name = user.Name,
-                    Email = user.Email
+                    Email = user.Email,
+                    Profile = user.Profile
                 };
             }
         }
@@ -56,6 +57,7 @@ namespace HowShop.Core.Commands
             protected override void HandleCore(Command message)
             {
                 // TODO: hash password
+                // TODO: can't change password
                 var user = new User(message);
                 _db.Users.Add(user);
             }

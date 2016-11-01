@@ -8,7 +8,7 @@ namespace HowShop.Core.Migrations
         public override void Up()
         {
             Alter.Table("User")
-                .AddColumn("Profile").AsInt32().Nullable();
+                .AddColumn("Profile").AsInt32().NotNullable();
         }
 
         public override void Down()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using FluentValidation;
+using HowShop.Core.Concerns;
 using HowShop.Core.Handlers;
 using MediatR;
 using SolidR.Core.Handlers;
@@ -22,6 +23,7 @@ namespace HowShop.Core.Boot
                 scanner.ConnectImplementationsToTypesClosing(typeof(IAsyncNotificationHandler<>));
 
                 scanner.AddAllTypesOf(typeof(IValidator<>));
+                scanner.AddAllTypesOf(typeof(IAuthorization<>));
             });
 
             For<SingleInstanceFactory>().Use<SingleInstanceFactory>(ctx => t => ctx.GetInstance(t));
@@ -31,6 +33,7 @@ namespace HowShop.Core.Boot
             // first here is last to be executed
             var handlerType = For(typeof(IRequestHandler<,>));
             handlerType.DecorateAllWith(typeof(ValidatorHandler<,>));
+            handlerType.DecorateAllWith(typeof(AuthorizationHandler<,>));
             handlerType.DecorateAllWith(typeof(TransactionHandler<,>));
         }
     }

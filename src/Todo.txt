@@ -1,8 +1,10 @@
 
-- Set Profile to an user
 - Protected Admin page from not Profile.Admin or Profile.Backoffice
 - Protected Admin User from not Profile.Admin
 
+- SolidR migrate or update dev/test/all
+
+- Fix [RoutePrefix("Admin/User")]
 - Hash passwords with salt
 - Change projects to work with dev_settings.config and test_settings.config instead of database.config
 - Create Admin page
@@ -35,3 +37,4 @@
 - Use the current user culture to format numbers, currency and dates
 
 - Update EF convention for complex type. Fix from Audit_UpdatedAt to AuditUpdatedAt
+
