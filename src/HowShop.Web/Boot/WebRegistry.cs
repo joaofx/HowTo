@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------------------------------------------------
+// -------------------------.-------------------------------------------------------------------------------------------
 // <copyright file="DefaultRegistry.cs" company="Web Advanced">
 // Copyright 2012 Web Advanced (www.webadvanced.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,9 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using HowShop.Core.Concerns;
+using HowShop.Web.Models;
+using Microsoft.AspNet.Identity;
 using SolidR.Core.Mvc.DependencyResolution;
 using StructureMap;
 
@@ -29,6 +32,8 @@ namespace HowShop.Web.Boot
                 scan.WithDefaultConventions();
 				scan.With(new ControllerConvention());
             });
+
+            For<IUserSession>().Use<WebUserSession>();
         }
     }
 }

@@ -170,6 +170,7 @@
     <Compile Include="Domain\Profile.cs" />
     <Compile Include="Concerns\IAuthorization.cs" />
     <Compile Include="Handlers\AuthorizationHandler.cs" />
+    <Compile Include="Migrations\201611012354_InsertAdminUser.cs" />
     <Compile Include="UnauthorizedException.cs" />
     <Compile Include="Infra\MustHaveAccessToAttribute.cs" />
     <Compile Include="Migrations\201610271328_AlterUserAddProfile.cs" />

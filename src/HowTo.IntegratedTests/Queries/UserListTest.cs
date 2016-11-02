@@ -38,6 +38,7 @@ namespace HowTo.IntegratedTests.Queries
         }
 
         [Test]
+        [ExpectedException(typeof(UnauthorizedException))]
         public void Should_throw_exception_when_user_has_no_authorization()
         {
             // arrange
@@ -45,7 +46,7 @@ namespace HowTo.IntegratedTests.Queries
             TestUserSession.CurrentUser = () => user2;
 
             // act & assert
-            Should.Throw<UnauthorizedException>(() => Send(new UserList.Query()));
+            Send(new UserList.Query());
         }
     }
 }

@@ -17,5 +17,6 @@ namespace HowTo.IntegratedTests
         }
 
         public User User => CurrentUser();
+        public bool IsLogged => User != null;
     }
 }

@@ -1,0 +1,45 @@
+﻿@model ProductEdit.Command
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h1>Edit Product</h1>
+
+        <form method="post" action="@(Url.Action<AdminProductController>(x => x.Save(null)))" class="form-horizontal">
+            
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+            @Html.FormSummary()
+
+            <div class="well bs-component">
+
+                <fieldset>
+
+                    <div class="form-group">
+                        @Html.Label(m => m.Name)
+                        <div class="col-lg-10">
+                            @Html.Input(m => m.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label(m => m.Price)
+                        <div class="col-lg-10">
+                            @Html.Input(m => m.Price)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            or <a href="@Url.Action("Index")">Back to Products</a>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

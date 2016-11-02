@@ -9,10 +9,13 @@ namespace HowShop.Core.Handlers
         where TRequest : IRequest<TResponse>
     {
         private readonly IRequestHandler<TRequest, TResponse> _inner;
-        private readonly IAuthorization<TRequest> _authorization;
+        private readonly IAuthorization<TRequest>[] _authorization;
         private readonly IUserSession _userSession;
 
-        public AuthorizationHandler(IRequestHandler<TRequest, TResponse> inner, IAuthorization<TRequest> authorization, IUserSession userSession)
+        public AuthorizationHandler(
+            IRequestHandler<TRequest, TResponse> inner, 
+            IAuthorization<TRequest>[] authorization, 
+            IUserSession userSession)
         {
             _inner = inner;
             _authorization = authorization;
@@ -21,10 +24,19 @@ namespace HowShop.Core.Handlers
 
         public TResponse Handle(TRequest request)
         {
-            if (_userSession.User.Profile.DoNotHaveAccessTo(_authorization.Feature))
+            foreach (var authorization in _authorization)
             {
-                App.Log.Info($"Current user {_userSession.User.Name} does not have access to {_authorization.Feature}");
-                throw new UnauthorizedException(_authorization.Feature);
+                if (_userSession.IsLogged == false)
+                {
+                    App.Log.Info($"Current user is not logged to access {authorization.Feature}");
+                    throw new UnauthorizedException(authorization.Feature);
+                }
+
+                if (_userSession.User.Profile.DoNotHaveAccessTo(authorization.Feature))
+                {
+                    App.Log.Info($"Current user {_userSession.User.Name} does not have access to {authorization.Feature}");
+                    throw new UnauthorizedException(authorization.Feature);
+                }
             }
 
             return _inner.Handle(request);

@@ -1,7 +1,7 @@
 ﻿@using HowShop.Web.Models
 @{
     var tags = Products.Tags();
-    var userSession = new UserSession();
+    var userSession = new WebUserSession();
 }
 
 @{
@@ -20,7 +20,9 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active">@Html.ActionLink("Contato", "Index", "Contato")</li>
+                <li class="active">
+                    <a href="@(Url.Action<AdminController>(x => x.Index()))">Admin</a>
+                </li>
 
                 @*@foreach (var tag in tags)
                     {

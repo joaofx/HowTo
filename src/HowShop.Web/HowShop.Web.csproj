@@ -186,6 +186,7 @@
     <Compile Include="App_Start\StructureMapMvc.cs" />
     <Compile Include="Boot\HtmlTagRegistry.cs" />
     <Compile Include="Boot\StructureMapScopeModule.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\UserSettingsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -209,7 +210,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductFixture.cs" />
     <Compile Include="Models\Products.cs" />
-    <Compile Include="Models\UserSession.cs" />
+    <Compile Include="Models\WebUserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +259,8 @@
     <Content Include="Views\AdminUser\Edit.cshtml" />
     <Content Include="Views\AdminUser\Index.cshtml" />
     <Content Include="Views\Shared\_Master.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

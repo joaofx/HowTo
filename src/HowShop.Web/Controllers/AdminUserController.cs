@@ -10,7 +10,7 @@ using SolidR.Core.Mvc;
 namespace HowShop.Web.Controllers
 {
     [RoutePrefix("Admin/User")]
-    [MustHaveAccessTo(Feature.ManageUsers)]
+    //[MustHaveAccessTo(Feature.ManageUsers)]
     public class AdminUserController : Controller
     {
         private readonly IMediator _mediator;

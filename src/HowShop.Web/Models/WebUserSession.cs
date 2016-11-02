@@ -14,7 +14,7 @@ namespace HowShop.Web.Models
     /// https://coding.abel.nu/2014/06/understanding-the-owin-external-authentication-pipeline/
     /// http://stackoverflow.com/questions/26166826/usecookieauthentication-vs-useexternalsignincookie
     /// </summary>
-    public class UserSession : IUserSession
+    public class WebUserSession : IUserSession
     {
         public bool IsLogged => HttpContext.Current.User.Identity.IsAuthenticated;
 
@@ -30,6 +30,8 @@ namespace HowShop.Web.Models
         {
             FormsAuthentication.SignOut();
         }
+
+        public User User { get; }
 
         private void SetAuthenticationCookieExpiration(string userName)
         {
