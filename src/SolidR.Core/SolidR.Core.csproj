@@ -172,6 +172,7 @@
     <Compile Include="Mvc\LinkBuilder.cs" />
     <Compile Include="Mvc\UrlHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellTasks\DbResetTask.cs" />
     <Compile Include="ShellTasks\DbRollbackShellTask.cs" />
     <Compile Include="ShellTasks\DbMigrateShellTask.cs" />
   </ItemGroup>

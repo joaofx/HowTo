@@ -14,36 +14,27 @@ namespace HowShop.Core.Infra
     {
         public void UpdateSchema()
         {
-            var assembly = typeof(Product).Assembly;
-
-            App.Log.Info("Migrating {0}", assembly.FullName);
-
-            var announcer = new TextWriterAnnouncer(s =>
-            {
-                s = s.Replace(Environment.NewLine, string.Empty);
-
-                if (string.IsNullOrEmpty(s) == false)
-                {
-                    App.Log.Debug(s);
-                }
-            });
-
-            var migrationContext = new RunnerContext(announcer);
-            var factory = new SqlServer2014ProcessorFactory();
-            var processor = factory.Create(App.ConnectionString, announcer, new ProcessorOptions
-            {
-                Timeout = 60,
-                PreviewOnly = false
-            });
-
-            var runner = new MigrationRunner(assembly, migrationContext, processor);
-
+            var runner = GetRunner();
             runner.MigrateUp();
-
             App.Log.Info("Database migrated");
         }
 
         public void DowngradeSchema()
+        {
+            var runner = GetRunner();
+            runner.Rollback(1);
+            App.Log.Info("Database migrated");
+        }
+
+        public void RecreateSchema()
+        {
+            var runner = GetRunner();
+            runner.MigrateDown(0);
+            runner.MigrateUp();
+            App.Log.Info("Database migrated");
+        }
+
+        private MigrationRunner GetRunner()
         {
             var assembly = typeof(Product).Assembly;
 
@@ -68,10 +59,7 @@ namespace HowShop.Core.Infra
             });
 
             var runner = new MigrationRunner(assembly, migrationContext, processor);
-
-            runner.Rollback(1);
-
-            App.Log.Info("Database migrated");
+            return runner;
         }
     }
 }

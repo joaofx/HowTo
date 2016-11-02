@@ -15,5 +15,10 @@ namespace HowShop.Core.Infra
         {
             throw new System.NotImplementedException();
         }
+
+        public void RecreateSchema()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

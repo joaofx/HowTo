@@ -4,5 +4,6 @@ namespace SolidR.Core.FluentMigrator
     {
         void UpdateSchema();
         void DowngradeSchema();
+        void RecreateSchema();
     }
 }

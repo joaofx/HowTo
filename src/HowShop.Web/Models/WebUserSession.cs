@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using HowShop.Core.Concerns;
 using HowShop.Core.Domain;
+using HowShop.Core.Infra;
 
 namespace HowShop.Web.Models
 {
@@ -16,6 +18,13 @@ namespace HowShop.Web.Models
     /// </summary>
     public class WebUserSession : IUserSession
     {
+        private readonly HowShopContext _db;
+
+        public WebUserSession(HowShopContext db)
+        {
+            _db = db;
+        }
+
         public bool IsLogged => HttpContext.Current.User.Identity.IsAuthenticated;
 
         public void Login(User user, bool remember)
@@ -31,7 +40,24 @@ namespace HowShop.Web.Models
             FormsAuthentication.SignOut();
         }
 
-        public User User { get; }
+        public User User
+        {
+            get
+            {
+                if (HttpContext.Current.User.Identity != null && HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    var user = _db.Users.SingleOrDefault(x => x.Email == HttpContext.Current.User.Identity.Name);
+
+                    if (user != null)
+                    {
+                        return user;
+                    }
+                }
+
+                Logout();
+                return null;
+            }
+        }
 
         private void SetAuthenticationCookieExpiration(string userName)
         {

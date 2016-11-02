@@ -2,10 +2,8 @@
 using HowShop.Core;
 using HowShop.Core.Domain;
 using HowShop.Core.Queries;
-using MediatR;
 using NUnit.Framework;
 using Shouldly;
-using SolidR;
 using SolidR.TestFx;
 using static HowTo.IntegratedTests.Testing;
 
@@ -42,8 +40,8 @@ namespace HowTo.IntegratedTests.Queries
         public void Should_throw_exception_when_user_has_no_authorization()
         {
             // arrange
-            var user2 = Fixtures.Create<User>(_ => _.Profile = Profile.Customer);
-            TestUserSession.CurrentUser = () => user2;
+            var userWithNotAuthorizedProfile = Fixtures.Create<User>(_ => _.Profile = Profile.Customer);
+            TestUserSession.CurrentUser = () => userWithNotAuthorizedProfile;
 
             // act & assert
             Send(new UserList.Query());

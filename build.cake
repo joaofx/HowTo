@@ -42,6 +42,9 @@ Task("Build")
 Task("CopyConfigs")
     .IsDependentOn("Build")
     .Does(() => {
+		Information("Copying all settings files");
+		CopyFiles("./config/*.config", outputDir);
+
 		var settingsFile = "config/"+environment+".config";
 		var outputSettingsFile = outputDir+"/database.config";
 

@@ -38,7 +38,7 @@ namespace HowShop.Core.Migrations
                 .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()
                 .WithColumn("Name").AsString()
                 .WithColumn("YearOfBirth").AsInt32()
-                .WithColumn("IsDeleted").AsBoolean().Nullable();
+                .WithColumn("IsDeleted").AsBoolean().NotNullable();
 
             //Create.Table("Product")
             //    .WithIdentity(this)

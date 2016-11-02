@@ -9,13 +9,13 @@ namespace HowShop.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 "Default", 
                 "{controller}/{action}/{id}", 
                 new { controller = "AdminProduct", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapMvcAttributeRoutes();
         }
     }
 }

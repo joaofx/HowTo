@@ -1,7 +1,6 @@
 ﻿@using HowShop.Web.Models
 @{
     var tags = Products.Tags();
-    var userSession = new WebUserSession();
 }
 
 @{
@@ -31,11 +30,11 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                @if (userSession.IsLogged)
+                @if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
 
                     <li class="active">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Logged <b class="caret"></b></a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">@HttpContext.Current.User.Identity.Name <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="@(Url.Action<UserSettingsController>(x => x.Index()))">Settings</a></li>
                             <li role="separator" class="divider"></li>

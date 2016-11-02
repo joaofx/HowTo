@@ -13,13 +13,14 @@ namespace HowShop.Core.Migrations
                 Name = "Admin",
                 Email = "admin@shop.com",
                 Profile = (int) Profile.Admin,
-                Password = "123456"
+                Password = "123456",
+                IsDeleted = false
             });
         }
 
         public override void Down()
         {
-            Delete.FromTable("Users").Row(new { Name = "Admin" });
+            Delete.FromTable("User").Row(new { Name = "Admin" });
         }
     }
 }
