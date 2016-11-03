@@ -1,4 +1,7 @@
 
+- fixture.Mock<> create mock and inject on the container. How to rollback configurations?
+
+- Unauthorized page
 - Protected Admin page from not Profile.Admin or Profile.Backoffice
 - Protected Admin User from not Profile.Admin
 - Page or Handler unauthorized access

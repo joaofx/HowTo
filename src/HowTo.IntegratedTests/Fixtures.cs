@@ -1,6 +1,7 @@
 ﻿using System;
 using Ploeh.AutoFixture;
 using SolidR.TestFx.FixtureHelpers;
+using SolidR.TestFx.SpecimenBuilders;
 
 namespace HowTo.IntegratedTests
 {
@@ -15,6 +16,7 @@ namespace HowTo.IntegratedTests
             Fixture.Customizations.Add(new IsDeletedBuilder());
             Fixture.Customizations.Add(new ListOmitterBuilder());
             Fixture.Customizations.Add(new IgnoreEntitiesReferenceProperties());
+            Fixture.Customizations.Add(new EmailSpecimenBuilder());
 
             Fixture.Behaviors.Remove(new ThrowingRecursionBehavior());
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());

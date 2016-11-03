@@ -1,8 +1,5 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using HowShop.Core.Commands;
-using HowShop.Core.Concerns;
-using HowShop.Core.Infra;
 using HowShop.Core.Queries;
 using MediatR;
 using SolidR.Core.Mvc;
@@ -10,7 +7,7 @@ using SolidR.Core.Mvc;
 namespace HowShop.Web.Controllers
 {
     [RoutePrefix("Admin/User")]
-    //[MustHaveAccessTo(Feature.ManageUsers)]
+    [Route("{action=Index}")]
     public class AdminUserController : Controller
     {
         private readonly IMediator _mediator;
@@ -19,7 +16,7 @@ namespace HowShop.Web.Controllers
         {
             _mediator = mediator;
         }
-
+        
         public ActionResult Index()
         {
             var result = _mediator.Send(new UserList.Query());

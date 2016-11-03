@@ -2,7 +2,8 @@
 {
     public abstract class Entity
     {
-        //// TODO: entities base with another Id type
+        /// TODO: entities base with another Id type
+        /// TODO: tests
 
         /// <summary>
         ///     To help ensure hashcode uniqueness, a carefully selected random number multiplier 

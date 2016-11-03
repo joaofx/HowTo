@@ -44,6 +44,7 @@ namespace HowShop.Web.Models
         {
             get
             {
+                // TODO: Use Mediator to get current user
                 if (HttpContext.Current.User.Identity != null && HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     var user = _db.Users.SingleOrDefault(x => x.Email == HttpContext.Current.User.Identity.Name);
