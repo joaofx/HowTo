@@ -2,11 +2,8 @@
 using HowShop.Core.Commands;
 using HowShop.Core.Concerns;
 using HowShop.Core.Domain;
-using NodaMoney;
 using NUnit.Framework;
 using Shouldly;
-using SolidR.TestFx;
-using static HowTo.IntegratedTests.Testing;
 
 namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 {

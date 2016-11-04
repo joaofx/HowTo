@@ -88,6 +88,10 @@
       <HintPath>..\packages\AutoFixture.3.50.2\lib\net40\Ploeh.AutoFixture.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ploeh.SemanticComparison, Version=3.50.2.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SemanticComparison.3.50.2\lib\net40\Ploeh.SemanticComparison.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Respawn, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Respawn.0.1.0.0\lib\net45\Respawn.dll</HintPath>
       <Private>True</Private>
@@ -120,7 +124,6 @@
     <Compile Include="Commands\UserEditTest.cs" />
     <Compile Include="Commands\UserSettingsEditTest.cs" />
     <Compile Include="Commands\ProductEditTest.cs" />
-    <Compile Include="Fixtures.cs" />
     <Compile Include="HowTo\HowToEntityFramework\BuddyPropertyTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\EffectiveTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\AuditableTest.cs" />
@@ -130,8 +133,8 @@
     <Compile Include="HowTo\HowToEntityFramework\PrivateSetterTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\RequiredConstructorTest.cs" />
     <Compile Include="Boot\TestRegistry.cs" />
+    <Compile Include="IntegratedTest.cs" />
     <Compile Include="Queries\UserListTest.cs" />
-    <Compile Include="Testing.cs" />
     <Compile Include="Queries\ProductListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestUserSession.cs" />
@@ -143,7 +146,9 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SolidR.TestFx\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HowShop.Core\HowShop.Core.csproj">
       <Project>{0AB4A244-F858-4347-B87C-3EB7B927D656}</Project>

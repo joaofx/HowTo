@@ -3,6 +3,7 @@ using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using MediatR;
+using SolidR.Core;
 
 namespace HowShop.Core.Queries
 {
@@ -10,6 +11,7 @@ namespace HowShop.Core.Queries
     {
         public class Query : IRequest<IEnumerable<Product>>
         {
+            public string Name { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, IEnumerable<Product>>
@@ -23,7 +25,12 @@ namespace HowShop.Core.Queries
 
             public IEnumerable<Product> Handle(Query message)
             {
-                return _db.Products.ToList();
+                var query = _db.Products;
+
+                if (message.Name.NotEmpty())
+                    query.Where(x => x.Name.Contains(message.Name));
+
+                return query.ToList();
             }
         }
     }

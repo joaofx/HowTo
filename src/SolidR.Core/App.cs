@@ -28,6 +28,7 @@ namespace SolidR.Core
 
         // TODO: Refactor
         public static Logger Log { get; private set; }
+
         public static IContainer Container { get; private set; }
         
         public static void Initialize(Action<ConfigurationExpression> callerContainerConfiguration = null)

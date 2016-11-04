@@ -2,8 +2,6 @@
 using HowShop.Core.Commands;
 using NUnit.Framework;
 using Shouldly;
-using SolidR.TestFx;
-using static HowTo.IntegratedTests.Testing;
 
 namespace HowTo.IntegratedTests.Commands
 {

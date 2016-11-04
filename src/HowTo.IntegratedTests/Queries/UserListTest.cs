@@ -3,9 +3,11 @@ using HowShop.Core;
 using HowShop.Core.Domain;
 using HowShop.Core.Queries;
 using NUnit.Framework;
+using Ploeh.SemanticComparison;
+using Ploeh.SemanticComparison.Fluent;
 using Shouldly;
+using SolidR.Core;
 using SolidR.TestFx;
-using static HowTo.IntegratedTests.Testing;
 
 namespace HowTo.IntegratedTests.Queries
 {
@@ -16,9 +18,9 @@ namespace HowTo.IntegratedTests.Queries
         public void Should_list_users()
         {
             // arrange
-            var admin = Fixtures.Create<User>(_ => _.Profile = Profile.Admin);
-            var user2 = Fixtures.Create<User>();
-            var user3 = Fixtures.Create<User>();
+            var admin = Fixture.Create<User>(_ => _.Profile = Profile.Admin);
+            var user2 = Fixture.Create<User>();
+            var user3 = Fixture.Create<User>();
 
             SaveAll(admin, user2, user3);
 
@@ -30,6 +32,7 @@ namespace HowTo.IntegratedTests.Queries
             // assert
             // TODO: compare all properties
             result.Count().ShouldBe(3);
+            //result.At(0).AsSource().OfLikeness<User>().ShouldEqual(admin);
             result.ShouldContain(admin);
             result.ShouldContain(user2);
             result.ShouldContain(user3);
@@ -40,7 +43,7 @@ namespace HowTo.IntegratedTests.Queries
         public void Should_throw_exception_when_user_has_no_authorization()
         {
             // arrange
-            var userWithNotAuthorizedProfile = Fixtures.Create<User>(_ => _.Profile = Profile.Customer);
+            var userWithNotAuthorizedProfile = Fixture.Create<User>(_ => _.Profile = Profile.Customer);
             TestUserSession.CurrentUser = () => userWithNotAuthorizedProfile;
 
             // act & assert

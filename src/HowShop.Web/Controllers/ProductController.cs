@@ -14,9 +14,9 @@ namespace HowShop.Web.Controllers
             _mediator = mediator;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(ProductList.Query query)
         {
-            var result = _mediator.Send(new ProductList.Query());
+            var result = _mediator.Send(query);
             return View(result);
         }
 

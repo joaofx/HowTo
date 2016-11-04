@@ -175,6 +175,7 @@
     <Compile Include="ShellTasks\DbResetTask.cs" />
     <Compile Include="ShellTasks\DbRollbackShellTask.cs" />
     <Compile Include="ShellTasks\DbMigrateShellTask.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Boot\" />

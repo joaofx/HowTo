@@ -1,4 +1,6 @@
-﻿using HowShop.Core.Concerns;
+﻿using System.Data.Entity;
+using HowShop.Core.Concerns;
+using HowShop.Core.Infra;
 using SolidR.TestFx;
 using StructureMap;
 
@@ -10,6 +12,7 @@ namespace HowTo.IntegratedTests.Boot
         {
             For<IDatabaseCleaner>().Use<RespawnDatabaseCleaner>();
             For<IUserSession>().Use<TestUserSession>();
+            For<DbContext>().Use<HowShopContext>();
         }
     }
 }

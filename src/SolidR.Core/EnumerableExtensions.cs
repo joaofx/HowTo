@@ -17,5 +17,13 @@ namespace SolidR.Core
                 .Aggregate(string.Empty, (current, item) => current + (action(item) + split))
                 .TrimEnd(split.ToCharArray());
         }
+
+        /// <summary>
+        /// Shortcut for enumerable.ElementAt(index);
+        /// </summary>
+        public static T At<T>(this IEnumerable<T> enumerable, int index)
+        {
+            return enumerable.ElementAt(index);
+        }
     }
 }

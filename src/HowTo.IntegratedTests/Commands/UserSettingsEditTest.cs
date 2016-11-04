@@ -7,7 +7,6 @@ using NodaMoney;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.TestFx;
-using static HowTo.IntegratedTests.Testing;
 
 namespace HowTo.IntegratedTests.Commands
 {
@@ -18,7 +17,7 @@ namespace HowTo.IntegratedTests.Commands
         public void Should_save()
         {
             // arrange
-            var admin = Fixtures.Create<User>();
+            var admin = Fixture.Create<User>();
             SaveAll(admin);
 
             // act

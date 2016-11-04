@@ -1,15 +1,23 @@
 ﻿using System;
+using NSubstitute;
 using Ploeh.AutoFixture;
 using SolidR.TestFx.FixtureHelpers;
 using SolidR.TestFx.SpecimenBuilders;
+using StructureMap;
 
-namespace HowTo.IntegratedTests
+namespace SolidR.TestFx
 {
-    public class Fixtures
+    public class TestFixture
     {
+        private readonly IContainer _container;
         private static readonly Fixture Fixture;
 
-        static Fixtures()
+        public TestFixture(IContainer container)
+        {
+            _container = container;
+        }
+
+        static TestFixture()
         {
             Fixture = new Fixture();
             Fixture.Customizations.Add(new IdOmitterBuilder());
@@ -22,7 +30,7 @@ namespace HowTo.IntegratedTests
             Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
 
-        public static T Create<T>(params Action<T>[] composers)
+        public T Create<T>(params Action<T>[] composers)
         {
             var item = Fixture.Create<T>();
 
@@ -32,6 +40,16 @@ namespace HowTo.IntegratedTests
             }
 
             return item;
+        }
+
+        public T Mock<T>() where T : class
+        {
+            var mock = Substitute.For<T>();
+
+            _container.EjectAllInstancesOf<T>();
+            _container.Inject(mock);
+
+            return mock;
         }
     }
 }

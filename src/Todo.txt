@@ -6,6 +6,8 @@
 - Protected Admin User from not Profile.Admin
 - Page or Handler unauthorized access
 
+- Rename SolidR.TestFx to SolidR.Testing?
+
 - SolidR migrate or update dev/test/all
 	http://stackoverflow.com/questions/1357240/change-the-value-in-app-config-file-dynamically
 	http://yizeng.me/2013/08/31/update-appsettings-and-custom-configuration-sections-in-appconfig-at-runtime/

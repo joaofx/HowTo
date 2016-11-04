@@ -1,12 +1,8 @@
 ﻿using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Queries;
-using MediatR;
 using NUnit.Framework;
 using Shouldly;
-using SolidR;
-using SolidR.TestFx;
-using static HowTo.IntegratedTests.Testing;
 
 namespace HowTo.IntegratedTests.Queries
 {
