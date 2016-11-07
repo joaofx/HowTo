@@ -70,3 +70,7 @@
 label{
 	display:inline;
 }
+
+.data-select2 {
+    visibility: hidden;
+}

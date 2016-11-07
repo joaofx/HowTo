@@ -11,6 +11,8 @@ namespace HowShop.Core.Domain
         public string Name { get; private set; }
         public decimal Price { get; private set; }
         public Audit Audit { get; private set; } = new Audit();
+        public Category Category { get; private set; }
+        public long CategoryId { get; private set; }
         public IEnumerable<Stock> Stocks => _stocks;
         public bool Sold => false;
 
@@ -18,10 +20,11 @@ namespace HowShop.Core.Domain
         {
         }
 
-        public Product(string name, decimal price)
+        public Product(string name, decimal price, long categoryId = 0)
         {
             Name = name;
             Price = price;
+            CategoryId = categoryId;
         }
 
         public void AddQuantityInStock(Store store, int quantity)

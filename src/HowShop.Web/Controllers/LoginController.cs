@@ -24,7 +24,7 @@ namespace HowShop.Web.Controllers
         public ActionResult SignIn(UserLogin.Command command)
         {
             _mediator.Send(command);
-            return this.RedirectToActionJson<AdminProductController>(x => x.Index());
+            return this.RedirectToActionJson<AdminProductController>(x => x.Index(null));
         }
 
         public ActionResult SignOut()

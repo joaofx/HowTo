@@ -1,6 +1,48 @@
-﻿@model IEnumerable<Product>
+﻿@model ProductList.Result
 
-<h1>Products</h1>
+@*<h1>Products</h1>*@
+
+<div class="row">
+    
+    <form method="get" class="form-horizontal">
+
+        @Html.FormSummary()
+
+        <div class="well bs-component">
+
+            <fieldset>
+
+                <div class="form-group">
+                    @Html.Label(m => m.Name)
+                    <div class="col-lg-10">
+                        @Html.Input(m => m.Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label(m => m.Categories)
+                    <div class="col-lg-10">
+                        @* TODO: Html.Filter(m => m.Categories) *@
+                        @*@Html.Input(m => m.Categories)*@
+
+                        @* TODO: fix this ridiculous ListOfCategories *@
+                        @Html.DropDownListFor(x => x.Categories, new SelectList(Model.ListOfCategories, "Id", "Name"), new { multiple = "multiple", @class = "data-select2 form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+
+    </form>
+
+</div>
+
 
 <div class="row">
     
@@ -10,18 +52,23 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    @* TODO: Strong typed labels *@
                     <th>Name</th>
+                    <th>Category</th>
                     <th>Price</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-            @foreach (var product in Model)
+            @* TODO: Change Display to use array and print span ids like product[0].Name *@
+            @foreach (var product in Model.Products)
             {
                     <tr>
                         <td>@Html.Display(product, p => p.Name)</td>
+                        <td>@Html.Display(product, p => p.Category.Name)</td>
                         <td>@Html.Display(product, p => p.Price)</td>
                         <td>
+                            @* TODO: Would be nice to have Url.LinkTo(new ProductEdit.Query { Id = product.Id }) *@
                             <a href="@(Url.Action<AdminProductController>(c => c.Edit(new ProductEdit.Query() { Id = product.Id })))">Edit</a>
                         </td>
                     </tr>

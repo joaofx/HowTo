@@ -18,6 +18,7 @@
 	- https://github.com/jmansar/SemanticComparisonExtensions
 	- http://stackoverflow.com/questions/33542159/autofixture-likeness-comparison-of-complex-objects
 
+- Seed Task
 - Fix [RoutePrefix("Admin/User")]
 - Hash passwords with salt
 - Change projects to work with dev_settings.config and test_settings.config instead of database.config

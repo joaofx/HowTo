@@ -16,6 +16,7 @@ namespace HowShop.Core.Infra
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Store> Stores { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public HowShopContext() : base(App.ConnectionString)
         {

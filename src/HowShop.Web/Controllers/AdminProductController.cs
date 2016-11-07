@@ -6,6 +6,7 @@ using SolidR.Core.Mvc;
 
 namespace HowShop.Web.Controllers
 {
+    [RoutePrefix("Admin/Product")]
     public class AdminProductController : Controller
     {
         private readonly IMediator _mediator;
@@ -15,9 +16,9 @@ namespace HowShop.Web.Controllers
             _mediator = mediator;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(ProductList.Query query)
         {
-            var result = _mediator.Send(new ProductList.Query());
+            var result = _mediator.Send(query);
             return View(result);
         }
 
@@ -37,7 +38,7 @@ namespace HowShop.Web.Controllers
         public ActionResult Save(ProductEdit.Command command)
         {
             _mediator.Send(command);
-            return this.RedirectToActionJson(c => c.Index());
+            return this.RedirectToActionJson(c => c.Index(null));
         }
     }
 }

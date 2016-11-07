@@ -24,10 +24,11 @@ namespace HowTo.IntegratedTests.Queries
             var result = Send(new ProductList.Query());
 
             // assert
-            result.Count().ShouldBe(3);
-            result.ShouldContain(iphone);
-            result.ShouldContain(galaxy);
-            result.ShouldContain(motorola);
+            Assert.Fail();
+            //result.Count().ShouldBe(3);
+            //result.ShouldContain(iphone);
+            //result.ShouldContain(galaxy);
+            //result.ShouldContain(motorola);
         }
     }
 }

@@ -1,8 +1,6 @@
-
-
-# Internationalization
-
-## Timezone
-
-EditorModifier for Timezone dropdown
-Display convention to show times converted by userSession.TimeZone
+Customers can have many addresses in their profile
+At checkout customer can manage and pick an address for shipping
+Products can have supplier
+Products can have minimum stocks
+After an order when a Product achieve minimum stock, notify product's supplier
+Supplier can see a page with it products and actual vs minimum stock

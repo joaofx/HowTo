@@ -167,10 +167,13 @@
     <Compile Include="Concerns\Culture.cs" />
     <Compile Include="Concerns\Language.cs" />
     <Compile Include="Concerns\Currencies.cs" />
+    <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Profile.cs" />
     <Compile Include="Concerns\IAuthorization.cs" />
     <Compile Include="Handlers\AuthorizationHandler.cs" />
+    <Compile Include="Migrations\201611071311_CreateCategoryAlterProductAddCategory.cs" />
     <Compile Include="Migrations\201611012354_InsertAdminUser.cs" />
+    <Compile Include="Migrations\MigrationConventions.cs" />
     <Compile Include="UnauthorizedException.cs" />
     <Compile Include="Infra\MustHaveAccessToAttribute.cs" />
     <Compile Include="Migrations\201610271328_AlterUserAddProfile.cs" />
