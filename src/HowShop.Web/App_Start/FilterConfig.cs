@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using HowShop.Web.Infra;
 using SolidR.Core.Mvc;
 
 namespace HowShop.Web
@@ -9,6 +10,7 @@ namespace HowShop.Web
         {
             filters.Add(new HandleValidationException());
             filters.Add(new HandleAjaxPostException());
+            filters.Add(new TurbolinksAttribute());
             filters.Add(new HandleErrorAttribute());
         }
     }
