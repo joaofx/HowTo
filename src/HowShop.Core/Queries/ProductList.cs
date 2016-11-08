@@ -6,6 +6,8 @@ using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using MediatR;
 using SolidR.Core;
+using SolidR.Core.EntityFramework;
+using Z.EntityFramework.Plus;
 
 namespace HowShop.Core.Queries
 {
@@ -14,7 +16,7 @@ namespace HowShop.Core.Queries
         public class Query : IRequest<Result>
         {
             public string Name { get; set; }
-            public string[] Categories { get; set; }
+            public long[] Categories { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, Result>
@@ -32,20 +34,21 @@ namespace HowShop.Core.Queries
                 // TODO: Projection to select only fields used by screen
                 // TODO: Use ToFuture to query Products and Categories in one round trip
 
-                var query = _db.Products;
+                var query = _db.Products
+                    .Include(x => x.Category);
 
                 if (message.Name.NotEmpty())
-                    query.Where(x => x.Name.Contains(message.Name));
+                    query = query.Where(x => x.Name.Contains(message.Name));
 
                 if (message.Categories.NotEmpty())
-                    query.Where(x => message.Categories.Contains(x.CategoryId.ToString()));
+                    query = query.WhereIn(x => x.CategoryId, message.Categories);
 
                 return new Result
                 {
-                    Products = query.Include(x => x.Category).ToList(),
+                    Products = query.Future(),
                     Name = message.Name,
                     Categories = message.Categories,
-                    ListOfCategories = _db.Categories.ToList()
+                    ListOfCategories = _db.Categories.Future()
                 };
             }
         }
@@ -53,8 +56,8 @@ namespace HowShop.Core.Queries
         public class Result
         {
             public string Name { get; set; }
-            public string[] Categories { get; set; }
-            public List<Product> Products { get; set; }
+            public long[] Categories { get; set; }
+            public IEnumerable<Product> Products { get; set; }
             public IEnumerable<Category> ListOfCategories { get; set; }
         }
     }

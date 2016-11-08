@@ -10,25 +10,28 @@ namespace HowTo.IntegratedTests.Queries
     public class ProductListTest : IntegratedTest
     {
         [Test]
-        public void Should_list_products()
+        public void Should_list_products_with_filters()
         {
             // arrange
-            // TODO - Use AutoFixture
-            var iphone = new Product("iPhone", 599.99m);
-            var galaxy = new Product("Galaxy", 499.49m);
-            var motorola = new Product("Motorola", 355.55m);
+            var tablet = Fixture.Create<Category>();
+            var smartPhone = Fixture.Create<Category>();
 
-            SaveAll(iphone, galaxy, motorola);
+            var iphone = Fixture.Create<Product>(x => x.Category = smartPhone);
+            var galaxy = Fixture.Create<Product>(x => x.Category = smartPhone);
+            var ipad = Fixture.Create<Product>(x => x.Category = tablet);
+
+            SaveAll(tablet, smartPhone, iphone, galaxy, ipad);
 
             // act
-            var result = Send(new ProductList.Query());
+            var result = Send(new ProductList.Query
+            {
+                Categories = new[] { smartPhone.Id },
+                Name = iphone.Name.Substring(1, 10)
+            });
 
             // assert
-            Assert.Fail();
-            //result.Count().ShouldBe(3);
-            //result.ShouldContain(iphone);
-            //result.ShouldContain(galaxy);
-            //result.ShouldContain(motorola);
+            result.Products.Count().ShouldBe(1);
+            result.Products.ShouldContain(iphone);
         }
     }
 }

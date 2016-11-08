@@ -26,6 +26,8 @@
                         @*@Html.Input(m => m.Categories)*@
 
                         @* TODO: fix this ridiculous ListOfCategories *@
+                        @* TODO: Convert to HtmlTag  *@
+                        @* TODO: Fix many selected  *@
                         @Html.DropDownListFor(x => x.Categories, new SelectList(Model.ListOfCategories, "Id", "Name"), new { multiple = "multiple", @class = "data-select2 form-control" })
                     </div>
                 </div>
