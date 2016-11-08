@@ -13,10 +13,14 @@
 
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/solidr")
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/solidr")*@
+
+    @Scripts.Render("~/bundles/libs")
+    @Scripts.Render("~/bundles/app")
+
+@RenderSection("scripts", required: false)
     
 </body>
 </html>
