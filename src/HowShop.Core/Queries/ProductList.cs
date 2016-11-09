@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using MediatR;
@@ -31,8 +31,6 @@ namespace HowShop.Core.Queries
             public Result Handle(Query message)
             {
                 // TODO: Automapper between Query and Result filter properties
-                // TODO: Projection to select only fields used by screen
-                // TODO: Use ToFuture to query Products and Categories in one round trip
 
                 var query = _db.Products
                     .Include(x => x.Category);
@@ -45,7 +43,7 @@ namespace HowShop.Core.Queries
 
                 return new Result
                 {
-                    Products = query.Future(),
+                    Products = query.ProjectTo<Product>().Future(),
                     Name = message.Name,
                     Categories = message.Categories,
                     ListOfCategories = _db.Categories.Future()
@@ -59,6 +57,22 @@ namespace HowShop.Core.Queries
             public long[] Categories { get; set; }
             public IEnumerable<Product> Products { get; set; }
             public IEnumerable<Category> ListOfCategories { get; set; }
+        }
+
+        public class Product
+        {
+            public string Name { get; set; }
+            public string CategoryName { get; set; }
+            public string Price { get; set; }
+            public long Id { get; set; }
+        }
+
+        public class Mapping : AutoMapper.Profile
+        {
+            public Mapping()
+            {
+                CreateMap<Domain.Product, Product>();
+            }
         }
     }
 }

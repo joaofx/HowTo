@@ -3,6 +3,7 @@ using HowShop.Core.Domain;
 using HowShop.Core.Queries;
 using NUnit.Framework;
 using Shouldly;
+using SolidR.Core;
 
 namespace HowTo.IntegratedTests.Queries
 {
@@ -31,7 +32,8 @@ namespace HowTo.IntegratedTests.Queries
 
             // assert
             result.Products.Count().ShouldBe(1);
-            result.Products.ShouldContain(iphone);
+            result.Products.At(0).Name.ShouldBe(iphone.Name);
+            result.Products.At(0).CategoryName.ShouldBe(smartPhone.Name);
         }
     }
 }

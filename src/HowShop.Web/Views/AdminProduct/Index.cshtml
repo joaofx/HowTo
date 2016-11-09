@@ -67,7 +67,7 @@
             {
                     <tr>
                         <td>@Html.Display(product, p => p.Name)</td>
-                        <td>@Html.Display(product, p => p.Category.Name)</td>
+                        <td>@Html.Display(product, p => p.CategoryName)</td>
                         <td>@Html.Display(product, p => p.Price)</td>
                         <td>
                             @* TODO: Would be nice to have Url.LinkTo(new ProductEdit.Query { Id = product.Id }) *@

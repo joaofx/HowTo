@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DelegateDecompiler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
       <HintPath>..\packages\DelegateDecompiler.0.20.0\lib\net40-Client\DelegateDecompiler.dll</HintPath>
       <Private>True</Private>
@@ -153,12 +157,17 @@
       <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="X.PagedList, Version=5.3.0.21888, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.5.3.0.5300\lib\portable-net45+wp8+win8\X.PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.4.8.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
       <HintPath>..\packages\Z.EntityFramework.Plus.EF6.1.4.8\lib\net45\Z.EntityFramework.Plus.EF6.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boot\AutoMapperRegistry.cs" />
     <Compile Include="Boot\DbContextRegistry.cs" />
     <Compile Include="Boot\MediatorRegistry.cs" />
     <Compile Include="Commands\UserLogout.cs" />
@@ -175,6 +184,8 @@
     <Compile Include="Domain\Profile.cs" />
     <Compile Include="Concerns\IAuthorization.cs" />
     <Compile Include="Handlers\AuthorizationHandler.cs" />
+    <Compile Include="Infra\AutoMapperInitializer.cs" />
+    <Compile Include="Infra\MapperExtensions.cs" />
     <Compile Include="Migrations\201611071311_CreateCategoryAlterProductAddCategory.cs" />
     <Compile Include="Migrations\201611012354_InsertAdminUser.cs" />
     <Compile Include="Migrations\MigrationConventions.cs" />
