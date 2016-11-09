@@ -10,7 +10,7 @@ namespace HowShop.Web.Boot
         public HtmlTagRegistry()
         {
             var htmlConventionLibrary = new HtmlConventionLibrary();
-            new HowShopHtmlConventions().Apply(htmlConventionLibrary);
+            new HtmlConventions().Apply(htmlConventionLibrary);
             new DefaultHtmlConventions().Apply(htmlConventionLibrary);
             For<HtmlConventionLibrary>().Use(htmlConventionLibrary);
         }

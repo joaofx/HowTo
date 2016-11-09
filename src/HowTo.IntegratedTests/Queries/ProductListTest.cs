@@ -24,16 +24,22 @@ namespace HowTo.IntegratedTests.Queries
             SaveAll(tablet, smartPhone, iphone, galaxy, ipad);
 
             // act
-            var result = Send(new ProductList.Query
+            var query = new ProductList.Query
             {
                 Categories = new[] { smartPhone.Id },
                 Name = iphone.Name.Substring(1, 10)
-            });
+            };
+
+            var result = Send(query);
 
             // assert
             result.Products.Count().ShouldBe(1);
             result.Products.At(0).Name.ShouldBe(iphone.Name);
             result.Products.At(0).CategoryName.ShouldBe(smartPhone.Name);
+
+            // keep search parameters
+            result.Categories.ShouldBe(query.Categories);
+            result.Name.ShouldBe(query.Name);
         }
     }
 }

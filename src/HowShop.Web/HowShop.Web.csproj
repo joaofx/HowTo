@@ -207,6 +207,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Html\Conventions\LookupDropDownModifier.cs" />
     <Compile Include="Html\Conventions\EnumDropDownModifier.cs" />
     <Compile Include="Html\LayoutExtensions.cs" />
     <Compile Include="Html\Conventions\TimeZoneDropDownModifier.cs" />
@@ -214,7 +215,7 @@
     <Compile Include="Html\Conventions\ElementRequestExtensions.cs" />
     <Compile Include="Html\Conventions\LanguageDropDownModifier.cs" />
     <Compile Include="Html\Conventions\CurrencyDropDownModifier.cs" />
-    <Compile Include="Html\Conventions\HowShopHtmlConventions.cs" />
+    <Compile Include="Html\Conventions\HtmlConventions.cs" />
     <Compile Include="Infra\TurbolinksAttribute.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductFixture.cs" />

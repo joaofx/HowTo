@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
@@ -30,8 +31,6 @@ namespace HowShop.Core.Queries
 
             public Result Handle(Query message)
             {
-                // TODO: Automapper between Query and Result filter properties
-
                 var query = _db.Products
                     .Include(x => x.Category);
 
@@ -41,13 +40,15 @@ namespace HowShop.Core.Queries
                 if (message.Categories.NotEmpty())
                     query = query.WhereIn(x => x.CategoryId, message.Categories);
 
-                return new Result
+                var result = new Result()
                 {
                     Products = query.ProjectTo<Product>().Future(),
-                    Name = message.Name,
-                    Categories = message.Categories,
                     ListOfCategories = _db.Categories.Future()
                 };
+
+                Mapper.Map(message, result);
+
+                return result;
             }
         }
 
@@ -63,16 +64,8 @@ namespace HowShop.Core.Queries
         {
             public string Name { get; set; }
             public string CategoryName { get; set; }
-            public string Price { get; set; }
+            public decimal Price { get; set; }
             public long Id { get; set; }
-        }
-
-        public class Mapping : AutoMapper.Profile
-        {
-            public Mapping()
-            {
-                CreateMap<Domain.Product, Product>();
-            }
         }
     }
 }

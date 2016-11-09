@@ -40,6 +40,7 @@ namespace HowShop.Core.Commands
             public string Name { get; set; }
             public decimal Price { get; set; }
             public long CategoryId { get; set; }
+            public Category Category { get; set; }
         }
 
         public class Handler : RequestHandler<Command>
@@ -51,12 +52,15 @@ namespace HowShop.Core.Commands
                 _db = db;
             }
 
-            protected override void HandleCore(Command message)
+            // TODO: fetch Category on database
+            // TODO: set association Product.Category = message.Category
+            // TODO: conventional way to handle and tell user when Category does not exist on db
+
+            protected override void HandleCore(Command command)
             {
-                // TODO: fetch Category on database
-                // TODO: set association Product.Category = message.Category
-                // TODO: conventional way to handle and tell user when Category does not exist on db
-                var product = new Product(message.Name, message.Price, message.CategoryId);
+                var category = _db.Categories.Find(command.CategoryId);
+                var product = new Product(command.Name, command.Price);
+                product.Category = category;
                 _db.Products.Add(product);
             }
         }
@@ -67,6 +71,7 @@ namespace HowShop.Core.Commands
             {
                 RuleFor(x => x.Name).NotEmpty();
                 RuleFor(x => x.Price).GreaterThan(0);
+                RuleFor(x => x.CategoryId).Configure(x => x.PropertyName = "Category").NotEmpty();
             }
         }
     }

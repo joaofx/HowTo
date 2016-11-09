@@ -6,12 +6,12 @@ using SolidR.Core.Mvc;
 
 namespace HowShop.Web.Html.Conventions
 {
-    public class HowShopHtmlConventions : HtmlConventionRegistry
+    public class HtmlConventions : HtmlConventionRegistry
     {
         public ElementCategoryExpression DisplayLabels =>
             new ElementCategoryExpression(Library.TagLibrary.Category("DisplayLabels").Profile(TagConstants.Default));
 
-        public HowShopHtmlConventions()
+        public HtmlConventions()
         {
             Editors.Always.AddClass("form-control");
 
@@ -53,6 +53,7 @@ namespace HowShop.Web.Html.Conventions
 
             // TODO: Scan all modifiers?
             Editors.Modifier<EnumDropDownModifier>();
+            Editors.Modifier<LookupDropDownModifier>();
 
             Editors.Modifier<CurrencyDropDownModifier>();
             Editors.Modifier<LanguageDropDownModifier>();

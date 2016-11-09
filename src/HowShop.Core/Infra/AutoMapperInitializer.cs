@@ -8,6 +8,7 @@ namespace HowShop.Core.Infra
         {
             Mapper.Initialize(cfg =>
             {
+                cfg.CreateMissingTypeMaps = true;
                 cfg.AddProfiles(typeof(AutoMapperInitializer));
             });
         }

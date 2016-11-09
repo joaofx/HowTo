@@ -1,8 +1,9 @@
-﻿using SolidR.Core.Domain;
+﻿using HowShop.Core.Concerns;
+using SolidR.Core.Domain;
 
 namespace HowShop.Core.Domain
 {
-    public class Category : Entity
+    public class Category : Entity, ILookupable
     {
         public string Name { get; private set; }
 
@@ -14,5 +15,7 @@ namespace HowShop.Core.Domain
         {
             Name = name;
         }
+
+        public string DisplayName => Name;
     }
 }

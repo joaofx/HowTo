@@ -1,4 +1,5 @@
 
+- Fix LookupDropDownModifier cast to ILookupable 
 - fixture.Mock<> create mock and inject on the container. How to rollback configurations?
 
 - Unauthorized page
