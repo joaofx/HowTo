@@ -190,6 +190,7 @@
     <Compile Include="Migrations\201611071311_CreateCategoryAlterProductAddCategory.cs" />
     <Compile Include="Migrations\201611012354_InsertAdminUser.cs" />
     <Compile Include="Migrations\MigrationConventions.cs" />
+    <Compile Include="Queries\AdminList.cs" />
     <Compile Include="UnauthorizedException.cs" />
     <Compile Include="Infra\MustHaveAccessToAttribute.cs" />
     <Compile Include="Migrations\201610271328_AlterUserAddProfile.cs" />

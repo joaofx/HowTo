@@ -42,7 +42,7 @@ namespace HowShop.Core.Queries
 
                 var result = new Result()
                 {
-                    Products = query.ProjectTo<Product>().Future(),
+                    Products = query.ProjectTo<ProductView>().Future(),
                     ListOfCategories = _db.Categories.Future()
                 };
 
@@ -56,11 +56,11 @@ namespace HowShop.Core.Queries
         {
             public string Name { get; set; }
             public long[] Categories { get; set; }
-            public IEnumerable<Product> Products { get; set; }
+            public IEnumerable<ProductView> Products { get; set; }
             public IEnumerable<Category> ListOfCategories { get; set; }
         }
 
-        public class Product
+        public class ProductView
         {
             public string Name { get; set; }
             public string CategoryName { get; set; }

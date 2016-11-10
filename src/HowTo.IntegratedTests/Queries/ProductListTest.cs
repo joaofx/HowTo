@@ -34,10 +34,10 @@ namespace HowTo.IntegratedTests.Queries
 
             // assert
             result.Products.Count().ShouldBe(1);
+
             result.Products.At(0).Name.ShouldBe(iphone.Name);
             result.Products.At(0).CategoryName.ShouldBe(smartPhone.Name);
 
-            // keep search parameters
             result.Categories.ShouldBe(query.Categories);
             result.Name.ShouldBe(query.Name);
         }

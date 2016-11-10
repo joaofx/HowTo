@@ -7,3 +7,8 @@ Supplier can see a page with it products and actual vs minimum stock
 After checkout notify Wharehouse for dispatch
 
 Each step of order delivery could notify the customer
+
+
+- [F] My Orders - show date time it was ordered using user's time zone
+- [F] Users Management - Name, email, profile: Admin (everything), Backoffice (manage products)
+- [F] User can set their own settings: 

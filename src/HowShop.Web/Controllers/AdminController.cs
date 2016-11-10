@@ -4,6 +4,7 @@ using MediatR;
 
 namespace HowShop.Web.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IMediator _mediator;
@@ -15,8 +16,7 @@ namespace HowShop.Web.Controllers
 
         public ActionResult Index()
         {
-            var result = _mediator.Send(new ProductList.Query());
-            return View(result);
+            return View();
         }
     }
 }
