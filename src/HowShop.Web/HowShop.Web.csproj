@@ -208,6 +208,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Html\Conventions\CategorySelectElementBuilder.cs" />
+    <Compile Include="Html\Conventions\EntitySelectElementBuilder.cs" />
     <Compile Include="Html\Conventions\LookupDropDownModifier.cs" />
     <Compile Include="Html\Conventions\EnumDropDownModifier.cs" />
     <Compile Include="Html\LayoutExtensions.cs" />

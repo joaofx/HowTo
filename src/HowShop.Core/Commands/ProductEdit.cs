@@ -39,8 +39,8 @@ namespace HowShop.Core.Commands
             public long Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
-            public long CategoryId { get; set; }
-            public Category Category { get; set; }
+            public Lookup<Category> CategoryId { get; set; }
+            //public long CategoryId { get; set; }
         }
 
         public class Handler : RequestHandler<Command>
@@ -58,7 +58,7 @@ namespace HowShop.Core.Commands
 
             protected override void HandleCore(Command command)
             {
-                var category = _db.Categories.Find(command.CategoryId);
+                var category = _db.Categories.Find(command.Category.Id);
                 var product = new Product(command.Name, command.Price);
                 product.Category = category;
                 _db.Products.Add(product);
@@ -71,8 +71,9 @@ namespace HowShop.Core.Commands
             {
                 RuleFor(x => x.Name).NotEmpty();
                 RuleFor(x => x.Price).GreaterThan(0);
-                RuleFor(x => x.CategoryId).Configure(x => x.PropertyName = "Category").NotEmpty();
+                RuleFor(x => x.Category).NotEmpty();
             }
         }
     }
+
 }

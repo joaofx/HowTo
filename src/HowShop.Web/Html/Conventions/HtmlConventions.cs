@@ -53,7 +53,8 @@ namespace HowShop.Web.Html.Conventions
 
             // TODO: Scan all modifiers?
             Editors.Modifier<EnumDropDownModifier>();
-            Editors.Modifier<LookupDropDownModifier>();
+            //Editors.Modifier<LookupDropDownModifier>();
+            Editors.BuilderPolicy<CategorySelectElementBuilder>();
 
             Editors.Modifier<CurrencyDropDownModifier>();
             Editors.Modifier<LanguageDropDownModifier>();
