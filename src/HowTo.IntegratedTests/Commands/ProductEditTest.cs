@@ -11,7 +11,7 @@ namespace HowTo.IntegratedTests.Commands
     public class ProductEditTest : IntegratedTest
     {
         [Test]
-        public void Should_save()
+        public void Should_handle_command()
         {
             // arrange
             var category = Fixture.Create<Category>();
@@ -34,6 +34,32 @@ namespace HowTo.IntegratedTests.Commands
                 product.Price.ShouldBe(command.Price);
                 product.Category.ShouldBe(category);
             });
+        }
+
+        [Test]
+        public void Should_handle_query()
+        {
+            // arrange
+            var category = Fixture.Create<Category>();
+            var otherCategory = Fixture.Create<Category>();
+            var product = Fixture.Create<Product>(x => x.Category = category);
+
+            SaveAll(category, otherCategory, product);
+
+            var command = new ProductEdit.Query
+            {
+                Id = product.Id
+            };
+
+            // act
+            var result = Send(command);
+
+            result.Name.ShouldBe(product.Name);
+            result.Price.ShouldBe(product.Price);
+            result.CategoryId.ShouldBe(product.CategoryId);
+            result.Categories.Count().ShouldBe(2);
+            result.Categories.ShouldContain(category);
+            result.Categories.ShouldContain(otherCategory);
         }
     }
 }
