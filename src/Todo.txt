@@ -13,6 +13,7 @@
 - Protected Admin User from not Profile.Admin
 - Page or Handler unauthorized access
 
+- Use Features Folders?
 - Rename SolidR.TestFx to SolidR.Testing?
 
 - SolidR migrate or update dev/test/all
