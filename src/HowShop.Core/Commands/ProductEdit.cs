@@ -29,7 +29,7 @@ namespace HowShop.Core.Commands
             {
                 // TODO: use automapper
                 var command = _db.Products.Where(x => x.Id == message.Id).ProjectToFirstOrDefault<Command>();
-                command.Categories = _db.Categories.ProjectToList<Lookup>();
+                command.Categories = _db.Categories.Select(x => new Lookup {Id = x.Id, DisplayName = x.Name}).ToList();
                 return command;
                 //return new Command
                 //{
@@ -44,7 +44,7 @@ namespace HowShop.Core.Commands
             public long Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
-            public IEnumerable<ILookupable> Categories { get; set; } = new List<Lookup>();
+            public IEnumerable<Lookup> Categories { get; set; } = new List<Lookup>();
             public long CategoryId { get; set; }
         }
 

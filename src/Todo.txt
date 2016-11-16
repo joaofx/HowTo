@@ -68,3 +68,7 @@
 - Update EF convention for complex type. Fix from Audit_UpdatedAt to AuditUpdatedAt
 
 - Check security website: https://www.owasp.org/index.php/Category:OWASP_.NET_Project#tab=Main
+
+- Encrypt Database.ConnectionString
+- Use Fubu/StructureMap Settings loading
+- Can override settings on runtime

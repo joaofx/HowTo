@@ -4,6 +4,7 @@ using HowShop.Core.Commands;
 using HowShop.Core.Domain;
 using NUnit.Framework;
 using Shouldly;
+using SolidR.Core;
 
 namespace HowTo.IntegratedTests.Commands
 {
@@ -58,8 +59,8 @@ namespace HowTo.IntegratedTests.Commands
             result.Price.ShouldBe(product.Price);
             result.CategoryId.ShouldBe(product.CategoryId);
             result.Categories.Count().ShouldBe(2);
-            result.Categories.ShouldContain(category);
-            result.Categories.ShouldContain(otherCategory);
+            result.Categories.At(0).DisplayName.ShouldContain(category.DisplayName);
+            result.Categories.At(1).DisplayName.ShouldContain(otherCategory.DisplayName);
         }
     }
 }
