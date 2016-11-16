@@ -5,6 +5,8 @@
 	- https://github.com/brockallen/BrockAllen.MembershipReboot
 	- https://github.com/rageit/prodinner
 	- http://stackoverflow.com/questions/31894237/asp-net-mvc-alternative-login-to-identity
+- Redirect to login page	
+	
 - Fix LookupDropDownModifier cast to ILookupable 
 
 - Admin Products edit Category
@@ -14,6 +16,7 @@
 - Page or Handler unauthorized access
 
 - Use Features Folders?
+- Warn unsaved changes
 - Rename SolidR.TestFx to SolidR.Testing?
 
 - SolidR migrate or update dev/test/all
@@ -27,6 +30,7 @@
 	- http://stackoverflow.com/questions/33542159/autofixture-likeness-comparison-of-complex-objects
 
 - Seed Task
+- Use ES6
 
 - Hash passwords with salt
 - Change projects to work with dev_settings.config and test_settings.config instead of database.config
@@ -38,6 +42,10 @@
 - Nodata helper for show empty table
 - Add progress in buttons while waiting for response
 - Use SemanticComparison to compare two objects on unittests
+
+- Unit test to scan all IRequest Authorizations and test it
+
+- Multiple Submits to same action
 
 
 - Show DbContext GetHashCode when:
@@ -59,3 +67,9 @@
 - Use the current user culture to format numbers, currency and dates
 
 - Update EF convention for complex type. Fix from Audit_UpdatedAt to AuditUpdatedAt
+
+- Check security website: https://www.owasp.org/index.php/Category:OWASP_.NET_Project#tab=Main
+
+- Encrypt Database.ConnectionString
+- Use Fubu/StructureMap Settings loading
+- Can override settings on runtime

@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using FluentValidation;
+using HowShop.Core.Concerns;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using MediatR;
@@ -24,13 +28,14 @@ namespace HowShop.Core.Commands
             public Command Handle(Query message)
             {
                 // TODO: use automapper
-                var product = _db.Products.Find(message.Id);
-
-                return new Command
-                {
-                    Name = product.Name,
-                    Price = product.Price
-                };
+                var command = _db.Products.Where(x => x.Id == message.Id).ProjectToFirstOrDefault<Command>();
+                command.Categories = _db.Categories.Select(x => new Lookup {Id = x.Id, DisplayName = x.Name}).ToList();
+                return command;
+                //return new Command
+                //{
+                //    Name = product.Name,
+                //    Price = product.Price,
+                //};
             }
         }
 
@@ -39,8 +44,8 @@ namespace HowShop.Core.Commands
             public long Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
-            public Lookup<Category> CategoryId { get; set; }
-            //public long CategoryId { get; set; }
+            public IEnumerable<Lookup> Categories { get; set; } = new List<Lookup>();
+            public long CategoryId { get; set; }
         }
 
         public class Handler : RequestHandler<Command>
@@ -58,10 +63,10 @@ namespace HowShop.Core.Commands
 
             protected override void HandleCore(Command command)
             {
-                var category = _db.Categories.Find(command.Category.Id);
-                var product = new Product(command.Name, command.Price);
-                product.Category = category;
-                _db.Products.Add(product);
+                //var category = _db.Categories.Find(command.Category.Id);
+                //var product = new Product(command.Name, command.Price);
+                //product.Category = category;
+                //_db.Products.Add(product);
             }
         }
 
@@ -71,9 +76,14 @@ namespace HowShop.Core.Commands
             {
                 RuleFor(x => x.Name).NotEmpty();
                 RuleFor(x => x.Price).GreaterThan(0);
-                RuleFor(x => x.Category).NotEmpty();
+                RuleFor(x => x.CategoryId).NotEmpty();
             }
         }
     }
 
+    public class Lookup : ILookupable
+    {
+        public long Id { get; set; }
+        public string DisplayName { get; set; }
+    }
 }

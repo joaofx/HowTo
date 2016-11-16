@@ -177,3 +177,4 @@ artifacts
 build
 TestResult.xml
 tools
+/src/HowShop.Core/*.DotSettings

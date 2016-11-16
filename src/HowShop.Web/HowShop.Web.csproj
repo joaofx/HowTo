@@ -219,6 +219,7 @@
     <Compile Include="Html\Conventions\LanguageDropDownModifier.cs" />
     <Compile Include="Html\Conventions\CurrencyDropDownModifier.cs" />
     <Compile Include="Html\Conventions\HtmlConventions.cs" />
+    <Compile Include="Infra\EntityModelBinder.cs" />
     <Compile Include="Infra\TurbolinksAttribute.cs" />
     <Compile Include="Models\OwinUserSession.cs" />
     <Compile Include="Models\Product.cs" />

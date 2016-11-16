@@ -23,8 +23,9 @@
                     </div>
                     
                     <div class="form-group">
-                        @Html.Label(m => m.Category)
+                        @Html.Label(m => m.CategoryId)
                         <div class="col-lg-10">
+                            @Html.Select(m => m.CategoryId, Model.Categories)
                             @Html.Input(m => m.Category)
                         </div>
                     </div>

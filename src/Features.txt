@@ -1,3 +1,5 @@
+Choose a Category for Products
+
 Customers can have many addresses in their profile
 At checkout customer can manage and pick an address for shipping
 Products can have supplier
