@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using FluentValidation;
-using HowShop.Core.Concerns;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using MediatR;
-using SolidR.Core.Domain;
+using SolidR.Core;
 
 namespace HowShop.Core.Commands
 {
@@ -28,15 +27,9 @@ namespace HowShop.Core.Commands
 
             public Command Handle(Query message)
             {
-                // TODO: use automapper
                 var command = _db.Products.Where(x => x.Id == message.Id).ProjectToFirstOrDefault<Command>();
-                command.Categories = _db.Categories.Select(x => new Lookup {Id = x.Id, DisplayName = x.Name}).ToList();
+                command.Categories = _db.Categories.Select(x => new SelectLookup() { Id = x.Id, DisplayName = x.Name }); // TODO: Conventional way to fill select lookups
                 return command;
-                //return new Command
-                //{
-                //    Name = product.Name,
-                //    Price = product.Price,
-                //};
             }
         }
 
@@ -45,7 +38,7 @@ namespace HowShop.Core.Commands
             public long Id { get; set; }
             public string Name { get; set; }
             public decimal Price { get; set; }
-            public IEnumerable<Lookup> Categories { get; set; } = new List<Lookup>();
+            public IEnumerable<SelectLookup> Categories { get; set; } = new List<SelectLookup>();
             public long CategoryId { get; set; }
         }
 
@@ -64,10 +57,11 @@ namespace HowShop.Core.Commands
 
             protected override void HandleCore(Command command)
             {
-                //var category = _db.Categories.Find(command.Category.Id);
-                //var product = new Product(command.Name, command.Price);
-                //product.Category = category;
-                //_db.Products.Add(product);
+                var category = _db.Categories.Find(command.CategoryId);
+                var product = new Product(command.Name, command.Price);
+                Mapper.Map(command, product);
+                product.Category = category;
+                _db.Products.Add(product);
             }
         }
 
@@ -80,11 +74,5 @@ namespace HowShop.Core.Commands
                 RuleFor(x => x.CategoryId).NotEmpty();
             }
         }
-    }
-
-    public class Lookup : ILookupable
-    {
-        public long Id { get; set; }
-        public string DisplayName { get; set; }
     }
 }

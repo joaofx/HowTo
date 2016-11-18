@@ -9,6 +9,11 @@ namespace SolidR.Core.EntityFramework
 {
     public static class LinqExtensions
     {
+        public static IQueryable<SelectLookup> ToSelectLookup<T>(this IQueryable<T> queryable, Func<T, long> idFunc, Func<T, string> displayFunc)
+        {
+            return queryable.Select(x => new SelectLookup() { Id = idFunc(x), DisplayName = displayFunc(x) });
+        }
+
         public static IQueryable<T> Include<T, TEnumerable>(this IQueryable<T> queryable, Expression<Func<T, IEnumerable<TEnumerable>>> path)
         {
             var newPath = (Expression<Func<T, IEnumerable<TEnumerable>>>) DecompileExpressionVisitor.Decompile(path);

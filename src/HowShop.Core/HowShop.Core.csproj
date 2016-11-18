@@ -177,7 +177,7 @@
   <ItemGroup>
     <Compile Include="Boot\AutoMapperRegistry.cs" />
     <Compile Include="Boot\DbContextRegistry.cs" />
-    <Compile Include="Boot\MediatorRegistry.cs" />
+    <Compile Include="Boot\MediatorPipelineRegistry.cs" />
     <Compile Include="Commands\UserLogout.cs" />
     <Compile Include="Concerns\Feature.cs" />
     <Compile Include="Concerns\IUserSession.cs" />
@@ -191,6 +191,7 @@
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Profile.cs" />
     <Compile Include="Concerns\IAuthorization.cs" />
+    <Compile Include="Handlers\LogHandler.cs" />
     <Compile Include="Handlers\AuthorizationHandler.cs" />
     <Compile Include="Infra\AutoMapperInitializer.cs" />
     <Compile Include="Infra\MapperExtensions.cs" />

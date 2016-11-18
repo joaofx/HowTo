@@ -59,8 +59,8 @@ namespace HowTo.IntegratedTests.Commands
             result.Price.ShouldBe(product.Price);
             result.CategoryId.ShouldBe(product.CategoryId);
             result.Categories.Count().ShouldBe(2);
-            result.Categories.At(0).DisplayName.ShouldContain(category.DisplayName);
-            result.Categories.At(1).DisplayName.ShouldContain(otherCategory.DisplayName);
+            result.Categories.At(0).DisplayName.ShouldContain(category.Name);
+            result.Categories.At(1).DisplayName.ShouldContain(otherCategory.Name);
         }
     }
 }

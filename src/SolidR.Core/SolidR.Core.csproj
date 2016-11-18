@@ -161,6 +161,7 @@
     <Compile Include="FluentMigrator\IDatabaseMigrator.cs" />
     <Compile Include="Handlers\ValidatorHandler.cs" />
     <Compile Include="Html\SelectTagExtensions.cs" />
+    <Compile Include="Lookup.cs" />
     <Compile Include="Mvc\ControllerExtensions.cs" />
     <Compile Include="Mvc\DefaultDisplayLabelBuilder.cs" />
     <Compile Include="Mvc\DependencyResolution\ControllerConvention.cs" />

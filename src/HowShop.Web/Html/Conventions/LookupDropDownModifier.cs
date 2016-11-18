@@ -19,7 +19,7 @@ namespace HowShop.Web.Html.Conventions
 
         public void Modify(ElementRequest request)
         {
-            var db = request.Get<HowShopContext>();
+            //var db = request.Get<HowShopContext>();
 
             //var method = db
             //    .GetType()
@@ -28,14 +28,14 @@ namespace HowShop.Web.Html.Conventions
 
             //var genericItem = method.Invoke(db, new object[0]);
 
-            var entities = db.Set(request.Accessor.PropertyType)
-                .Cast<Category>()
-                .ToList();
+            //var entities = db.Set(request.Accessor.PropertyType)
+            //    .Cast<Category>()
+            //    .ToList();
 
-            request.ModifyWithDropDown(
-                entities,
-                x => x.Id.ToString(),
-                x => x.DisplayName);
+            //request.ModifyWithDropDown(
+            //    entities,
+            //    x => x.Id.ToString(),
+            //    x => x.DisplayName);
         }
     }
 }

@@ -9,13 +9,13 @@ using StructureMap;
 
 namespace HowShop.Core.Boot
 {
-    public class MediatorRegistry : Registry
+    public class MediatorPipelineRegistry : Registry
     {
-        public MediatorRegistry()
+        public MediatorPipelineRegistry()
         {
             Scan(scanner =>
             {
-                scanner.AssemblyContainingType<MediatorRegistry>();
+                scanner.AssemblyContainingType<MediatorPipelineRegistry>();
                 scanner.WithDefaultConventions();
                 scanner.ConnectImplementationsToTypesClosing(typeof(IRequestHandler<,>));
                 scanner.ConnectImplementationsToTypesClosing(typeof(IAsyncRequestHandler<,>));
@@ -35,6 +35,7 @@ namespace HowShop.Core.Boot
             handlerType.DecorateAllWith(typeof(ValidatorHandler<,>));
             handlerType.DecorateAllWith(typeof(AuthorizationHandler<,>));
             handlerType.DecorateAllWith(typeof(TransactionHandler<,>));
+            handlerType.DecorateAllWith(typeof(LogHandler<,>));
         }
     }
 }
