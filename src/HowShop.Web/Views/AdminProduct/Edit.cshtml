@@ -1,4 +1,5 @@
-﻿@model ProductEdit.Command
+﻿@using SolidR.Core.Html
+@model ProductEdit.Command
 
 <div class="row">
     <div class="col-md-12">
@@ -25,8 +26,7 @@
                     <div class="form-group">
                         @Html.Label(m => m.CategoryId)
                         <div class="col-lg-10">
-                            @Html.Select(m => m.CategoryId, Model.Categories)
-                            @Html.Input(m => m.Category)
+                            @Html.Select(m => m.CategoryId, Model.Categories).EmptyOption()
                         </div>
                     </div>
 

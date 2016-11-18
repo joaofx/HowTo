@@ -18,24 +18,19 @@ namespace HowShop.Web.Html.Conventions
             ConfigEditors();
             ConfigLabels();
             ConfigDisplays();
+            ConfigDisplayLabels();
+        }
+
+        private void ConfigDisplayLabels()
+        {
+            DisplayLabels.Always.BuildBy<DefaultDisplayLabelBuilder>();
+            DisplayLabels.ModifyForAttribute<DisplayAttribute>((t, a) => t.Text(a.Name));
         }
 
         private void ConfigDisplays()
         {
-            DisplayLabels
-                .Always
-                .BuildBy<DefaultDisplayLabelBuilder>();
-
-            DisplayLabels
-                .ModifyForAttribute<DisplayAttribute>((t, a) => t.Text(a.Name));
-
-            Displays
-                .IfPropertyIs<DateTime>()
-                .ModifyWith(m => m.CurrentTag.Text(m.Value<DateTime>().ToShortDateString()));
-
-            Displays
-                .IfPropertyIs<decimal>()
-                .ModifyWith(m => m.CurrentTag.Text(m.Value<decimal>().ToString("C")));
+            Displays.IfPropertyIs<DateTime>().ModifyWith(m => m.CurrentTag.Text(m.Value<DateTime>().ToShortDateString()));
+            Displays.IfPropertyIs<decimal>().ModifyWith(m => m.CurrentTag.Text(m.Value<decimal>().ToString("C")));
         }
 
         private void ConfigLabels()
@@ -43,8 +38,9 @@ namespace HowShop.Web.Html.Conventions
             Labels.Always.AddClass("control-label");
             Labels.Always.AddClass("col-md-2");
 
-            Labels
-                .ModifyForAttribute<DisplayAttribute>((t, a) => t.Text(a.Name));
+            Labels.ModifyForAttribute<DisplayAttribute>((t, a) => t.Text(a.Name));
+            // TODO: Extension method to exclude last 2 chracters
+            Labels.If(m => m.Accessor.Name.EndsWith("Id")).ModifyWith(m => m.CurrentTag.Text(m.Accessor.Name.Substring(0, m.Accessor.Name.Length - 2)));
         }
 
         private void ConfigEditors()

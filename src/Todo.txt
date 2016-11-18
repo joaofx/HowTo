@@ -15,6 +15,7 @@
 - Protected Admin User from not Profile.Admin
 - Page or Handler unauthorized access
 
+- Use Features Folders?
 - Warn unsaved changes
 - Rename SolidR.TestFx to SolidR.Testing?
 

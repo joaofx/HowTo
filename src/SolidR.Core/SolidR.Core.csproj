@@ -149,6 +149,7 @@
     <Compile Include="Domain\IAuditable.cs" />
     <Compile Include="Domain\IEffectivable.cs" />
     <Compile Include="Domain\IEntity.cs" />
+    <Compile Include="Domain\ILookupable.cs" />
     <Compile Include="Domain\ISoftDeletable.cs" />
     <Compile Include="EntityFramework\DbModelBuilderExtensions.cs" />
     <Compile Include="EntityFramework\EntityFrameworkMappingConfiguration.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="FluentMigrator\IDatabaseMigrator.cs" />
     <Compile Include="Handlers\ValidatorHandler.cs" />
+    <Compile Include="Html\SelectTagExtensions.cs" />
     <Compile Include="Mvc\ControllerExtensions.cs" />
     <Compile Include="Mvc\DefaultDisplayLabelBuilder.cs" />
     <Compile Include="Mvc\DependencyResolution\ControllerConvention.cs" />

@@ -1,4 +1,4 @@
-namespace HowShop.Core.Concerns
+namespace SolidR.Core.Domain
 {
     /// <summary>
     /// TODO: Convert to Lookup<Entity>?
