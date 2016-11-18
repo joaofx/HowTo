@@ -18,6 +18,10 @@
 - Warn unsaved changes
 - Rename SolidR.TestFx to SolidR.Testing?
 
+- User session load user for each request and show its name
+- CurrentUserQuery Load current user session for cache
+- UserEdit.Command invalid CurrentUser caches
+
 - SolidR migrate or update dev/test/all
 	http://stackoverflow.com/questions/1357240/change-the-value-in-app-config-file-dynamically
 	http://yizeng.me/2013/08/31/update-appsettings-and-custom-configuration-sections-in-appconfig-at-runtime/
