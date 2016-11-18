@@ -9,6 +9,8 @@ using System.Web.Routing;
 using HtmlTags;
 using HtmlTags.Conventions;
 using HtmlTags.Conventions.Elements;
+using HtmlTags.Reflection;
+using SolidR.Core.Domain;
 
 namespace SolidR.Core.Mvc
 {
@@ -148,6 +150,30 @@ namespace SolidR.Core.Mvc
                 action);
 
             return Link(helper, linkText, url);
+        }
+
+        public static SelectTag Select<TModel, TProperty, TLookupable>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            IEnumerable<TLookupable> items) where TLookupable : ILookupable where TModel : class
+        {
+            var value = htmlHelper.ViewData.Model.ValueOrDefault(expression);
+
+            var select = new SelectTag(t =>
+            {
+                t.Id(htmlHelper.IdFor(expression).ToString());
+                t.Name(htmlHelper.NameFor(expression).ToString());
+                
+                foreach (var item in items)
+                {
+                    t.Option(item.DisplayName, item.Id.ToString());
+                }
+
+                t.SelectByValue(value);
+            });
+
+            select.AddClass("form-control");
+            return select;
         }
 
         private static HtmlTag Link(HtmlHelper helper, string linkText, string url)

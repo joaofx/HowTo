@@ -6,6 +6,7 @@ using HowShop.Core.Concerns;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using MediatR;
+using SolidR.Core.Domain;
 
 namespace HowShop.Core.Commands
 {

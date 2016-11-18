@@ -189,7 +189,6 @@
     <Compile Include="Concerns\Language.cs" />
     <Compile Include="Concerns\Currencies.cs" />
     <Compile Include="Domain\Category.cs" />
-    <Compile Include="Concerns\ILookupable.cs" />
     <Compile Include="Domain\Profile.cs" />
     <Compile Include="Concerns\IAuthorization.cs" />
     <Compile Include="Handlers\AuthorizationHandler.cs" />
