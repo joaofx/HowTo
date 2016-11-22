@@ -4,17 +4,18 @@ using SolidR.Core.Domain;
 
 namespace HowShop.Core.Domain
 {
-    public class Product : Entity, IAuditable
+    public class Product : Entity, IAuditable, IIntegratableByName
     {
         protected virtual ICollection<Stock> _stocks { get; set; } = new HashSet<Stock>();
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public decimal Price { get; private set; }
         public Audit Audit { get; private set; } = new Audit();
         public Category Category { get; set; }
         public long CategoryId { get; private set; }
         public IEnumerable<Stock> Stocks => _stocks;
         public bool Sold => false;
+        public string IntegrationName { get; set; }
 
         private Product()
         {

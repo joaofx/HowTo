@@ -13,7 +13,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
     [TestFixture]
     public class RequiredConstructorTest : IntegratedTest
     {
-       [SetUp]
+        [SetUp]
         public void Scenario()
         {
             using (var db = new HowShopContext())

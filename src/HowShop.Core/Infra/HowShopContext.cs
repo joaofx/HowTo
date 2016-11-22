@@ -3,6 +3,7 @@ using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using HowShop.Core.Domain;
+using HowShop.Core.Infra.SaveChangesHandlers;
 using SolidR.Core;
 using SolidR.Core.Domain;
 using SolidR.Core.EntityFramework;
@@ -36,31 +37,10 @@ namespace HowShop.Core.Infra
 
         public override int SaveChanges()
         {
-            // TODO: Some conventional configurable way
-            foreach (var orphan in Stocks.Local.Where(x => x.Product == null).ToList())
-            {
-                Stocks.Remove(orphan);
-            }
-
-            // TODO: IoC Before Save Handlers
-            var entitiesBeingCreated = ChangeTracker.Entries<IAuditable>()
-                    .Where(p => p.State == EntityState.Added)
-                    .Select(p => p.Entity);
-
-            foreach (var entityBeingCreated in entitiesBeingCreated)
-            {
-                entityBeingCreated.Audit.BeingCreated();
-            }
-
-            var entitiesBeingUpdated = ChangeTracker.Entries<IAuditable>()
-                    .Where(p => p.State == EntityState.Modified)
-                    .Select(p => p.Entity);
-
-            foreach (var entityBeingUpdated in entitiesBeingUpdated)
-            {
-                entityBeingUpdated.Audit.BeingUpdated();
-            }
-
+            new DeleteOrphanSaveChangesHandler().HandleSaveChanges(this);
+            new AuditSaveChangesHandler().HandleSaveChanges(this);
+            new IntegratableSaveChangesHandler().HandleSaveChanges(this);
+            
             return base.SaveChanges();
         }
     }

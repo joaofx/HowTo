@@ -133,6 +133,7 @@
     <Compile Include="HowTo\HowToEntityFramework\AuditableTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\CascadeDeleteOrphansTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\EncapsulatedCollectionsTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\PreSaveHandleTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\SoftDeleteTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\PrivateSetterTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\RequiredConstructorTest.cs" />

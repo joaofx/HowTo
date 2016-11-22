@@ -189,12 +189,18 @@
     <Compile Include="Concerns\Language.cs" />
     <Compile Include="Concerns\Currencies.cs" />
     <Compile Include="Domain\Category.cs" />
+    <Compile Include="Domain\IIntegratableByName.cs" />
     <Compile Include="Domain\Profile.cs" />
     <Compile Include="Concerns\IAuthorization.cs" />
     <Compile Include="Handlers\LogHandler.cs" />
     <Compile Include="Handlers\AuthorizationHandler.cs" />
     <Compile Include="Infra\AutoMapperInitializer.cs" />
     <Compile Include="Infra\MapperExtensions.cs" />
+    <Compile Include="Infra\SaveChangesHandlers\DeleteOrphanSaveChangesHandler.cs" />
+    <Compile Include="Infra\SaveChangesHandlers\IntegratableSaveChangesHandler.cs" />
+    <Compile Include="Infra\SaveChangesHandlers\AuditSaveChangesHandler.cs" />
+    <Compile Include="Infra\SaveChangesHandlers\ISaveChangesHandler.cs" />
+    <Compile Include="Migrations\201611221333_AlterProductAddIntegrationName.cs" />
     <Compile Include="Migrations\201611071311_CreateCategoryAlterProductAddCategory.cs" />
     <Compile Include="Migrations\201611012354_InsertAdminUser.cs" />
     <Compile Include="Migrations\MigrationConventions.cs" />
@@ -230,6 +236,7 @@
       <Name>SolidR.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
