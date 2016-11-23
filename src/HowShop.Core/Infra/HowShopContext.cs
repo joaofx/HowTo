@@ -1,17 +1,18 @@
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
 using HowShop.Core.Domain;
 using HowShop.Core.Infra.SaveChangesHandlers;
 using SolidR.Core;
-using SolidR.Core.Domain;
 using SolidR.Core.EntityFramework;
 
 namespace HowShop.Core.Infra
 {
     public class HowShopContext : DbContext
     {
+        private readonly IEnumerable<ISaveChangesHandler> _saveChangesHandlers;
+
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Discount> Discounts { get; set; }
@@ -19,8 +20,10 @@ namespace HowShop.Core.Infra
         public DbSet<Store> Stores { get; set; }
         public DbSet<Category> Categories { get; set; }
 
-        public HowShopContext() : base(App.ConnectionString)
+        public HowShopContext(IEnumerable<ISaveChangesHandler> saveChangesHandlers) : base(App.ConnectionString)
         {
+            _saveChangesHandlers = saveChangesHandlers;
+
             Database.SetInitializer<HowShopContext>(null);
         }
 
@@ -37,9 +40,8 @@ namespace HowShop.Core.Infra
 
         public override int SaveChanges()
         {
-            new DeleteOrphanSaveChangesHandler().HandleSaveChanges(this);
-            new AuditSaveChangesHandler().HandleSaveChanges(this);
-            new IntegratableSaveChangesHandler().HandleSaveChanges(this);
+            foreach (var saveChangesHandler in _saveChangesHandlers)
+                saveChangesHandler.HandleSaveChanges(this);
             
             return base.SaveChanges();
         }

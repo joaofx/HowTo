@@ -8,13 +8,13 @@ using SolidR.Core;
 using SolidR.Core.FluentMigrator;
 using SolidR.TestFx;
 using StructureMap;
+using StructureMap.Pipeline;
 
 namespace HowTo.IntegratedTests
 {
     public class IntegratedTest
     {
-        private IContainer _nestedContainer;
-
+        protected IContainer Container;
         protected IDatabaseCleaner DatabaseCleaner;
         protected IDatabaseMigrator DatabaseMigrator;
         protected TestFixture Fixture;
@@ -35,9 +35,9 @@ namespace HowTo.IntegratedTests
         [SetUp]
         public void IntegratedBeforeEachTest()
         {
-            _nestedContainer = App.Container.GetNestedContainer();
-
-            Fixture = _nestedContainer.GetInstance<TestFixture>();
+            Container = App.Container.CreateChildContainer();
+            
+            Fixture = Container.GetInstance<TestFixture>();
 
             App.Log.Info("Cleaning all Tables");
             DatabaseCleaner.CleanAllTables(App.ConnectionString);
@@ -46,7 +46,7 @@ namespace HowTo.IntegratedTests
         [TearDown]
         public void IntegratedAfterEachTest()
         {
-            _nestedContainer.Dispose();
+            Container.Dispose();
         }
 
         [TestFixtureSetUp]
@@ -61,21 +61,22 @@ namespace HowTo.IntegratedTests
 
         protected TResult Send<TResult>(IRequest<TResult> message)
         {
-            var mediator = _nestedContainer.GetInstance<IMediator>();
+            var mediator = Container.GetInstance<IMediator>();
             return mediator.Send(message);
         }
 
         protected void WithDb(Action<HowShopContext> action)
         {
-            using (var db = _nestedContainer.GetInstance<HowShopContext>())
+            using (var db = Container.GetInstance<HowShopContext>())
             {
+                App.Log.Debug($"Using DbContext {db.GetHashCode()}");
                 action(db);
             }
         }
 
         protected void SaveAll(params object[] entities)
         {
-            using (var db = _nestedContainer.GetInstance<DbContext>())
+            using (var db = Container.GetInstance<DbContext>())
             {
                 db.Configuration.AutoDetectChangesEnabled = false;
                 db.Configuration.ValidateOnSaveEnabled = false;

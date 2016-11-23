@@ -6,7 +6,7 @@ using Shouldly;
 namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 {
     [TestFixture]
-    public class PreSaveHandleTest : IntegratedTest
+    public class IntegratableNameTest : IntegratedTest
     {
         [Test]
         public void Should_handle_product_integration_name_before_persist()

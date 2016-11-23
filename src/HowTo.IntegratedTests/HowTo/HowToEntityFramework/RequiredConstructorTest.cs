@@ -16,18 +16,14 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
         [SetUp]
         public void Scenario()
         {
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 db.Products.Add(new Product("iPhone 6", 699.99m));
                 db.Products.Add(new Product("Samsung Galaxy S7", 799.99m));
                 db.SaveChanges();
-            }
-        }
+            });
 
-        [Test]
-        public void Assert()
-        {
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 var products = db.Products.ToList();
 
@@ -36,7 +32,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 
                 products[1].Name.ShouldBe("Samsung Galaxy S7");
                 products[1].Price.ShouldBe(799.99m);
-            }
+            });
         }
     }
 }

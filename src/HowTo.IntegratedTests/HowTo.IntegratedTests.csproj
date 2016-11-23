@@ -128,12 +128,13 @@
     <Compile Include="Commands\UserEditTest.cs" />
     <Compile Include="Commands\UserSettingsEditTest.cs" />
     <Compile Include="Commands\ProductEditTest.cs" />
+    <Compile Include="Features\Testing\IntegratedDslTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\BuddyPropertyTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\EffectiveTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\AuditableTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\CascadeDeleteOrphansTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\EncapsulatedCollectionsTest.cs" />
-    <Compile Include="HowTo\HowToEntityFramework\PreSaveHandleTest.cs" />
+    <Compile Include="HowTo\HowToEntityFramework\IntegratableNameTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\SoftDeleteTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\PrivateSetterTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\RequiredConstructorTest.cs" />

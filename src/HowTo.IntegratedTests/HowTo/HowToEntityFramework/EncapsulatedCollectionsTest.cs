@@ -26,14 +26,14 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
             var iphone = new Product("iPhone", 499);
             iphone.AddQuantityInStock(dublin, 10);
             iphone.AddQuantityInStock(london, 20);
-            
-            using (var db = new HowShopContext())
+
+            WithDb(db =>
             {
                 db.Products.Add(iphone);
                 db.SaveChanges();
-            }
+            });
 
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 var result = db.Products
                     .Where(x => x.Name == iphone.Name)
@@ -48,7 +48,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 
                 result.Stocks.ElementAt(1).Store.Id.ShouldBe(london.Id);
                 result.Stocks.ElementAt(1).Quantity.ShouldBe(20);
-            }
+            });
         }
     }
 }

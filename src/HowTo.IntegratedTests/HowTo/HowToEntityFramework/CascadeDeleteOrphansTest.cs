@@ -16,7 +16,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
         public void Should_save_encapsulated_collections()
         {
             // arrange
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 var dublin = new Store("Dublin");
                 var london = new Store("London");
@@ -27,10 +27,10 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 
                 db.Products.Add(iphone);
                 db.SaveChanges();
-            }
+            });
 
             // act
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 var dublin = db.Stores.SingleOrDefault(x => x.Name == "Dublin");
 
@@ -44,10 +44,10 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
                 iphone.Stocks.Count().ShouldBe(1);
 
                 db.SaveChanges();
-            }
+            });
 
             // assert
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 db.Stocks.Count().ShouldBe(1);
 
@@ -63,7 +63,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 
                 iphone.Stocks.ElementAt(0).Store.Id.ShouldBe(london.Id);
                 iphone.Stocks.ElementAt(0).Quantity.ShouldBe(20);
-            }
+            });
         }
     }
 }

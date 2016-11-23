@@ -17,20 +17,20 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
         [Ignore("TODO: User another properties")]
         public void Should_load_private_setter_property()
         {
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 db.Users.Add(new User("John", "admin@admin.com", "123"));
                 db.Users.Add(new User("Paul", "admin@admin.com", "123"));
                 db.SaveChanges();
-            }
+            });
 
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 var result = db.Users.ToList();
 
                 result[0].Name.ShouldBe("John");
                 result[1].Name.ShouldBe("Paul");
-            }
+            });
         }
     }
 }

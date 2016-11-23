@@ -21,32 +21,32 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
             // arrange & CreateAt
             App.Clock = () => createdAt;
 
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 db.Products.Add(new Product("iPhone", 599));
                 db.Products.Add(new Product("Galaxyyy", 499));
                 db.Products.Add(new Product("Motorola", 399));
 
                 db.SaveChanges();
-            }
+            });
 
             // act & UpdateAt
             App.Clock = () => updatedAt;
 
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 var galaxy = db.Products.Single(x => x.Name == "Galaxyyy");
                 galaxy.Edit("Galaxy");
                 db.SaveChanges();
-            }
+            });
 
             // assert
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 var galaxy = db.Products.Single(x => x.Name == "Galaxy");
                 galaxy.Audit.CreatedAt.ShouldBe(createdAt);
                 galaxy.Audit.UpdatedAt.ShouldBe(updatedAt);
-            }
+            });
         }
     }
 }

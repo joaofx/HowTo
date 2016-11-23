@@ -21,7 +21,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
             var june = new Effective(new DateTime(2016, 6, 1), new DateTime(2016, 6, 30));
             var julyToNow = new Effective(new DateTime(2016, 7, 1));
 
-            using (var db = new HowShopContext())
+            WithDb(db =>
             {
                 db.Products.Add(iphone);
                 db.Products.Add(galaxy);
@@ -30,9 +30,9 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
                 db.Discounts.Add(new Discount(iphone, 489, julyToNow));
 
                 db.SaveChanges();
-            }
-            
-            using (var db = new HowShopContext())
+            });
+
+            WithDb(db =>
             {
                 db.Discounts
                     .Where(x => x.ProductId == iphone.Id)
@@ -43,7 +43,7 @@ namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
                     .Where(x => x.ProductId == iphone.Id)
                     .Count(Effective.On(new DateTime(2016, 6, 1)))
                     .ShouldBe(1);
-            }
+            });
         }
     }
 }
