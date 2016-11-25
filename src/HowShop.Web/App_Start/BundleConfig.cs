@@ -8,7 +8,7 @@ namespace HowShop.Web
         {
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                 "~/Scripts/jquery-{version}.js",
-                //"~/Scripts/turbolinks.js",
+                "~/Scripts/turbolinks.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
                 "~/Scripts/select2.min.js",

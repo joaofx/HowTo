@@ -36,6 +36,10 @@
       <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Bottles, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bottles.2.0.0.576\lib\Bottles.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DelegateDecompiler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
       <HintPath>..\packages\DelegateDecompiler.0.20.0\lib\net40-Client\DelegateDecompiler.dll</HintPath>
       <Private>True</Private>
@@ -54,6 +58,22 @@
     </Reference>
     <Reference Include="FluentMigrator, Version=1.6.2.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentMigrator.1.6.2\lib\40\FluentMigrator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FubuCore, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FubuCore.1.2.0.272\lib\FubuCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FubuLocalization, Version=0.9.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FubuLocalization.0.9.5.124\lib\FubuLocalization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FubuMVC.Core, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FubuMVC.Core.1.3.0.1820\lib\net40\FubuMVC.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlTags, Version=1.1.0.114, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlTags.1.1.0.114\lib\4.0\HtmlTags.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MediatR, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -110,8 +130,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -124,10 +146,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boot\AppSettingProviderRegistry.cs" />
     <Compile Include="Commands\UserLoginTest.cs" />
     <Compile Include="Commands\UserEditTest.cs" />
     <Compile Include="Commands\UserSettingsEditTest.cs" />
     <Compile Include="Commands\ProductEditTest.cs" />
+    <Compile Include="Features\Settings\SettingsProviderTest.cs" />
     <Compile Include="Features\Testing\IntegratedDslTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\BuddyPropertyTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\EffectiveTest.cs" />
