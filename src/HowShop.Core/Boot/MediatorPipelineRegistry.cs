@@ -5,6 +5,7 @@ using HowShop.Core.Concerns;
 using HowShop.Core.Handlers;
 using MediatR;
 using SolidR.Core.Handlers;
+using SolidR.Core.Validation;
 using StructureMap;
 
 namespace HowShop.Core.Boot
@@ -22,6 +23,7 @@ namespace HowShop.Core.Boot
                 scanner.ConnectImplementationsToTypesClosing(typeof(INotificationHandler<>));
                 scanner.ConnectImplementationsToTypesClosing(typeof(IAsyncNotificationHandler<>));
 
+                // TODO: move to ValidationRegistry
                 scanner.AddAllTypesOf(typeof(IValidator<>));
                 scanner.AddAllTypesOf(typeof(IAuthorization<>));
             });
@@ -29,6 +31,9 @@ namespace HowShop.Core.Boot
             For<SingleInstanceFactory>().Use<SingleInstanceFactory>(ctx => t => ctx.GetInstance(t));
             For<MultiInstanceFactory>().Use<MultiInstanceFactory>(ctx => t => ctx.GetAllInstances(t));
             For<TextWriter>().Use(Console.Out);
+
+            // TODO: move to ValidationRegistry
+            For<IValidatorFactory>().Use<StructureMapValidatorFactory>();
 
             // first here is last to be executed
             var handlerType = For(typeof(IRequestHandler<,>));

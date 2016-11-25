@@ -17,7 +17,7 @@
 
 - Use Features Folders?
 - Warn unsaved changes
-- Rename SolidR.TestFx to SolidR.Testing?
+- Rename SolidR.TestFx to SolidR.Testing or SolidR.TestSupport?
 
 - User session load user for each request and show its name
 - CurrentUserQuery Load current user session for cache

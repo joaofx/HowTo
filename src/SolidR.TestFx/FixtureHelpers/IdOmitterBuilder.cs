@@ -12,7 +12,7 @@ namespace SolidR.TestFx.FixtureHelpers
 
             if (property == null)
             {
-                return new NoSpecimen(request);
+                return new NoSpecimen();
             }
 
             if (IsId(property))
@@ -25,7 +25,7 @@ namespace SolidR.TestFx.FixtureHelpers
                 return "0";
             }
 
-            return new NoSpecimen(request);
+            return new NoSpecimen();
         }
 
         private bool IsIdString(PropertyInfo property)

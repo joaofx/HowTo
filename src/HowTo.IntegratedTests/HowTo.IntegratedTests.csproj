@@ -56,6 +56,14 @@
       <HintPath>..\packages\FluentMigrator.1.6.2\lib\40\FluentMigrator.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlTags, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlTags.4.2.0\lib\net45\HtmlTags.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MediatR, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MediatR.2.1.0\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
@@ -112,6 +120,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -129,6 +139,7 @@
     <Compile Include="Commands\UserSettingsEditTest.cs" />
     <Compile Include="Commands\ProductEditTest.cs" />
     <Compile Include="Features\Testing\IntegratedDslTest.cs" />
+    <Compile Include="Features\Validation\ValidatorDescriptorTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\BuddyPropertyTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\EffectiveTest.cs" />
     <Compile Include="HowTo\HowToEntityFramework\AuditableTest.cs" />

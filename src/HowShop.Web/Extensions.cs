@@ -17,5 +17,10 @@ namespace HowShop.Web
             //// TODO: http://cbsa.com.br/post/usar-globalization-no-webconfig-e-cultureinfo-para-formatar-data-e-moeda-em-varios-idiomas-no-aspnet-c.aspx
             return string.Format("{0:C}", value);
         }
+
+        public static string RemoveLast(this string value, int numberOfCharactersToRemove)
+        {
+            return value.Substring(0, value.Length - numberOfCharactersToRemove);
+        }
     }
 }

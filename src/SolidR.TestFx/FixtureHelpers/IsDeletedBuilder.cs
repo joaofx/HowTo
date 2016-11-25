@@ -11,7 +11,7 @@ namespace SolidR.TestFx.FixtureHelpers
 
             if (property == null)
             {
-                return new NoSpecimen(request);
+                return new NoSpecimen();
             }
 
             if (property.Name.Equals("IsDeleted"))
@@ -19,7 +19,7 @@ namespace SolidR.TestFx.FixtureHelpers
                 return false;
             }
 
-            return new NoSpecimen(request);
+            return new NoSpecimen();
         }
     }
 }

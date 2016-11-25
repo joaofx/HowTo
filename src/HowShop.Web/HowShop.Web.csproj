@@ -209,9 +209,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Html\Conventions\CategorySelectElementBuilder.cs" />
+    <Compile Include="Html\Conventions\ElementCategoryExpressionExtensions.cs" />
     <Compile Include="Html\Conventions\EntitySelectElementBuilder.cs" />
     <Compile Include="Html\Conventions\LookupDropDownModifier.cs" />
     <Compile Include="Html\Conventions\EnumDropDownModifier.cs" />
+    <Compile Include="Html\Conventions\RequiredPropertyModifier.cs" />
     <Compile Include="Html\LayoutExtensions.cs" />
     <Compile Include="Html\Conventions\TimeZoneDropDownModifier.cs" />
     <Compile Include="Html\Conventions\CultureDropDownModifier.cs" />

@@ -13,7 +13,7 @@ namespace SolidR.TestFx.FixtureHelpers
 
             if (pi == null)
             {
-                return new NoSpecimen(request);
+                return new NoSpecimen();
             }
 
             var isReferecingEntity = pi.PropertyType
@@ -25,7 +25,7 @@ namespace SolidR.TestFx.FixtureHelpers
                 return null;
             }
 
-            return new NoSpecimen(request);
+            return new NoSpecimen();
         }
     }
 }

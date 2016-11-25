@@ -34,7 +34,7 @@ namespace SolidR.TestFx.FixtureHelpers
                 }
             }
 
-            return new NoSpecimen(request);
+            return new NoSpecimen();
         }
     }
 }

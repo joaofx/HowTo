@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using HtmlTags;
 using HtmlTags.Conventions;
 using HtmlTags.Conventions.Elements;
+using StructureMap;
 
 namespace SolidR.Core.Mvc
 {
@@ -15,6 +16,7 @@ namespace SolidR.Core.Mvc
 
         public HtmlTag Build(ElementRequest request)
         {
+            var container = request.Get<IContainer>();
             return new HtmlTag(string.Empty).NoTag().Text(BreakUpCamelCase(request.Accessor.Name));
         }
 

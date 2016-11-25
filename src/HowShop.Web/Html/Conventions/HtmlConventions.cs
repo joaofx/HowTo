@@ -1,8 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Core.Metadata.Edm;
 using HtmlTags;
 using HtmlTags.Conventions;
+using HtmlTags.Extended.Attributes;
 using SolidR.Core.Mvc;
+using StructureMap;
 
 namespace HowShop.Web.Html.Conventions
 {
@@ -39,8 +42,9 @@ namespace HowShop.Web.Html.Conventions
             Labels.Always.AddClass("col-md-2");
 
             Labels.ModifyForAttribute<DisplayAttribute>((t, a) => t.Text(a.Name));
-            // TODO: Extension method to exclude last 2 chracters
-            Labels.If(m => m.Accessor.Name.EndsWith("Id")).ModifyWith(m => m.CurrentTag.Text(m.Accessor.Name.Substring(0, m.Accessor.Name.Length - 2)));
+            Labels.Modifier<RequiredPropertyModifier>();
+
+            Labels.IfPropertyNameEnds("Id").ModifyWith(m => m.CurrentTag.Text(m.Accessor.Name.RemoveLast(2)));
         }
 
         private void ConfigEditors()
