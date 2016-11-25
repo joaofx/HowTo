@@ -147,6 +147,7 @@
     <Compile Include="App.cs" />
     <Compile Include="BusinessRulesException.cs" />
     <Compile Include="Console2.cs" />
+    <Compile Include="DatabaseSettings.cs" />
     <Compile Include="Domain\Audit.cs" />
     <Compile Include="Domain\Effective.cs" />
     <Compile Include="Domain\Entity.cs" />

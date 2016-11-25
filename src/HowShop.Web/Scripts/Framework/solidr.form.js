@@ -84,7 +84,8 @@
 
     var redirect = function(data) {
         if (data.redirect) {
-            window.location = data.redirect;
+            //window.location = data.redirect;
+            Turbolinks.visit(data.redirect);
         } else {
             window.scrollTo(0, 0);
             window.location.reload();
