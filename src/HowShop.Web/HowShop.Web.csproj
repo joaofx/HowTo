@@ -192,9 +192,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\OwinConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\StructureMapMvc.cs" />
     <Compile Include="Boot\HtmlTagRegistry.cs" />
-    <Compile Include="Boot\StructureMapScopeModule.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\UserSettingsController.cs" />
@@ -293,13 +291,13 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\SolidR\src\SolidR.Core\SolidR.Core.csproj">
+      <Project>{7b75619a-928b-401d-b6ce-0b9660b23aa7}</Project>
+      <Name>SolidR.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HowShop.Core\HowShop.Core.csproj">
       <Project>{0AB4A244-F858-4347-B87C-3EB7B927D656}</Project>
       <Name>HowShop.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SolidR.Core\SolidR.Core.csproj">
-      <Project>{7B75619A-928B-401D-B6CE-0B9660B23AA7}</Project>
-      <Name>SolidR.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

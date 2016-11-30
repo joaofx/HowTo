@@ -6,7 +6,7 @@ using MediatR;
 using NUnit.Framework;
 using SolidR.Core;
 using SolidR.Core.FluentMigrator;
-using SolidR.TestFx;
+using SolidR.TestSupport;
 using StructureMap;
 using StructureMap.Pipeline;
 

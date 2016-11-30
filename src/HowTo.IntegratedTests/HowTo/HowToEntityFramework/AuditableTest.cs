@@ -5,7 +5,7 @@ using HowShop.Core.Infra;
 using NUnit.Framework;
 using Shouldly;
 using SolidR.Core;
-using SolidR.TestFx;
+using SolidR.TestSupport;
 
 namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 {

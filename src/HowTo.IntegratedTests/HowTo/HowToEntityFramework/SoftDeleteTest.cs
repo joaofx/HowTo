@@ -3,7 +3,7 @@ using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using NUnit.Framework;
 using Shouldly;
-using SolidR.TestFx;
+using SolidR.TestSupport;
 
 namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework
 {

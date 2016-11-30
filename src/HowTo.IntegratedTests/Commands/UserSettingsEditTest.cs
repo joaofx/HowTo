@@ -6,7 +6,7 @@ using HowShop.Core.Domain;
 using NodaMoney;
 using NUnit.Framework;
 using Shouldly;
-using SolidR.TestFx;
+using SolidR.TestSupport;
 
 namespace HowTo.IntegratedTests.Commands
 {

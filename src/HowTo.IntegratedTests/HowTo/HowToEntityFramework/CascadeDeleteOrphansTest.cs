@@ -4,7 +4,7 @@ using HowShop.Core.Domain;
 using HowShop.Core.Infra;
 using NUnit.Framework;
 using Shouldly;
-using SolidR.TestFx;
+using SolidR.TestSupport;
 using SolidR.Core.EntityFramework;
 
 namespace HowTo.IntegratedTests.HowTo.HowToEntityFramework

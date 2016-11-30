@@ -7,7 +7,7 @@ using Ploeh.SemanticComparison;
 using Ploeh.SemanticComparison.Fluent;
 using Shouldly;
 using SolidR.Core;
-using SolidR.TestFx;
+using SolidR.TestSupport;
 
 namespace HowTo.IntegratedTests.Queries
 {

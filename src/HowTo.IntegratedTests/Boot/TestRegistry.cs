@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using HowShop.Core.Concerns;
 using HowShop.Core.Infra;
-using SolidR.TestFx;
+using SolidR.TestSupport;
 using StructureMap;
 
 namespace HowTo.IntegratedTests.Boot

@@ -216,7 +216,6 @@
     <Compile Include="Domain\Stock.cs" />
     <Compile Include="Domain\Store.cs" />
     <Compile Include="Domain\User.cs" />
-    <Compile Include="Handlers\TransactionHandler.cs" />
     <Compile Include="Infra\HowShopContext.cs" />
     <Compile Include="Infra\DatabaseContextExtensions.cs" />
     <Compile Include="Infra\EntityFrameworkMigrator.cs" />
@@ -231,12 +230,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SolidR.Core\SolidR.Core.csproj">
-      <Project>{7B75619A-928B-401D-B6CE-0B9660B23AA7}</Project>
+    <ProjectReference Include="..\..\..\SolidR\src\SolidR.Core\SolidR.Core.csproj">
+      <Project>{7b75619a-928b-401d-b6ce-0b9660b23aa7}</Project>
       <Name>SolidR.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

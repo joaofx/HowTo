@@ -17,7 +17,6 @@
 
 using HowShop.Core.Concerns;
 using HowShop.Web.Models;
-using Microsoft.AspNet.Identity;
 using SolidR.Core.Mvc.DependencyResolution;
 using StructureMap;
 
